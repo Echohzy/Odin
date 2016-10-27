@@ -8,6 +8,7 @@
   "dependencies": {
     "body-parser": "~1.13.1",
     "cookie-parser": "~1.3.5",
+    "css-loader": "^0.25.0",
     "debug": "~2.2.0",
     "ejs": "~2.3.2",
     "express": "~4.13.0",
@@ -15,7 +16,8 @@
     "react": "^15.3.2",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "style-loader": "^0.13.1"
   },
   "devDependencies": {
     "webpack": "^1.13.2"
