@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpack = require("webpack");
 var webpackConfig = require("./webpack/webpack.config");
+var mongoose = require("mongoose");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -27,6 +28,17 @@ app.use(express.static(path.join(__dirname, 'src')));
 app.use(webpackDevMiddleware(compiler, {
     // options
 }));
+
+mongoose.connect("mongodb://127.0.0.1/Odin");
+
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("Open success!");
+  // we're connected!
+});
+
 
 app.use('/', routes);
 app.use('/users', users);
