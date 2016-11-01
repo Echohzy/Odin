@@ -1,8 +1,8 @@
 'use strict';
 import ReactDOM from "react-dom";
 import React from "react";
-import App from "./components/app.jsx";
+import MainMenu from "./components/main_menu";
 import 'antd/dist/antd.css';
 
-ReactDOM.render(<App />, document.getElementById("app"));
 
+ReactDOM.render(<MainMenu />, document.getElementById("Odin-app"));
