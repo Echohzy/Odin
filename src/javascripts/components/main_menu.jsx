@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import { Link } from "react-router";
 
+import "../../stylesheets/main_menu.css";
+
 export default class MainMenu extends Component {
   constructor(props){
     super(props);

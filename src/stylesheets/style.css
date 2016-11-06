@@ -9,7 +9,6 @@ body, html{
 
 body {
   font: 14px "Arial", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
-  color: #2b2b2b;
 }
 
 a {
@@ -17,7 +16,8 @@ a {
 }
 
 #Odin-app {
-  
+  min-height:100%;
+  background: #f3f3f4;
 }
 
 

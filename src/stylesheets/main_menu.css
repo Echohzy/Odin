@@ -1,7 +1,9 @@
+@import './base.css';
+
 
 .main-menu-side{
-  float: left;
+  position:absolute;
   min-height: 100%;
   width:230px;
-  background: #2F4050;
+  background: $menu_side_blue;
 }

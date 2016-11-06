@@ -1,3 +1,5 @@
+var precss = require("precss");
+
 module.exports = {
   entry: "./src/javascripts/main.jsx",
   output: {
@@ -9,5 +11,8 @@ module.exports = {
         { test: /\.css$/, loader: "style-loader!css-loader!postcss-loader" },
         { test: /\.js|jsx$/, loaders: ['babel-loader'] }
     ]
+  },
+  postcss: function(){
+    return [precss];
   }
 };
