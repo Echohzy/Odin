@@ -1,9 +1,21 @@
 @import './base.css';
 
-
-.main-menu-side{
-  position:absolute;
-  min-height: 100%;
-  width:230px;
-  background: $menu_side_blue;
+.main-container{
+  .main-menu-side{
+    position:absolute;
+    min-height: 100%;
+    width:230px;
+    background: $menu_side_blue;
+  }
+  .main-menu-content{
+    margin-left: 230px;
+    .main-menu-content-title{
+      min-height: 40px;
+      padding: 10px;
+      .anticon{
+        font-size: 26px;
+        color: $heavy-green;
+      }
+    }
+  }
 }
