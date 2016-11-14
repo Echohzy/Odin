@@ -8,7 +8,7 @@ export default class FormInputComponent extends Component {
     super(props);
   }
   render(){
-    var inputRemind="";
+    var inputRemind;
     switch(this.props.status){
       case "editing":
         inputRemind = (
@@ -27,7 +27,6 @@ export default class FormInputComponent extends Component {
       default:
         inputRemind=""; 
     }
-
     return (
       <div className="OD-form-control">
         <Input
