@@ -1,7 +1,7 @@
 'use strict';
 import { CHANGE_INPUT_VALUE, CHANGE_INPUT_STATUS } from '../actions/form_input_action';
 
-function createInputReducer(reducerName){
+function formInputReducer(reducerName){
   return function(attrName){
     return function(state = {}, action){
       if(reducerName===action.reducerName && attrName===action.attrName){
@@ -19,3 +19,5 @@ function createInputReducer(reducerName){
     };
   };
 }
+
+export default createInputReducer;

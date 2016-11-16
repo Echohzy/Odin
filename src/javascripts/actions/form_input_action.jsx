@@ -2,15 +2,19 @@
 const CHANGE_INPUT_VALUE = "CHANGE_INPUT_VALUE";
 const CHANGE_INPUT_STATUS = "CHANGE_INPUT_STATUS";
 
-function changeInputValue(value){
+function changeInputValue(reducerName, attrName, value){
   return {
+    reducerName: reducerName,
+    attrName: attrName,
     type: CHANGE_INPUT_VALUE,
-    value: value
+    value: value 
   };
 }
 
-function changeInputStatus(status){
+function changeInputStatus(reducerName, attrName, status){
   return {
+    reducerName: reducerName,
+    attrName: attrName,
     type: CHANGE_INPUT_STATUS,
     status: status
   };
