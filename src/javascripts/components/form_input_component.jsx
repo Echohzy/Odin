@@ -30,7 +30,7 @@ export default class FormInputComponent extends Component {
     return (
       <div className="OD-form-control">
         <Input
-          type="text"
+          type={this.props.type || "text"}
           defaultValue={this.props.defaultValue}
           value={this.props.value}
           placeholder={this.props.placeholder}

@@ -2,7 +2,9 @@
 
 import React, { Component } from 'react';
 
-import ReactDOM from 'react-dom';
+import { Button } form 'antd';
+
+import FormInputComponent from "./form_input_component";
 
 export default class SignIn extends Component {
   constructor(props){
@@ -12,7 +14,11 @@ export default class SignIn extends Component {
     return (
       <div className="OD-sign-in-container">
         <div className="OD-sign-in-content">
-
+          <FormInputComponent {...this.props.email}/>
+          <FormInputComponent {...this.props.password}/>
+          <div className="OD-form-control">
+            <Button type="primary" size="large">登录</Button>
+          </div>
         </div>
       </div>
     );
