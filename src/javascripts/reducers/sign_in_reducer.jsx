@@ -2,7 +2,7 @@
 
 import { combineReducers } from 'redux';
 
-import formInputReducer from './form_input_reducer';
+import formInputReducer from './form_input_reducer.jsx';
 
 var createdInputReducer = formInputReducer("signInReducer");
 

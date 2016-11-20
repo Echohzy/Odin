@@ -7,7 +7,7 @@ import "../../stylesheets/main_menu.css";
 
 import { Icon } from "antd";
 
-export default class MainMenu extends Component {
+export default class MainMenuComponent extends Component {
   constructor(props){
     super(props);
   }

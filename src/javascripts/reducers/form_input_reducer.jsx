@@ -1,5 +1,5 @@
 'use strict';
-import { CHANGE_INPUT_VALUE, CHANGE_INPUT_STATUS } from '../actions/form_input_action';
+import { CHANGE_INPUT_VALUE, CHANGE_INPUT_STATUS } from '../actions/form_input_action.jsx';
 
 function formInputReducer(reducerName){
   return function(attrName){
@@ -20,4 +20,4 @@ function formInputReducer(reducerName){
   };
 }
 
-export default createInputReducer;
+export default formInputReducer;

@@ -38,7 +38,7 @@ export default class FormInputComponent extends Component {
           onChange={this.props.onChange}
           onFocus={this.props.onFocus}
           onBlur={this.props.onBlur}/>
-        {infoRemind}
+        {inputRemind}
       </div>
     );
   }

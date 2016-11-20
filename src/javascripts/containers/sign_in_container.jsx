@@ -1,9 +1,9 @@
 'use strict';
 import { connect } from 'react-redux';
 
-import { changeInputValue, changeInputStatus } from '../actions/form_input_action';
+import { changeInputValue, changeInputStatus } from '../actions/form_input_action.jsx';
 
-import SignInComponent from '../components/sign_in_component';
+import SignInComponent from '../components/sign_in_component.jsx';
 
 var ATTRS = {
   email: {
@@ -23,7 +23,7 @@ var mapStateToProps = function(state, ownProps){
     email: Object.assign({}, state.signInReducer.email, ATTRS.email),
     password: Object.assign({}, state.signInReducer.password, ATTRS.password)
   };
-}
+};
 
 var mapDispatchToProps = function(reducerName){
   return function(dispatch){
@@ -36,6 +36,6 @@ var mapDispatchToProps = function(reducerName){
       }
     };
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps("signInReducer"))(SignInComponent);
