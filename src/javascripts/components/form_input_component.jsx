@@ -30,6 +30,7 @@ export default class FormInputComponent extends Component {
     return (
       <div className="OD-form-control">
         <Input
+          size={"large"}
           type={this.props.type || "text"}
           defaultValue={this.props.defaultValue}
           value={this.props.value}

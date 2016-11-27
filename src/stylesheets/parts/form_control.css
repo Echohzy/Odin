@@ -1,0 +1,18 @@
+@import '../base.css';
+.OD-form-control{
+  margin-bottom: 20px;
+  text-align: center;
+  input{
+    font-size: 14px;
+  }
+  .OD-form-button{
+    display:inline-block;
+    width: 100%;
+    padding: 6px 0;
+    font-size: 14px;
+    background-color: $button-blue;
+    color: $white;
+    cursor: pointer;
+    @mixin border-radius 6px, 6px, 6px, 6px;
+  }
+}
