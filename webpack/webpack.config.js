@@ -1,4 +1,5 @@
 var precss = require("precss");
+var webpack = require("webpack");
 
 module.exports = {
   entry: "./src/javascripts/main.jsx",

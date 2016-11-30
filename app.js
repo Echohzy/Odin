@@ -11,6 +11,7 @@ var mongoose = require("mongoose");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var account = require('./routes/account');
 var compiler = webpack(webpackConfig);
 var app = express();
 
@@ -42,6 +43,7 @@ db.once('open', function() {
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/account', account);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
