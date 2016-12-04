@@ -36,8 +36,8 @@ export default class FormInputComponent extends Component {
           value={this.props.value}
           placeholder={this.props.placeholder}
           addonBefore={this.props.label}
-          onChange={this.props.onChange}
-          onFocus={this.props.onFocus}
+          onChange={(evt)=>this.props.onChange(this.props.attrName, evt.target.value)}
+          onFocus={()=>this.props.onFocus(this.props.attrName, "edit")}
           onBlur={this.props.onBlur}/>
         {inputRemind}
       </div>

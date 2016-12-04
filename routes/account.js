@@ -14,3 +14,5 @@ router.post("/:id", function(req, res, next){
     console.log(error);
   });
 });
+
+module.exports = router;

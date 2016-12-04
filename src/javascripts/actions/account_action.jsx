@@ -1,5 +1,6 @@
 'use strict';
-var fetch = require("fetch");
+
+import fetch from 'isomorphic-fetch';
 
 const SET_ACCOUNT_INFO = "SET_ACCOUNT_INFO";
 
@@ -22,3 +23,8 @@ function signIn(data){
     });
   };
 }
+
+export {
+  SET_ACCOUNT_INFO,
+  signIn
+};
