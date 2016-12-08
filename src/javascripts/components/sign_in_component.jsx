@@ -15,13 +15,16 @@ import "../../stylesheets/sign_in.css";
 export default class SignIn extends Component {
   constructor(props){
     super(props);
+    this.onSubmitForm = this.onSubmitForm.bind(this);
   }
   onSubmitForm(){
     var data = {}, passed=true;
-    _.each(["login_name", "password"], function(key){
-
-    });
-
+    if(!this.props.login_name.value || !this.props.password.value){
+      passed = false;
+    }
+    data.email = this.props.login_name.value;
+    data.password = this.props.password.value;
+    this.props.onSignIn(data);
   }
   render(){
     return (
@@ -39,7 +42,7 @@ export default class SignIn extends Component {
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}/>
           <div className="OD-form-control">
-            <span className="OD-form-button" onClick={this.props.onSignIn}>登录</span>
+            <span className="OD-form-button" onClick={this.onSubmitForm}>登录</span>
           </div>
         </div>
       </div>

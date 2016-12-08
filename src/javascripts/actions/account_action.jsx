@@ -12,8 +12,9 @@ function setAccountInfo(data){
 }
 
 function signIn(data){
+  console.log(data);
   return (dispatch, getState)=>{
-    fetch("/account/signIn",{
+    fetch("/account/0/sign_in",{
       method: "POST",
       body: data
     }).then(function(response){

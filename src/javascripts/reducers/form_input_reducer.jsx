@@ -14,7 +14,7 @@ function formInputReducer(reducerName){
             return state;
         }
       }else{
-        return {};
+        return state || {};
       }
     };
   };
