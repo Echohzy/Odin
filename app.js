@@ -7,13 +7,14 @@ var bodyParser = require('body-parser');
 var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpack = require("webpack");
 var webpackConfig = require("./webpack/webpack.config");
-var mongoose = require("mongoose");
+var db = require("./config/db");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var account = require('./routes/account');
 var compiler = webpack(webpackConfig);
 var app = express();
+require('es6-promise').polyfill();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,16 +30,6 @@ app.use(express.static(path.join(__dirname, 'src')));
 app.use(webpackDevMiddleware(compiler, {
     // options
 }));
-
-mongoose.connect("mongodb://127.0.0.1/Odin");
-
-var db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log("Open success!");
-  // we're connected!
-});
 
 
 

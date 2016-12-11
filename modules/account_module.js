@@ -1,18 +1,16 @@
 'use strict';
 var db = require('../config/db.js');
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'); 
 
 module.exports.signIn = function(params){
-  console.log(params);
-  var promise = new mongoose.Promise();
 
-  db.user.find(params, function(err, data){
-    if(err){
-      promise.reject(err);
-    }else{
-      promise.complete(data);
-    }
+  return new Promise(function (resolve, reject){
+    db.user.findOne(params, function(err, data){
+      if(err){
+        reject(err);
+      }else{
+        resolve(data);
+      }
+    });
   });
-
-  return promise;
 };

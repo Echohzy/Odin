@@ -6,8 +6,9 @@ var userSchema = mongoose.Schema({
   password: String,
   avatar: String 
 });
+mongoose.connect("mongodb://127.0.0.1/Odin");
 
-module.exports.user = mongoose.model("user", userSchema);
+module.exports.user = mongoose.model('user',userSchema);
 
 
 
