@@ -3,6 +3,7 @@ var db = require('../config/db.js');
 var mongoose = require('mongoose');
 
 module.exports.signIn = function(params){
+  console.log(params);
   var promise = new mongoose.Promise();
 
   db.user.find(params, function(err, data){

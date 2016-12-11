@@ -12,11 +12,14 @@ function setAccountInfo(data){
 }
 
 function signIn(data){
-  console.log(data);
   return (dispatch, getState)=>{
     fetch("/account/0/sign_in",{
       method: "POST",
-      body: data
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     }).then(function(response){
       return response.json();
     }).then(function(data){

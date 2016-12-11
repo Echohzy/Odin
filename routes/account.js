@@ -10,9 +10,9 @@ router.post("/:id/sign_in", function(req, res, next){
   console.log(req.body);
   accountModule.signIn(req.body)
   .then(function(data){
-    console.log(data);
+    //console.log(data);
   }, function(error){
-    console.log(error);
+    //console.log(error);
   });
 });
 
