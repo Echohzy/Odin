@@ -9,9 +9,15 @@ var accountModule = require("../modules/account_module");
 router.post("/:id/sign_in", function(req, res, next){
   accountModule.signIn(req.body)
   .then(function(data){
-    console.log(data);
+    res.json({
+      status: "success",
+      data: data
+    });
   }, function(error){
-    console.log(error);
+    res.json({
+      status: "error",
+      message: error
+    });
   });
 });
 

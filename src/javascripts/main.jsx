@@ -9,10 +9,12 @@ import thunkMiddleware from 'redux-thunk';
 import MainMenuComponent from "./components/main_menu_component.jsx";
 import SignInContainer from "./containers/sign_in_container.jsx";
 import SignInReducer from './reducers/sign_in_reducer.jsx';
+import AccountReducer from './reducers/account_reducer.jsx';
 
 
 var appReducer = combineReducers({
-  signInReducer: SignInReducer
+  signInReducer: SignInReducer,
+  accountReducer: AccountReducer
 });
 
 var store = createStore(
