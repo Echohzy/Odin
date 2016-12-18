@@ -6,6 +6,26 @@
     min-height: 100%;
     width:230px;
     background: $menu_side_blue;
+    .main-menu-person-card{
+      padding: 20px 10px;
+      .person-avatar{
+        height: 80px;
+        width: 80px;
+        overflow: hidden;
+        margin: 0 auto;
+        @mixin border-radius 40px 40px 40px 40px;
+        img{
+          max-width: 80px;
+          max-height: 80px;
+        }
+      }
+      .person-name{
+        font-size: 16px;
+        color: $white;
+        text-align: center;
+        padding:20px 0;
+      }
+    }
   }
   .main-menu-content{
     margin-left: 230px;
@@ -15,6 +35,14 @@
       .anticon{
         font-size: 26px;
         color: $heavy-green;
+      }
+      .right{
+        line-height: 28px;
+        float: right;
+        .anticon{
+          font-size: 16px;
+          color: ;
+        }
       }
     }
   }
