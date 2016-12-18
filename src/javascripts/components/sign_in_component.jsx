@@ -17,6 +17,11 @@ export default class SignIn extends Component {
     super(props);
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.current_user._id){
+      this.props.router.push("/");
+    }
+  }
   onSubmitForm(){
     var data = {}, passed=true;
     if(!this.props.login_name.value || !this.props.password.value){

@@ -7,12 +7,12 @@ var bodyParser = require('body-parser');
 var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpack = require("webpack");
 var webpackConfig = require("./webpack/webpack.config");
+var compiler = webpack(webpackConfig);
 var db = require("./config/db");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var account = require('./routes/account');
-var compiler = webpack(webpackConfig);
 var app = express();
 require('es6-promise').polyfill();
 
@@ -27,9 +27,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'src')));
-app.use(webpackDevMiddleware(compiler, {
-    // options
+
+app.use(webpackDevMiddleware(compiler,{
+  noInfo: true, publicPath: webpackConfig.output.publicPath
 }));
+
+app.use(require("webpack-hot-middleware")(compiler));
 
 
 

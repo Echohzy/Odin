@@ -6,7 +6,7 @@ import { Router, Route, Link, browserHistory } from "react-router";
 import { Provider } from "react-redux";
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import MainMenuComponent from "./components/main_menu_component.jsx";
+import MainMenuContainer from "./containers/main_menu_container.jsx";
 import SignInContainer from "./containers/sign_in_container.jsx";
 import SignInReducer from './reducers/sign_in_reducer.jsx';
 import AccountReducer from './reducers/account_reducer.jsx';
@@ -27,7 +27,7 @@ var store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={MainMenuComponent} />
+      <Route path="/" component={MainMenuContainer} />
       <Route path="/sign_in" component={SignInContainer} />
     </Router>
   </Provider>,
