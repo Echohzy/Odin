@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 
 import { Button } from 'antd';
 
-import _ from 'lodash';
 
 import FormInputComponent from "./form_input_component.jsx";
 

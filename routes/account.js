@@ -9,6 +9,7 @@ var accountModule = require("../modules/account_module");
 router.post("/:id/sign_in", function(req, res, next){
   accountModule.signIn(req.body)
   .then(function(data){
+    res.session.account = account;
     res.json({
       status: "success",
       data: data

@@ -8,7 +8,6 @@ import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import MainMenuContainer from "./containers/main_menu_container.jsx";
 import SignInContainer from "./containers/sign_in_container.jsx";
-import ProductDetailComponent from "./components/product_detail_component.jsx";
 import SignInReducer from './reducers/sign_in_reducer.jsx';
 import AccountReducer from './reducers/account_reducer.jsx';
 
@@ -29,7 +28,6 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={MainMenuContainer} />
-      <Route path="/test" component={ProductDetailComponent} />
       <Route path="/sign_in" component={SignInContainer} />
     </Router>
   </Provider>,
