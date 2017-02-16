@@ -6,11 +6,9 @@
   </head>
   <body>
     <div id="Odin-app"></div>
-    <% if (current_account) { %>
-      <script>
-        <% var name = <%=current_account.name%> %>
-      </script>
-    <% } %>
     <script src="bundle.js" ></script>
+    <%if(current_account.name){%>
+      <input type="hidden" data-userId=<%=current_account.name%> />
+    <%}%>
   </body>
 </html>
