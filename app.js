@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require("express-session");
+var MongoStore = require('connect-mongo')(session);
 var bodyParser = require('body-parser');
 var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpack = require("webpack");
@@ -28,12 +29,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(session({
-  secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true,
-  cookie: { maxAge:30*1000}
-}));
+
 app.use(express.static(path.join(__dirname, 'src')));
 
 app.use(webpackDevMiddleware(compiler,{
@@ -41,7 +37,21 @@ app.use(webpackDevMiddleware(compiler,{
 }));
 
 app.use(require("webpack-hot-middleware")(compiler));
-
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({url: "mongodb://127.0.0.1/Odin"})
+}));
+// app.get(/[^\n]*/, function (req, res) {
+//   if (req.session.isVisit) {
+//     req.session.isVisit++;
+//     res.send('<p>访问量:' + req.session.isVisit + '</p>');
+//   } else {
+//     req.session.isVisit = 1;
+//     res.send('欢迎初次光临');
+//   }
+// });
 
 app.use('/users', users);
 app.use('/account', account);
