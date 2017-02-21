@@ -4,8 +4,6 @@ var router = express.Router();
 /* GET home page. */
 
 router.get(/[^\n]*/, function(req, res, next) {
-  console.log(req);
-
   res.render('index', { title: 'Odin', current_account: req.session&&req.session.account ? req.session.account : {}});
 });
 
