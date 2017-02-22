@@ -14,12 +14,28 @@ router.get("/:id/sign_in", function(req, res, next){
       status: "success",
       data: data
     });
-    
   }, function(error){
     res.json({
       status: "error",
       message: error
     });
+  });
+});
+
+/*sign out api*/
+
+router.delete("/:id/sign_out",  function(req, res, next){
+  req.session.destroy(function(err){
+    if(!err){
+      res.json({
+        status: "success",
+        data: {}
+      });
+    }else{
+      res.json({
+        status: "error",
+      });
+    }
   });
 });
 

@@ -15,6 +15,7 @@ var db = require("./config/db");
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var account = require('./routes/account');
+var checkSignInMiddleware = require("./utils/check_sign_in_middleware");
 var app = express();
 require('es6-promise').polyfill();
 
@@ -43,18 +44,10 @@ app.use(session({
   saveUninitialized: true,
   store: new MongoStore({url: "mongodb://127.0.0.1/Odin"})
 }));
-// app.get(/[^\n]*/, function (req, res) {
-//   if (req.session.isVisit) {
-//     req.session.isVisit++;
-//     res.send('<p>访问量:' + req.session.isVisit + '</p>');
-//   } else {
-//     req.session.isVisit = 1;
-//     res.send('欢迎初次光临');
-//   }
-// });
 
-app.use('/users', users);
 app.use('/account', account);
+app.use('/users', users);
+app.use(checkSignInMiddleware);
 app.use('/', routes);
 
 // catch 404 and forward to error handler
