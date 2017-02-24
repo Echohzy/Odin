@@ -25,13 +25,34 @@ export default class MainMenuComponent extends Component {
           </div>
           <div className="main-menu-list">
             <div className="main-menu-item">
-              <Link>导航一</Link>
+              <Link>网站管理</Link>
+              <Link>基本设置</Link>
+              <Link>链接管理</Link>
             </div>
             <div className="main-menu-item">
-              <Link>导航二</Link>
+              <Link>栏目管理</Link>
+              <Link>添加栏目</Link>
+              <Link>栏目管理</Link>
             </div>
             <div className="main-menu-item">
-              <Link>导航三</Link>
+              <Link>文章管理</Link>
+              <Link>添加文章</Link>
+              <Link>文章管理</Link>
+            </div>
+            <div className="main-menu-item">
+              <Link>用户管理</Link>
+              <Link>添加用户</Link>
+              <Link>用户管理</Link>
+            </div>
+            <div className="main-menu-item">
+              <Link>个人安全</Link>
+              <Link>个人信息</Link>
+              <Link>修改密码</Link>
+            </div>
+            <div className="main-meun-item">
+              <Link>回收站</Link>
+              <Link>栏目回收站</Link>
+              <Link>文章回收站</Link>
             </div>
           </div>
         </div>
