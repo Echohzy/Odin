@@ -11,7 +11,18 @@ import SignInContainer from "./containers/sign_in_container.jsx";
 import SignInReducer from './reducers/sign_in_reducer.jsx';
 import AccountReducer from './reducers/account_reducer.jsx';
 
+var initialState = {};
 
+if(document.getElementById("OD-account-info")){
+  var userInfoNode = document.getElementById("OD-account-info");
+  initialState.accountReducer = {
+    current_user:{
+      _id: userInfoNode.getAttribute("data-user-id"),
+      nick_name: userInfoNode.getAttribute("data-user-name"),
+      avatar: userInfoNode.getAttribute("data-user-avatar")
+    }
+  };
+}
 var appReducer = combineReducers({
   signInReducer: SignInReducer,
   accountReducer: AccountReducer
@@ -19,6 +30,7 @@ var appReducer = combineReducers({
 
 var store = createStore(
   appReducer,
+  initialState,
   compose(applyMiddleware(thunkMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   ));

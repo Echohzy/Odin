@@ -15,9 +15,10 @@ export default class SignIn extends Component {
   constructor(props){
     super(props);
     this.onSubmitForm = this.onSubmitForm.bind(this);
+    this.onValidateAttr = this.onValidateAttr.bind(this);
   }
   componentWillReceiveProps(nextProps){
-    if(nextProps.current_user._id){
+    if(nextProps.current_user._id!==nextProps.current_user._id){
       this.props.router.push("/");
     }
   }
@@ -30,6 +31,27 @@ export default class SignIn extends Component {
     data.password = this.props.password.value;
     this.props.onSignIn(data);
   }
+  onValidateAttr(attrName){
+    var attrProps = this.props[attrName];
+    if(attrProps.required&&!attrProps.value){
+      this.props.onInputStatusChange(attrName, "error");
+      return false;
+    }
+    if(attProps.value && Object.prototype.toString.call(attrProps.validate)=="[object RegExp]"){
+      if(!attrProps.validate.test(attrProps.value)){
+        this.props.onInputStatusChange(attrName, "error");
+        return false;
+      }
+    }
+    if(attrProps.value && Object.prototype.toString.call(attrProps.validate)=="[object Function]"){
+      if(!attrProps.validate(attrProps.value)){
+        this.props.onInputStatusChange(attrName, "error");
+        return false;
+      }
+    }
+    this.props.onInputStatusChange(attrName, "");
+    return true;
+  }
   render(){
     return (
       <div className="OD-sign-in-container">
@@ -40,11 +62,13 @@ export default class SignIn extends Component {
           <FormInputComponent 
             {...this.props.login_name}
             onChange={this.props.onInputValueChange}
-            onFocus={this.props.onInputStatusChange}/>
+            onFocus={this.props.onInputStatusChange}
+            onBlur={()=>this.onValidateAttr("login_name")}/>
           <FormInputComponent 
             {...this.props.password}
             onChange={this.props.onInputValueChange}
-            onFocus={this.props.onInputStatusChange}/>
+            onFocus={this.props.onInputStatusChange}
+            onBlur={()=>this.onValidateAttr("password")}/>
           <div className="OD-form-control">
             <span className="OD-form-button" onClick={this.onSubmitForm}>登录</span>
           </div>

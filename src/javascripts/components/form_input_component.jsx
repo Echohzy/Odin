@@ -6,6 +6,10 @@ import { Icon, Input, InputGroup } from 'antd';
 export default class FormInputComponent extends Component {
   constructor(props){
     super(props);
+    this.handleBlur = this.handleBlur.bind(this);
+  }
+  handleBlur(){
+
   }
   render(){
     var inputRemind;

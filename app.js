@@ -47,7 +47,6 @@ app.use(session({
 
 app.use('/account', account);
 app.use('/users', users);
-//app.use(checkSignInMiddleware);
 app.use('/', routes);
 
 // catch 404 and forward to error handler

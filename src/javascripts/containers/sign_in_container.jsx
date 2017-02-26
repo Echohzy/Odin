@@ -9,14 +9,17 @@ import SignInComponent from '../components/sign_in_component.jsx';
 
 var ATTRS = {
   login_name: {
+    required: true,
     type: "text",
     placeholder: "请输入邮箱地址",
     label: "邮箱",
     attrName: "login_name",
     editHint: "请输入正确的邮箱",
-    errorHint: "邮箱错误"
+    errorHint: "邮箱错误",
+    validate: /^([\w-_]+(?:\.[\w-_]+)*)@((?:[a-z0-9]+(?:-[a-zA-Z0-9]+)*)+\.[a-z]{2,6})$/i
   },
   password: {
+    required: true,
     type: "password",
     placeholder: "请输入密码",
     label: "密码",
