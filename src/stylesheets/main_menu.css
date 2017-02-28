@@ -26,6 +26,13 @@
         padding:20px 0;
       }
     }
+    .ant-menu{
+      background-color: $menu_side_blue;
+      .ant-menu-submenu-title{
+        background-color: $dark_menu_side_blue;
+      }
+      
+    }
   }
   .main-menu-content{
     margin-left: 230px;

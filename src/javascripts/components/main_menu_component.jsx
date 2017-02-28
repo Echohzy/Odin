@@ -5,7 +5,9 @@ import { Link } from "react-router";
 
 import "../../stylesheets/main_menu.css";
 
-import { Icon } from "antd";
+import { Icon, Menu } from "antd";
+
+const SubMenu = Menu.SubMenu;
 
 export default class MainMenuComponent extends Component {
   constructor(props){
@@ -23,38 +25,28 @@ export default class MainMenuComponent extends Component {
               <span>{this.props.current_user.nick_name}</span>
             </div>
           </div>
-          <div className="main-menu-list">
-            <div className="main-menu-item">
-              <Link>网站管理</Link>
-              <Link>基本设置</Link>
-              <Link>链接管理</Link>
-            </div>
-            <div className="main-menu-item">
-              <Link>栏目管理</Link>
-              <Link>添加栏目</Link>
-              <Link>栏目管理</Link>
-            </div>
-            <div className="main-menu-item">
-              <Link>文章管理</Link>
-              <Link>添加文章</Link>
-              <Link>文章管理</Link>
-            </div>
-            <div className="main-menu-item">
-              <Link>用户管理</Link>
-              <Link>添加用户</Link>
-              <Link>用户管理</Link>
-            </div>
-            <div className="main-menu-item">
-              <Link>个人安全</Link>
-              <Link>个人信息</Link>
-              <Link>修改密码</Link>
-            </div>
-            <div className="main-meun-item">
-              <Link>回收站</Link>
-              <Link>栏目回收站</Link>
-              <Link>文章回收站</Link>
-            </div>
-          </div>
+          <Menu mode="inline" style={{background:"#f3f3f4"}}>
+            <SubMenu key="sub1" title={<span>网站管理</span>}>
+              <Menu.Item key="1">基本设置</Menu.Item>
+              <Menu.Item key="2">链接管理</Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub2" title={<span>栏目管理</span>}>
+              <Menu.Item key="3">添加栏目</Menu.Item>
+              <Menu.Item key="4">栏目管理</Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub3" title={<span>文章管理</span>}>
+              <Menu.Item>添加文章</Menu.Item>
+              <Menu.Item>文章管理</Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub4" title={<span>用户管理</span>}>
+              <Menu.Item>添加用户</Menu.Item>
+              <Menu.Item>权限管理</Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub5" title={<span>回收站</span>}>
+              <Menu.Item>栏目回收站</Menu.Item>
+              <Menu.Item>文章回收站</Menu.Item>
+            </SubMenu>
+          </Menu>
         </div>
         <div className="main-menu-content">
           <div className="main-menu-content-title">
