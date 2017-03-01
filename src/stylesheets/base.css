@@ -5,6 +5,7 @@ $dark_menu_side_blue: #2A3B4C;
 $dark: #2b2b2b;
 $heavy-green: #18A689;
 $button-blue: #2BAEE9;
+$light-blue: #2db7f5;
 
 @define-mixin border-radius $leftTop, $rightTop, $leftBottom, $rightBottom {
    -moz-border-radius: $leftTop $rightTop $leftBottom $rightBottom;

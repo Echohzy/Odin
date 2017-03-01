@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 import "../../stylesheets/main_menu.css";
 
-import { Icon, Menu } from "antd";
+import { Icon, Menu, Button } from "antd";
 
 const SubMenu = Menu.SubMenu;
 
@@ -50,10 +50,8 @@ export default class MainMenuComponent extends Component {
         </div>
         <div className="main-menu-content">
           <div className="main-menu-content-title">
-            <a href="#">
-              <Icon type="bars" />
-            </a>
-            <span className="right"><Icon type="logout" />log out</span>
+            <Button type="primary" icon="bars" />
+            <Button type="primary" icon="logout" onClick={this.props.signOut}/>
           </div>
         </div>
       </div>

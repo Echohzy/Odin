@@ -30,8 +30,17 @@
       background-color: $menu_side_blue;
       .ant-menu-submenu-title{
         background-color: $dark_menu_side_blue;
+        color: $white;
       }
-      
+      li{
+        color: $white;
+      }
+      .ant-menu-item-active{
+        background: $dark_menu_side_blue;
+      }
+      .ant-menu-item-selected{
+        color: $light-blue;
+      }
     }
   }
   .main-menu-content{
@@ -47,7 +56,7 @@
         line-height: 28px;
         float: right;
         .anticon{
-          font-size: 16px;
+          font-size: 26px;
           color: ;
         }
       }

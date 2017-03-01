@@ -33,7 +33,29 @@ function signIn(data){
   };
 }
 
+function signOut(){
+  return (dispatch, getState) => {
+    fetch("/account/0/sign_out",{
+      method: "DELETE",
+      credentials: 'include',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then(function(response){
+      return response.json();
+    }).then(function(res){
+      if(res.status == "success"){
+        dispatch(setAccountInfo(res.data));
+      }
+    }).catch(function(error){
+      console.log(error);
+    });
+  };
+}
+
 export {
   SET_ACCOUNT_INFO,
-  signIn
+  signIn,
+  signOut
 };
