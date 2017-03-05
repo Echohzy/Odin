@@ -38,11 +38,13 @@ module.exports.addAccount = function(params){
   return new Promise(function (resolve, reject){
     db.user.findOneById(id, function(error, data){
       if(error){
-
+        reject(error);
+      }else{
+        resolve(data);
       }
     });
   });
- }
+ };
 
 /*
  * update account info
