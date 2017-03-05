@@ -50,3 +50,15 @@ module.exports.deleteColumn = function(id){
     });
   });
 };
+
+module.exports.listColumn = function(params){
+  return new Promise(function (resolve, reject){
+    db.column.find(params, function (error, data){
+      if(error){
+        reject(error);
+      }else{
+        resolve(data);
+      }
+    });
+  });
+}
