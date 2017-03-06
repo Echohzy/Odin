@@ -2,7 +2,7 @@
 
 var express = require("express");
 var router = express.Router();
-var articleModule = require("../mosules/article_module");
+var articleModule = require("../module/article_module");
 
 /*add article api*/
 router.post("/", function (req, res, next){
