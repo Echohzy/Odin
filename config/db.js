@@ -7,7 +7,7 @@ var userSchema = mongoose.Schema({
   avatar: String,
   permission: Number,
   deleted: {type: Number, default: 0},
-  
+  work_id: String,
   created_at: Date,
   updated_at: {type: Date, default: Date.now}
 });

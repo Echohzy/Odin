@@ -54,6 +54,14 @@ function signOut(){
   };
 }
 
+function addAccount(){
+  return (dispatch, getState) => {
+    fetch("/account", {
+      
+    });
+  };
+}
+
 export {
   SET_ACCOUNT_INFO,
   signIn,

@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 
 import FormInputComponent from './form_input_component.jsx';
 
+import FormSelectComponent from './form_select_component.jsx';
+
 export default class UserFormComponent extends Component {
   constructor(props){
     super(props);
@@ -15,18 +17,37 @@ export default class UserFormComponent extends Component {
         </div>
         <div className="OD-form-content">
           <FormInputComponent
-           {this.props.user_name}
+           {this.props.email}
            onChange={this.props.onInputValueChange}
            onFocus={this.props.onInputStatusChange}
-           onBlur={()=>this.onValidateAttr("user_name")}/>
-        <FormInputComponent 
-            {...this.props.password}
+           onBlur={()=>this.onValidateAttr("email")}/>
+          <FormInputComponent 
+              {...this.props.password}
+              onChange={this.props.onInputValueChange}
+              onFocus={this.props.onInputStatusChange}
+              onBlur={()=>this.onValidateAttr("password")}/>
+          <FormInputComponent 
+            {...this.props.nick_name}
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}
-            onBlur={()=>this.onValidateAttr("password")}/>
-        <div className="OD-form-control">
-          <span className="OD-form-button" onClick={this.onSubmitForm}>确定</span>
-        </div>
+            onBlur={()=>this.onValidateAttr("nick_name")}/>
+          <FormInputComponent
+            {...this.props.work_id}
+            onChange={this.props.onInputValueChange}
+            onFocus={this.props.onInputStatusChange}
+            onBlur={()=>this.onValidateAttr("word_id")}/>
+          <FormSelectComponent
+            {...this.props.permission}
+            onChange={this.props.onInputValueChange}
+            onFocus={this.props.onInputStatusChange}
+            onBlur={()=>this.onValidateAttr("permission")}>
+            <Option value=0>网站管理员</Option>
+            <Option value=1>栏目管理员</Option>
+            <Option value=2>编辑</Option>
+          </FormSelectComponent>
+          <div className="OD-form-control">
+            <span className="OD-form-button" onClick={this.onSubmitForm}>确定</span>
+          </div>
         </div>
       </div>
     );
