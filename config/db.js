@@ -5,6 +5,9 @@ var userSchema = mongoose.Schema({
   email: String,
   password: String,
   avatar: String,
+  permission: Number,
+  deleted: {type: Number, default: 0},
+  
   created_at: Date,
   updated_at: {type: Date, default: Date.now}
 });
@@ -12,6 +15,8 @@ var userSchema = mongoose.Schema({
 var articleSchema = mongoose.Schema({
   title: String,
   content: String,
+  column_id: String,
+  deleted: {type: Number, default: 0},
   created_at: Date,
   updated_at: {type: Date, default: Date.now},
 });
@@ -20,6 +25,7 @@ var columnSchema = mongoose.Schema({
   title: String,
   depth: Number,
   parent_column_id: String,
+  deleted: {type: Number, default: 0},
   created_at: Date,
   upadted_at: {type: Date, default: Date.now }
 });
