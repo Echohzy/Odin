@@ -37,7 +37,7 @@ export default class SignIn extends Component {
       this.props.onInputStatusChange(attrName, "error");
       return false;
     }
-    if(attProps.value && Object.prototype.toString.call(attrProps.validate)=="[object RegExp]"){
+    if(attrProps.value && Object.prototype.toString.call(attrProps.validate)=="[object RegExp]"){
       if(!attrProps.validate.test(attrProps.value)){
         this.props.onInputStatusChange(attrName, "error");
         return false;

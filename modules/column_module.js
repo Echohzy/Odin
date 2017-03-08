@@ -3,7 +3,7 @@ var db = require("../config/db.js");
 var mongoose = require("mongoose");
 
 module.exports.addColumn = function(params){
-  return new Promise(function(params, function (resolve, reject){
+  return new Promise(function (resolve, reject){
     var column = db.column(params);
     column.save(function(error, data){
       if(error){

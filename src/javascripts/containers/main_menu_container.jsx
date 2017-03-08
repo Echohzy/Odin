@@ -2,7 +2,7 @@
 
 import { connect } from 'react-redux';
 
-import { signOut } from '../actions/account_action';
+import { signOut } from '../actions/account_action.jsx';
 
 import MainMenuComponent from "../components/main_menu_component.jsx";
 

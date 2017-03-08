@@ -2,7 +2,7 @@
 
 var express = require("express");
 var router = express.Router();
-var articleModule = require("../module/article_module");
+var articleModule = require("../modules/article_module");
 
 /*add article api*/
 router.post("/", function (req, res, next){
@@ -69,7 +69,7 @@ router.get("/", function (req, res, next){
 });
 
 /*delete article api*/
-router.delete("/:id", function (res, res, next){
+router.delete("/:id", function (req, res, next){
   articleModule.deleteArticle(req.params)
   .then(function(data){
     res.json({
@@ -81,5 +81,7 @@ router.delete("/:id", function (res, res, next){
       status: "error",
       message: error
     });
-  })
+  });
 });
+
+module.exports = router;

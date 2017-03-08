@@ -12,12 +12,13 @@ var webpackConfig = require("./webpack/webpack.config");
 var compiler = webpack(webpackConfig);
 var db = require("./config/db");
 
-var routes = require('./routes/index');
+var page = require('./routes/page');
 var users = require('./routes/users');
 var account = require('./routes/account');
 var column = require('./routes/column');
 var article = require('./routes/article');
 var base = require('./routes/base');
+var signIn = require('./routes/sign_in');
 var checkSignInMiddleware = require("./utils/check_sign_in_middleware");
 var app = express();
 require('es6-promise').polyfill();
@@ -53,7 +54,9 @@ app.use('/article', article);
 app.use('/column', column);
 app.use('/base', base);
 app.use('/users', users);
-app.use('/', routes);
+app.use('/sign_in', signIn);
+app.use(checkSignInMiddleware);
+app.use('/', page);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
