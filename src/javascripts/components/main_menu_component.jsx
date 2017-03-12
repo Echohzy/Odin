@@ -15,7 +15,7 @@ export default class MainMenuComponent extends Component {
   }
   componentWillReceiveProps(nextProps){
     if(!nextProps.current_user._id){
-      this.props.router.push("/");
+      this.props.router.push("/sign_in");
     }
   }
   render(){

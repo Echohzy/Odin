@@ -7,5 +7,9 @@
   .OD-form-title{
     margin-bottom: 20px;
   }
+  .OD-form-control{
+    height: 64px;
+    
+  }
 
 }

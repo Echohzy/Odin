@@ -14,7 +14,7 @@ export default class FormInputComponent extends Component {
         inputRemind = (
           <div className="OD-form-input-message info-hint">
             <Icon type="exclamation-circle" />
-            <span>{this.props.infoHint}</span>
+            <span>{this.props.editHint}</span>
           </div>);
         break;
       case "error":
@@ -37,7 +37,7 @@ export default class FormInputComponent extends Component {
           placeholder={this.props.placeholder}
           addonBefore={this.props.label}
           onChange={(evt)=>this.props.onChange(this.props.attrName, evt.target.value)}
-          onFocus={()=>this.props.onFocus(this.props.attrName, "edit")}
+          onFocus={()=>this.props.onFocus(this.props.attrName, "editing")}
           onBlur={this.props.onBlur}/>
         {inputRemind}
       </div>
