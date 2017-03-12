@@ -100,7 +100,7 @@ router.get("/", function(req, res, next){
       status: "error",
       message: error
     });
-  })
+  });
 });
 
 /*sign out api*/

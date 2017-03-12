@@ -6,6 +6,12 @@
     min-height: 100%;
     width:230px;
     background: $menu_side_blue;
+    .ant-menu-inline{
+      border-color: $menu_side_blue;
+      .ant-menu-item{
+        border-color: $menu_side_blue;
+      }
+    }
     .main-menu-person-card{
       padding: 20px 10px;
       .person-avatar{
@@ -51,13 +57,13 @@
       .anticon{
         font-size: 26px;
         color: $heavy-green;
+        cursor: pointer;
       }
       .right{
         line-height: 28px;
         float: right;
         .anticon{
           font-size: 26px;
-          color: ;
         }
       }
     }

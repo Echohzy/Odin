@@ -45,7 +45,7 @@ function signOut(){
     }).then(function(response){
       return response.json();
     }).then(function(res){
-      if(res.status == "success"){
+      if(res.status=== "success"){
         dispatch(setAccountInfo(res.data));
       }
     }).catch(function(error){

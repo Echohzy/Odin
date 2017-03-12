@@ -13,6 +13,11 @@ export default class MainMenuComponent extends Component {
   constructor(props){
     super(props);
   }
+  componentWillReceiveProps(nextProps){
+    if(!nextProps.current_user._id){
+      this.props.router.push("/");
+    }
+  }
   render(){
     return (
       <div className="main-container">
@@ -50,8 +55,8 @@ export default class MainMenuComponent extends Component {
         </div>
         <div className="main-menu-content">
           <div className="main-menu-content-title">
-            <Button type="primary" icon="bars" />
-            <Button type="primary" icon="logout" onClick={this.props.signOut}/>
+            <Icon type="bars" />
+            <Icon type="logout" className="right" onClick={this.props.signOut}/>
           </div>
         </div>
       </div>

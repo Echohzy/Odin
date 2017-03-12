@@ -6,18 +6,20 @@ import { signOut } from '../actions/account_action.jsx';
 
 import MainMenuComponent from "../components/main_menu_component.jsx";
 
-var mapDispatchToProps = function(dispatch){
-  return {
-    signOut: ()=>{
-      dispatch(signOut());
-    }
-  };
-};
+
 var mapStateToProps = function(state, ownProps){
   return {
     current_user: state.accountReducer.current_user
   };
 };
 
-export default connect(mapStateToProps)(MainMenuComponent);
+var mapDispatchToProps = function(dispatch){
+  return {
+    signOut: function(){
+      dispatch(signOut());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainMenuComponent);
 
