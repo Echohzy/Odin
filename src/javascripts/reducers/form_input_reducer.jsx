@@ -1,5 +1,9 @@
 'use strict';
-import { CHANGE_INPUT_VALUE, CHANGE_INPUT_STATUS } from '../actions/form_input_action.jsx';
+import { 
+  CHANGE_INPUT_VALUE,
+  CHANGE_INPUT_STATUS,
+  SET_DEFAULT_ERROR
+} from '../actions/form_input_action.jsx';
 
 function formInputReducer(reducerName){
   return function(attrName){
@@ -10,6 +14,8 @@ function formInputReducer(reducerName){
             return Object.assign({}, state, {value: action.value});
           case CHANGE_INPUT_STATUS:
             return Object.assign({}, state, {status: action.status});
+          case SET_DEFAULT_ERROR:
+            return Object.assign({},state, {defaultError: action.defaultError, status: "initial_error"});
           default:
             return state;
         }

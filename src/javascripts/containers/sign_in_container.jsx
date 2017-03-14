@@ -47,7 +47,7 @@ var mapDispatchToProps = function(reducerName){
         dispatch(changeInputStatus(reducerName, attrName, status));
       },
       onSignIn: function(data){
-        dispatch(signIn(data));
+        dispatch(signIn(reducerName, data));
       }
     };
   };

@@ -48,7 +48,6 @@ app.use(session({
   saveUninitialized: true,
   store: new MongoStore({url: "mongodb://127.0.0.1/Odin"})
 }));
-
 app.use('/account', account);
 app.use('/article', article);
 app.use('/column', column);

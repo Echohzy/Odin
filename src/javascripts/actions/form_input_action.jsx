@@ -1,6 +1,7 @@
 'use strict';
 const CHANGE_INPUT_VALUE = "CHANGE_INPUT_VALUE";
 const CHANGE_INPUT_STATUS = "CHANGE_INPUT_STATUS";
+const SET_DEFAULT_ERROR = "SET_DEFAULT_ERROR";
 
 function changeInputValue(reducerName, attrName, value){
   return {
@@ -20,10 +21,21 @@ function changeInputStatus(reducerName, attrName, status){
   };
 }
 
+function setDefaultError(reducerName, attrName, defaultError){
+  return {
+    reducerName: reducerName,
+    attrName: attrName,
+    type: SET_DEFAULT_ERROR,
+    defaultError: defaultError
+  };
+}
+
 export {
   CHANGE_INPUT_VALUE,
   CHANGE_INPUT_STATUS,
+  SET_DEFAULT_ERROR,
   changeInputValue,
-  changeInputStatus
+  changeInputStatus,
+  setDefaultError
 };
 

@@ -24,6 +24,13 @@ export default class FormInputComponent extends Component {
             <span>{this.props.errorHint}</span>
           </div>);
         break;
+      case "initial_error":
+        inputRemind = (
+          <div className="OD-form-input-message error-hint">
+            <Icon type="close-circle" />
+            <span>{this.props.defaultError}</span>
+          </div>);
+        break;
       default:
         inputRemind=""; 
     }

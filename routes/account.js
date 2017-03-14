@@ -6,8 +6,8 @@ var accountModule = require("../modules/account_module");
 
 /*sign in api*/
 
-router.get("/:id/sign_in", function(req, res, next){
-  accountModule.signIn(req.query)
+router.post("/:id/sign_in", function(req, res, next){
+  accountModule.signIn(req.body)
   .then(function(data){
     req.session.account = data;
     res.json({
@@ -114,6 +114,7 @@ router.delete("/:id/sign_out",  function(req, res, next){
     }else{
       res.json({
         status: "error",
+        message: err
       });
     }
   });
