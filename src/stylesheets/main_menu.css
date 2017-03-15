@@ -11,6 +11,12 @@
       .ant-menu-item{
         border-color: $menu_side_blue;
       }
+      .ant-menu-item > a{
+        color: $white;
+      }
+      .ant-menu-item-selected > a{
+        color: $light-blue;
+      }
     }
     .main-menu-person-card{
       padding: 20px 10px;

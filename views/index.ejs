@@ -7,8 +7,8 @@
   <body>
     <div id="Odin-app"></div>
     
-    <%if(current_account&&current_account._id){%>
-      <input type="hidden" id="OD-account-info" data-user-id=<%=current_account._id%> data-user-name=<%=current_account.nick_name%> data-user-avatar=<%=current_account.avatar%> />
+    <%if(current_account&&current_account.id){%>
+      <input type="hidden" id="OD-account-info" data-user-id=<%=current_account.id%> data-user-name=<%=current_account.nick_name%> data-user-avatar=<%=current_account.avatar%> />
     <%}%>
     <script src="bundle.js" ></script>
   </body>

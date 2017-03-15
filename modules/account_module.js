@@ -9,7 +9,11 @@ module.exports.signIn = function(params){
       if(err||!data){
         reject({login_name:"用户名或密码错误！"});
       }else{
-        resolve(data);
+        resolve({
+          id: data._id,
+          avatar: data.avatar,
+          nick_name: data.nick_name
+        });
       }
     });
   });

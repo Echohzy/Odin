@@ -18,7 +18,7 @@ export default class SignIn extends Component {
     this.onValidateAttr = this.onValidateAttr.bind(this);
   }
   componentWillReceiveProps(nextProps){
-    if(nextProps.current_user._id!==this.props.current_user._id){
+    if(nextProps.current_user.id!==this.props.current_user.id){
       this.props.router.push("/");
     }
   }
