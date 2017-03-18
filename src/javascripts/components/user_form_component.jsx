@@ -35,7 +35,7 @@ export default class UserFormComponent extends Component {
             {...this.props.work_id}
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}
-            onBlur={()=>this.onValidateAttr("word_id")}/>
+            onBlur={()=>this.onValidateAttr("work_id")}/>
           <FormSelectComponent
             {...this.props.permission}
             onChange={this.props.onInputValueChange}
