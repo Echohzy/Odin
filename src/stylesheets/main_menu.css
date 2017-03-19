@@ -55,7 +55,7 @@
       }
     }
   }
-  .main-menu-content{
+  .main-menu-container{
     margin-left: 230px;
     .main-menu-content-title{
       min-height: 40px;
@@ -72,6 +72,9 @@
           font-size: 26px;
         }
       }
+    }
+    .main-menu-content{
+      padding: 30px;
     }
   }
 }

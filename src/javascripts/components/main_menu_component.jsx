@@ -53,12 +53,14 @@ export default class MainMenuComponent extends Component {
             </SubMenu>
           </Menu>
         </div>
-        <div className="main-menu-content">
+        <div className="main-menu-container">
           <div className="main-menu-content-title">
             <Icon type="bars" />
             <Icon type="logout" className="right" onClick={this.props.signOut}/>
           </div>
-          {this.props.children}
+          <div className="main-menu-content">
+            {this.props.children}
+          </div>
         </div>
       </div>
     );

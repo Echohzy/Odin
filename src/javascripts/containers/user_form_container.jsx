@@ -1,6 +1,8 @@
 'use strict';
 import { connect } from 'react-redux';
 
+import { addAccount } from "../actions/account_action.jsx";
+
 import { changeInputValue, changeInputStatus } from '../actions/form_input_action.jsx';
 
 import UserFormComponent from '../components/user_form_component.jsx';
@@ -26,6 +28,15 @@ var ATTRS = {
     errorHint: "请输入8-20位密码",
     validate: /^[a-zA-Z0-9\!@#\$%\^\&\*\(\)-\+=_\.,\?]{8,20}$/,
   },
+  password_confirmation: {
+    required: true,
+    type: "password",
+    label:"确认密码",
+    placeholder: "请确认密码",
+    editHint: "请确认密码",
+    errorHint: "两次密码不一致",
+    attrName: "password_confirmation"
+  },
   nick_name: {
     required: true,
     type: "text",
@@ -45,7 +56,8 @@ var ATTRS = {
   permission: {
     label: "权限",
     attrName: "permission",
-    editHint: "请选择权限"
+    editHint: "请选择权限",
+    value: "0"
   }
 };
 
@@ -53,6 +65,7 @@ var mapStateToProps = function(state, ownProps){
   return {
     email: Object.assign({}, state.userFormReducer.email, ATTRS.email),
     password: Object.assign({}, state.userFormReducer.password, ATTRS.password),
+    password_confirmation: Object.assign({},state.userFormReducer.password_confirmation, ATTRS.password_confirmation),
     nick_name: Object.assign({}, state.userFormReducer.nick_name, ATTRS.nick_name),
     work_id: Object.assign({}, state.userFormReducer.work_id, ATTRS.work_id),
     permission: Object.assign({}, state.userFormReducer.permission, ATTRS.permission)
@@ -67,6 +80,9 @@ var mapDispatchToProps = function(reducerName){
       },
       onInputStatusChange: function(attrName, status){
         dispatch(changeInputStatus(reducerName, attrName, status));
+      },
+      onAddAccount: function(data){
+        dispatch(addAccount(reducerName, data));
       }
     };
   };

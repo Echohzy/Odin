@@ -25,4 +25,7 @@
   .info-hint{
     color: $button-blue;
   }
+  .ant-select{
+    display: block;
+  }
 }

@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 
 import { Select } from 'antd';
 
+const Option = Select.Option;
+
 export default class FormSelectComponent extends Component {
   constructor(props){
     super(props);
@@ -32,15 +34,18 @@ export default class FormSelectComponent extends Component {
 
     return (
       <div className="OD-form-control">
-        <select
+        <Select
           size={this.props.size||"large"}
-          defaultValue={this.props.defaultValue}
           value={this.props.value}
-          onChange={(evt)=>this.props.onChange(this.props.attrName, evt.target.value)}
+          onChange={(value)=>this.props.onChange(this.props.attrName, value)}
           onFocus={()=>this.props.onFocus(this.props.attrName, "edit")}
           onBlur={this.props.onBlur}>
-          {this.props.children}
-        </select>
+          {
+            this.props.Options.map(function(option){
+              return (<Option key={option.value} value={option.value}>{option.text}</Option>);
+            })
+          }
+        </Select>
       </div>
     );
   }

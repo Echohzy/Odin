@@ -8,28 +8,28 @@ export default class FormInputComponent extends Component {
     super(props);
   }
   render(){
-    var inputRemind;
+    var inputRemind = "";
     switch(this.props.status){
       case "editing":
-        inputRemind = (
+        inputRemind = this.props.editHint?(
           <div className="OD-form-input-message info-hint">
             <Icon type="exclamation-circle" />
             <span>{this.props.editHint}</span>
-          </div>);
+          </div>):"";
         break;
       case "error":
-        inputRemind = (
+        inputRemind = this.props.errorHint?(
           <div className="OD-form-input-message error-hint">
             <Icon type="close-circle" />
             <span>{this.props.errorHint}</span>
-          </div>);
+          </div>):"";
         break;
       case "initial_error":
-        inputRemind = (
+        inputRemind = this.props.defaultError?(
           <div className="OD-form-input-message error-hint">
             <Icon type="close-circle" />
             <span>{this.props.defaultError}</span>
-          </div>);
+          </div>):"";
         break;
       default:
         inputRemind=""; 
