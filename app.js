@@ -52,7 +52,6 @@ app.use('/account', account);
 app.use('/article', article);
 app.use('/column', column);
 app.use('/base', base);
-app.use('/users', users);
 app.use('/sign_in', signIn);
 app.use(checkSignInMiddleware);
 app.use('/', page);

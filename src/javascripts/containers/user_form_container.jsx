@@ -1,7 +1,7 @@
 'use strict';
 import { connect } from 'react-redux';
 
-import { changeInputValue, changeInputStatus } from '../actions/form_inpput_action.jsx';
+import { changeInputValue, changeInputStatus } from '../actions/form_input_action.jsx';
 
 import UserFormComponent from '../components/user_form_component.jsx';
 

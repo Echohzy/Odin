@@ -58,6 +58,7 @@ export default class MainMenuComponent extends Component {
             <Icon type="bars" />
             <Icon type="logout" className="right" onClick={this.props.signOut}/>
           </div>
+          {this.props.children}
         </div>
       </div>
     );
