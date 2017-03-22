@@ -31,25 +31,25 @@ export default class MainMenuComponent extends Component {
             </div>
           </div>
           <Menu mode="inline" style={{background:"#f3f3f4"}}>
-            <SubMenu key="sub1" title={<span>网站管理</span>}>
-              <Menu.Item><Link to="/setting/base">基本设置</Link></Menu.Item>
-              <Menu.Item><Link to="/setting/link">链接管理</Link></Menu.Item>
+            <SubMenu key="sub1" title={<span>Web</span>}>
+              <Menu.Item><Link to="/setting/base">Base</Link></Menu.Item>
+              <Menu.Item><Link to="/setting/link">{"Link"}</Link></Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" title={<span>栏目管理</span>}>
-              <Menu.Item><Link to="/columns/new">添加栏目</Link></Menu.Item>
-              <Menu.Item><Link to="/columns">栏目管理</Link></Menu.Item>
+            <SubMenu key="sub2" title={<span>Columns</span>}>
+              <Menu.Item><Link to="/columns/new">New Column</Link></Menu.Item>
+              <Menu.Item><Link to="/columns">Column Management</Link></Menu.Item>
             </SubMenu>
-            <SubMenu key="sub3" title={<span>文章管理</span>}>
-              <Menu.Item><Link to="/articles/new">添加文章</Link></Menu.Item>
-              <Menu.Item><Link to="/articles">文章管理</Link></Menu.Item>
+            <SubMenu key="sub3" title={<span>Articles</span>}>
+              <Menu.Item><Link to="/articles/new">New Article</Link></Menu.Item>
+              <Menu.Item><Link to="/articles">Article Management</Link></Menu.Item>
             </SubMenu>
-            <SubMenu key="sub4" title={<span>用户管理</span>}>
-              <Menu.Item><Link to="/users/new">添加用户</Link></Menu.Item>
-              <Menu.Item><Link to="/users">权限管理</Link></Menu.Item>
+            <SubMenu key="sub4" title={<span>Users</span>}>
+              <Menu.Item><Link to="/users/new">New User</Link></Menu.Item>
+              <Menu.Item><Link to="/users">Authority Management</Link></Menu.Item>
             </SubMenu>
-            <SubMenu key="sub5" title={<span>回收站</span>}>
-              <Menu.Item><Link to="/trash/columns">栏目回收站</Link></Menu.Item>
-              <Menu.Item><Link to="/trash/articles">文章回收站</Link></Menu.Item>
+            <SubMenu key="sub5" title={<span>Trash</span>}>
+              <Menu.Item><Link to="/trash/columns">Columns</Link></Menu.Item>
+              <Menu.Item><Link to="/trash/articles">Articles</Link></Menu.Item>
             </SubMenu>
           </Menu>
         </div>

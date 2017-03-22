@@ -23,6 +23,7 @@ var articleSchema = mongoose.Schema({
 
 var columnSchema = mongoose.Schema({
   title: String,
+  description: String,
   depth: Number,
   parent_column_id: String,
   deleted: {type: Number, default: 0},
