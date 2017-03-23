@@ -31,8 +31,8 @@ var ATTRS = {
 
 var mapStateToProps = function(state, ownProps){
   return {
-    login_name: Object.assign({}, state.signInReducer.login_name, ATTRS.login_name),
-    password: Object.assign({}, state.signInReducer.password, ATTRS.password),
+    login_name: Object.assign({}, ATTRS.login_name, state.signInReducer.login_name),
+    password: Object.assign({}, ATTRS.password, state.signInReducer.password),
     current_user: state.accountReducer.current_user
   };
 };

@@ -4,11 +4,11 @@ import React, { Component } from 'react';
 
 import {Button} from 'antd';
 
-import FormInputComponent from './form_input_component.jsx';
+import FormInputComponent from "./form_input_component.jsx";
 
 export default class ColumnFormComponent extends Component {
   constructor(props){
-
+    super(props);
   }
   render(){
     return (
@@ -21,7 +21,7 @@ export default class ColumnFormComponent extends Component {
             {...this.props.title}
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}/>
-          <FormInputComponet 
+          <FormInputComponent 
             {...this.props.description}
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}/>
