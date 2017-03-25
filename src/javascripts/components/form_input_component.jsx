@@ -8,7 +8,7 @@ export default class FormInputComponent extends Component {
     super(props);
   }
   render(){
-    var inputRemind = "";
+    let inputRemind = "";
     switch(this.props.status){
       case "editing":
         inputRemind = this.props.editHint?(

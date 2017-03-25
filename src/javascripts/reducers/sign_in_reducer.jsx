@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 
 import formInputReducer from './form_input_reducer.jsx';
 
-var createdInputReducer = formInputReducer("signInReducer");
+let createdInputReducer = formInputReducer("signInReducer");
 
 export default combineReducers({
   login_name: createdInputReducer("login_name"),

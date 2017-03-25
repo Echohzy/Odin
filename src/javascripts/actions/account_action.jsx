@@ -8,6 +8,8 @@ const RECEIVED_DATA = "RECEIVED_DATA";
 
 import { setDefaultError } from './form_input_action.jsx';
 
+import wrappedFetch from '../utils/fetch.jsx';
+
 function setAccountInfo(data){
   return {
     type: SET_ACCOUNT_INFO,
@@ -25,69 +27,59 @@ function receivedData(reducerName, data){
 
 function signIn(reducerName, data){
   return (dispatch, getState)=>{
-    fetch("/account/0/sign_in",{
+    wrappedFetch({
+      url: "/account/0/sign_in",
       method: "POST",
-      credentials: 'include',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+      body: JSON.stringify(data),
+      success: (res)=>{
+        if(res.status==="success"){
+          dispatch(setAccountInfo(res.data));
+        }else if(res.status==="error"){
+          var keys = Object.keys(res.message);
+          keys.forEach(function(attrName){
+            dispatch(setDefaultError(reducerName, attrName, res.message[attrName]));
+          });
+        }
       },
-      body: JSON.stringify(data)
-    }).then(function(response){
-      return response.json();
-    }).then(function(res){
-      if(res.status==="success"){
-        dispatch(setAccountInfo(res.data));
-      }else if(res.status==="error"){
-        var keys = Object.keys(res.message);
-        keys.forEach(function(attrName){
-          dispatch(setDefaultError(reducerName, attrName, res.message[attrName]));
-        });
+      error: (error)=>{
+        console.log(error);
       }
-    }).catch(function(error){
-      console.log(error);
     });
   };
 }
 
 function signOut(){
   return (dispatch, getState)=>{
-    fetch("/account/0/sign_out",{
+
+    wrappedFetch({
+      url: "/account/0/sign_out",
       method: "DELETE",
-      credentials: 'include',
-      headers:{
-        'Accept': 'application/json',
+      success: (res)=>{
+        if(res.status==="success"){
+          dispatch(setAccountInfo(res.data));
+        }
+      },
+      error: (error)=>{
+        console.log(error);
       }
-    }).then(function(response){
-      return response.json();
-    }).then(function(res){
-      if(res.status==="success"){
-        dispatch(setAccountInfo(res.data));
-      }
-    }).catch(function(error){
-      console.log(error);
     });
   };
 }
 
 function addAccount(reducerName, data){
   return (dispatch, getState) => {
-    fetch("/account", {
+    wrappedFetch({
+      url: "/account",
       method: "POST",
-      credentials: "include",
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+      body: JSON.stringify(data),
+      success: (res)=>{
+        if(res.status==="success"){
+          dispatch(receivedData(reducerName, data));
+        }
       },
-      body: JSON.stringify(data)
-    }).then(function(response){
-      return response.json();
-    }).then(function(res){
-      if(res.status==="success"){
-        dispatch(receivedData(reducerName, data));
+      error: (err)=>{
+        console.log(err);
       }
-    }).catch(function(error){
-      console.log(error);
     });
   };
 }

@@ -7,7 +7,7 @@ import { changeInputValue, changeInputStatus } from '../actions/form_input_actio
 
 import UserFormComponent from '../components/user_form_component.jsx';
 
-var ATTRS = {
+let ATTRS = {
   email: {
     required: true,
     type: 'text',
@@ -61,7 +61,7 @@ var ATTRS = {
   }
 };
 
-var mapStateToProps = function(state, ownProps){
+let mapStateToProps = function(state, ownProps){
   return {
     email: Object.assign({}, state.userFormReducer.email, ATTRS.email),
     password: Object.assign({}, state.userFormReducer.password, ATTRS.password),
@@ -72,7 +72,7 @@ var mapStateToProps = function(state, ownProps){
   };
 };
 
-var mapDispatchToProps = function(reducerName){
+let mapDispatchToProps = function(reducerName){
   return function(dispatch){
     return {
       onInputValueChange: function(attrName, value){

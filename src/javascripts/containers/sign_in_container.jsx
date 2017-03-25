@@ -7,7 +7,7 @@ import { signIn } from "../actions/account_action.jsx";
 
 import SignInComponent from '../components/sign_in_component.jsx';
 
-var ATTRS = {
+let ATTRS = {
   login_name: {
     required: true,
     type: "text",
@@ -29,7 +29,7 @@ var ATTRS = {
   }
 };
 
-var mapStateToProps = function(state, ownProps){
+let mapStateToProps = function(state, ownProps){
   return {
     login_name: Object.assign({}, ATTRS.login_name, state.signInReducer.login_name),
     password: Object.assign({}, ATTRS.password, state.signInReducer.password),
@@ -37,7 +37,7 @@ var mapStateToProps = function(state, ownProps){
   };
 };
 
-var mapDispatchToProps = function(reducerName){
+let mapDispatchToProps = function(reducerName){
   return function(dispatch){
     return {
       onInputValueChange: function(attrName, value){

@@ -6,7 +6,7 @@ import { changeInputValue, changeInputStatus } from '../actions/form_input_actio
 
 import ColumnFormComponent from '../components/column_form_component.jsx';
 
-var ATTRS = {
+let ATTRS = {
   title:{
     required: true,
     type: "text",
@@ -25,14 +25,14 @@ var ATTRS = {
   }
 };
 
-var mapStateToProps = function(state, ownProps){
+let mapStateToProps = function(state, ownProps){
   return {
     title: Object.assign({}, ATTRS.title, state.columnFormReducer.title),
     description: Object.assign({}, ATTRS.description, state.columnFormReducer.description)
   };
 };
 
-var mapDispatchToProps = function(reducerName){
+let mapDispatchToProps = function(reducerName){
   return function(dispatch){
     return {
       onInputValueChange: function(attrName, value){
