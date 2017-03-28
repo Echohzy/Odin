@@ -1,0 +1,27 @@
+@import "./base.css";
+
+.OD-editor-container{
+  position: relative;
+  .OD-editor-tooltips{
+    padding: 15px;
+  }
+  .content{
+    float: left;
+    width: 200px;
+    textarea{
+      width: 200px;
+      height: 300px;
+      border: 1px solid $border-gray;
+      resize: none;
+      background: $menu_side_blue;
+      color: $white;
+      padding: 10px;
+    }
+  }
+  .preview{
+    margin-left: 210px;
+    height: 300px;
+    background: $white;
+
+  }
+}
