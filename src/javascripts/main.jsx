@@ -14,6 +14,7 @@ import SignInReducer from './reducers/sign_in_reducer.jsx';
 import AccountReducer from './reducers/account_reducer.jsx';
 import UserFormReducer from './reducers/user_form_reducer.jsx';
 import ColumnFormReducer from './reducers/column_form_reducer.jsx';
+import EditorComponent from './components/editor_component.jsx';
 
 var initialState = {};
 
@@ -49,6 +50,7 @@ ReactDOM.render(
       <Route path="/" component={MainMenuContainer}>
         <Route path="users/new" component={UserFormContainer} />
         <Route path="columns/new" component={ColumnFormContainer}/>
+        <Route path="editor" component={EditorComponent}/>
       </Route>
     </Router>
   </Provider>,

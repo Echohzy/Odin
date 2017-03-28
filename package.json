@@ -28,6 +28,7 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "serve-favicon": "~2.3.0",
+    "showdown": "^1.6.4",
     "style-loader": "^0.13.1",
     "webpack-dev-middleware": "^1.8.4"
   },
