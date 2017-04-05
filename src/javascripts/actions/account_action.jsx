@@ -1,7 +1,5 @@
 'use strict';
 
-import fetch from 'isomorphic-fetch';
-
 const SET_ACCOUNT_INFO = "SET_ACCOUNT_INFO";
 
 const RECEIVED_DATA = "RECEIVED_DATA";

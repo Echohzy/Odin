@@ -2,10 +2,10 @@
 var db = require("../config/db.js");
 var mongoose = require("mongoose");
 
-module.exports.addColumn = function(params){
+module.exports.addProject = function(params){
   return new Promise(function (resolve, reject){
-    var column = db.column(params);
-    column.save(function(error, data){
+    var project = db.project(params);
+    project.save(function(error, data){
       if(error){
         reject("栏目创建失败！");
       }else{
@@ -15,9 +15,9 @@ module.exports.addColumn = function(params){
   });
 };
 
-module.exports.updateColumn = function(id, params){
+module.exports.updateProject = function(id, params){
   return new Promise(function (resolve, exports){
-    db.column.findByIdAndUpdate(id,{$set: params}, function(error, data){
+    db.project.findByIdAndUpdate(id,{$set: params}, function(error, data){
       if(error){
         reject("更新栏目失败！");
       }else{
@@ -27,9 +27,9 @@ module.exports.updateColumn = function(id, params){
   });
 };
 
-module.exports.getColumn = function(id){
+module.exports.getProject = function(id){
   return new Promise(function (resolve, reject){
-    db.column.findOneById(id, function(error, data){
+    db.project.findOneById(id, function(error, data){
       if(error){
         reject("未找到该栏目！");
       }else{
@@ -39,9 +39,9 @@ module.exports.getColumn = function(id){
   });
 };
 
-module.exports.deleteColumn = function(id){
+module.exports.deleteProject = function(id){
   return new Promise(function (resolve, reject){
-    db.column.findOneAndRemove({_id: id}, function(error, exports){
+    db.project.findOneAndRemove({_id: id}, function(error, exports){
       if(error){
         reject("栏目删除失败！");
       }else{
@@ -51,9 +51,9 @@ module.exports.deleteColumn = function(id){
   });
 };
 
-module.exports.listColumn = function(params){
+module.exports.listProject = function(params){
   return new Promise(function (resolve, reject){
-    db.column.find(params, function (error, data){
+    db.project.find(params, function (error, data){
       if(error){
         reject(error);
       }else{

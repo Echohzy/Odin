@@ -15,7 +15,7 @@ var db = require("./config/db");
 var page = require('./routes/page');
 var users = require('./routes/users');
 var account = require('./routes/account');
-var column = require('./routes/column');
+var project = require('./routes/project');
 var article = require('./routes/article');
 var base = require('./routes/base');
 var signIn = require('./routes/sign_in');
@@ -49,7 +49,7 @@ app.use(session({
 }));
 app.use('/account', account);
 app.use('/article', article);
-app.use('/column', column);
+app.use('/project', project);
 app.use('/base', base);
 app.use('/sign_in', signIn);
 app.use(checkSignInMiddleware);

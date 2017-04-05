@@ -2,11 +2,11 @@
 
 var express = require("express");
 var router = express.Router();
-var columnModule = require("../modules/column_module");
+var ProjectModule = require("../modules/project_module");
 
-/*add column api*/
+/*add Project api*/
 router.post("/", function (req, res, next){
-  columnModule.addColumn(req.body)
+  ProjectModule.addProject(req.body)
   .then(function(data){
     res.json({
       status: "success",
@@ -20,9 +20,9 @@ router.post("/", function (req, res, next){
   });
 });
 
-/*update column api*/
+/*update Project api*/
 router.put("/:id", function (req, res, next){
-  columnModule.updateColumn(req.params.id, req.body)
+  ProjectModule.updateProject(req.params.id, req.body)
   .then(function(data){
     res.json({
       status: "success",
@@ -36,9 +36,9 @@ router.put("/:id", function (req, res, next){
   });
 });
 
-/*get column api*/
+/*get Project api*/
 router.get("/:id", function (req, res, next){
-  columnModule.getColumn(req.params.id)
+  ProjectModule.getProject(req.params.id)
   .then(function(data){
     res.json({
       status: "success",
@@ -52,9 +52,9 @@ router.get("/:id", function (req, res, next){
   });
 });
 
-/*delete column api*/
+/*delete Project api*/
 router.delete("/:id", function (req, res, next){
-  columnModule.deleteColumn(req.params.id)
+  ProjectModule.deleteProject(req.params.id)
   .then(function(data){
     res.json({
       status: "success",

@@ -21,11 +21,10 @@ var articleSchema = mongoose.Schema({
   updated_at: {type: Date, default: Date.now},
 });
 
-var columnSchema = mongoose.Schema({
+var projectSchema = mongoose.Schema({
   title: String,
   description: String,
-  depth: Number,
-  parent_column_id: String,
+  members: {type: Array, default: []},
   deleted: {type: Number, default: 0},
   created_at: Date,
   upadted_at: {type: Date, default: Date.now }
@@ -40,7 +39,7 @@ mongoose.connect("mongodb://127.0.0.1/Odin");
 
 module.exports.user = mongoose.model('user',userSchema);
 module.exports.article = mongoose.model('article', articleSchema);
-module.exports.column = mongoose.model('column', columnSchema);
+module.exports.project = mongoose.model('project', projectSchema);
 module.exports.base = mongoose.model('base', baseSchema);
 
 
