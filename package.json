@@ -16,6 +16,7 @@
     "es6-promise": "^4.0.5",
     "express": "~4.13.0",
     "express-session": "^1.15.1",
+    "file-loader": "^0.11.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.2",
     "mongoose": "^4.6.5",
@@ -30,6 +31,7 @@
     "serve-favicon": "~2.3.0",
     "showdown": "^1.6.4",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.8",
     "webpack-dev-middleware": "^1.8.4"
   },
   "devDependencies": {

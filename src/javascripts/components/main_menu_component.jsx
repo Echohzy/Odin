@@ -5,6 +5,8 @@ import { Link } from "react-router";
 
 import "../../stylesheets/main_menu.css";
 
+import "../../stylesheets/font-awesome.css";
+
 import { Icon, Menu, Button } from "antd";
 
 const SubMenu = Menu.SubMenu;
@@ -35,7 +37,7 @@ export default class MainMenuComponent extends Component {
               <Menu.Item><Link to="/setting/base">Base</Link></Menu.Item>
               <Menu.Item><Link to="/setting/link">{"Link"}</Link></Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" title={<span>Columns</span>}>
+            <SubMenu key="sub2" title={<span>Projects</span>}>
               <Menu.Item><Link to="/columns/new">New Column</Link></Menu.Item>
               <Menu.Item><Link to="/columns">Column Management</Link></Menu.Item>
             </SubMenu>

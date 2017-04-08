@@ -16,7 +16,8 @@ module.exports = {
   module: {
     loaders: [
         { test: /\.css$/, loader: "style-loader!css-loader!postcss-loader" },
-        { test: /\.js|jsx$/, loaders: ['babel-loader'] }
+        { test: /\.js|jsx$/, loaders: ['babel-loader'] },
+        { test: /\.(woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?name=fonts/[name].[md5:hash:hex:7].[ext]'}
     ]
   },
   plugins: [

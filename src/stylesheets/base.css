@@ -14,3 +14,11 @@ $border-gray: #acacac;
   -webkit-border-radius: $leftTop $rightTop $leftBottom $rightBottom;
   border-radius: $leftTop $rightTop $leftBottom $rightBottom;
 };
+
+@define-mixin clearfix {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}

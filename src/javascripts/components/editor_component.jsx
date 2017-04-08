@@ -26,7 +26,6 @@ export default class EditorComponent extends Component {
     this.setState({value: value, md_value: md_value});
   }
   getToolTipsButton(params){
-    console.log(params);
     return (
       <Tooltip placement="top" title={params.title}>
         <Button type="primary" icon={params.icon} onClick={params.onClick} />
@@ -36,8 +35,8 @@ export default class EditorComponent extends Component {
   render(){
     return (
       <div className="OD-editor-container">
-        <div className="OD-editor-tooltips">
-          {this.getToolTipsButton({title: "粗体", icon: "bold", onClick: ()=>this.handleInsertMarkdown()})}
+        <div className="OD-editor-toolbar">
+          <i className="fa fa-address-book" />
         </div>
         <div className="content">
           <textarea value={this.state.value} onChange={(evt)=>this.onTextAreaChange(evt.target.value)}/>
