@@ -2,25 +2,40 @@
 
 .OD-editor-container{
   position: relative;
-  .OD-editor-tooltips{
+  .OD-editor-toolbar{
     padding: 15px;
+    .OD-editor-button{
+      display: inline-block;
+    }
   }
   .content{
     float: left;
-    width: 50%;
+    width: 100%;
+    height: 350px;
     textarea{
-      height: 350px;
-      border: 1px solid $border-gray;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro';
+      display: inline-block;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
       resize: none;
       background: $menu_side_blue;
       color: $white;
       padding: 10px;
     }
   }
+  .fold{
+    width: 50%;
+  }
   .preview{
     float: left;
-    width: 50%;
+    box-sizing: border-box;
+    width: 0;
     height: 350px;
+  }
+  .show{
+    width: 50%;
+    padding: 10px;
   }
   &:after{
     @mixin clearfix;
