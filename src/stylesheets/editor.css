@@ -2,43 +2,87 @@
 
 .OD-editor-container{
   position: relative;
+  word-break: break-all;
   .OD-editor-toolbar{
-    padding: 15px;
     .OD-editor-button{
       display: inline-block;
+      font-size: 16px;
+      height: 24px;
+      width: 24px;
+      line-height: 24px;
+      text-align: center;
+      margin: 10px 4px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: transparent;
+      i{
+        vertical-align: text-top;
+      }
+      @mixin border-radius 3px;
+      &:hover{
+        border-color: $border-gray;
+      }
+      
+    }
+    &:before{
+      content: " ";
+      display: block;
+      height: 1px;
+      @mixin gradient 45deg $bg_gray $border-gray $bg_gray;
+    }
+    &:after{
+      content: " ";
+      display: block;
+      height: 1px;
+      @mixin gradient 45deg $bg_gray $border-gray $bg_gray;
     }
   }
   .content{
     float: left;
     width: 100%;
     height: 350px;
+    padding: 10px;
     textarea{
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro';
       display: inline-block;
       box-sizing: border-box;
+      border: none;
       width: 100%;
       height: 100%;
       resize: none;
-      background: $menu_side_blue;
-      color: $white;
-      padding: 10px;
+      background: $bg_gray;
+      &:focus{
+        outline: none !important;
+      }
     }
   }
   .fold{
     width: 50%;
+    border-right: 1px solid $border-gray-light;
   }
   .preview{
     float: left;
     box-sizing: border-box;
     width: 0;
     height: 350px;
+    overflow-x:hidden;
+    overflow-y: auto;
   }
   .show{
     width: 50%;
     padding: 10px;
   }
-  &:after{
+  .OD-editor-block{
+    margin: 10px;
+  }
+  .OD-editor-block:after{
     @mixin clearfix;
+  }
+  &:after{
+    content: " ";
+    display: block;
+    height: 1px;
+    @mixin gradient 45deg $bg_gray $border-gray $bg_gray;
   }
   
 }

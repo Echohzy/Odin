@@ -8,6 +8,7 @@ $button-blue: #0868ac;
 $light-blue: #2db7f5;
 $red: #f12626;
 $border-gray: #acacac;
+$border-gray-light: #d9d9d9;
 
 @define-mixin border-radius $leftTop, $rightTop, $leftBottom, $rightBottom {
    -moz-border-radius: $leftTop $rightTop $leftBottom $rightBottom;
@@ -21,4 +22,11 @@ $border-gray: #acacac;
   height: 0;
   clear: both;
   visibility: hidden;
+}
+
+@define-mixin gradient $angle $color1 $color2 $color3 {
+  background: linear-gradient($angle, $color1, $color2, $color3);
+  background: -webkit-linear-gradient($angle, $color1, $color2, $color3);
+  background: -moz-linear-gradient($angle, $color1, $color2, $color3);
+  background: -ms-linear-gradient($angle, $color1, $color2, $color3);
 }

@@ -102,10 +102,12 @@ export default class EditorComponent extends Component {
           {this.getToolTipsButton({title: "Link", icon: <i className="fa fa-link" />, onClick: ()=>{this.handleInsertMarkdown("wrap", "[","](http://www.sonkwo.com)", "link", true)}})}
           {this.getToolTipsButton({title: "Preview", icon: <i className={this.state.preview?"fa fa-eye-slash":"fa fa-eye"} />, onClick: ()=>this.togglePreview()})}
         </div>
-        <div className={this.state.preview ? "content fold": "content"}>
-          <textarea ref={(textArea)=>{this.textArea = textArea}} value={this.state.value} onChange={(evt)=>this.onTextAreaChange(evt.target.value)}/>
+        <div className="OD-editor-block">
+          <div className={this.state.preview ? "content fold": "content"}>
+            <textarea ref={(textArea)=>{this.textArea = textArea}} value={this.state.value} onChange={(evt)=>this.onTextAreaChange(evt.target.value)}/>
+          </div>
+          <div className={this.state.preview ? "preview show":"preview"} dangerouslySetInnerHTML={{__html: this.state.md_value}}/>
         </div>
-        <div className={this.state.preview ? "preview show":"preview"} dangerouslySetInnerHTML={{__html: this.state.md_value}}/>
       </div>
     );
   }
