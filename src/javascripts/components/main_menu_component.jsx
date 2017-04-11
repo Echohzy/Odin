@@ -7,6 +7,8 @@ import "../../stylesheets/main_menu.css";
 
 import "../../stylesheets/font-awesome.css";
 
+import FooterComponent from './footer_component.jsx';
+
 import { Icon, Menu, Button } from "antd";
 
 const SubMenu = Menu.SubMenu;
@@ -64,6 +66,7 @@ export default class MainMenuComponent extends Component {
             {this.props.children}
           </div>
         </div>
+        <FooterComponent />
       </div>
     );
   }

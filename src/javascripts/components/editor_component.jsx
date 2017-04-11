@@ -8,7 +8,9 @@ import showdown from 'showdown';
 
 import { Button, Icon, Tooltip } from 'antd';
 
-const converter = new showdown.Converter();
+const converter = new showdown.Converter({
+  strikethrough: true
+});
 
 export default class EditorComponent extends Component {
   constructor(props){
@@ -92,9 +94,9 @@ export default class EditorComponent extends Component {
     return (
       <div className="OD-editor-container">
         <div className="OD-editor-toolbar">
-          {this.getToolTipsButton({title: "Bold", icon: <i className="fa fa-bold" />, onClick: ()=>{this.handleInsertMarkdown("wrap", "**", "**")}})}
-          {this.getToolTipsButton({title: "Strikethrough", icon: <i className="fa fa-strikethrough" />, onClick: ()=>{this.handleInsertMarkdown("wrap","~~", "~~")}})}
-          {this.getToolTipsButton({title: "Italic", icon: <i className="fa fa-italic" />, onClick: ()=>{this.handleInsertMarkdown("wrap", "*", "*")}})}
+          {this.getToolTipsButton({title: "Bold", icon: <i className="fa fa-bold" />, onClick: ()=>{this.handleInsertMarkdown("wrap", "**", "**", "")}})}
+          {this.getToolTipsButton({title: "Strikethrough", icon: <i className="fa fa-strikethrough" />, onClick: ()=>{this.handleInsertMarkdown("wrap","~~", "~~", "")}})}
+          {this.getToolTipsButton({title: "Italic", icon: <i className="fa fa-italic" />, onClick: ()=>{this.handleInsertMarkdown("wrap", "*", "*","")}})}
           {this.getToolTipsButton({title: "Header", icon: <i className="fa fa-header" />, onClick: ()=>{this.handleInsertMarkdown("lineStart", "# ")}})}
           {this.getToolTipsButton({title: "Quote", icon: <i className="fa fa-quote-left" />, onClick: ()=>{this.handleInsertMarkdown("lineStart", "> ")}})}
           {this.getToolTipsButton({title: "Horizontal", icon: <i className="fa fa-minus" />, onClick: ()=>{this.handleInsertMarkdown("pointer", "\n\n---\n")}})}

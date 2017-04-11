@@ -57,6 +57,7 @@
   }
   .main-menu-container{
     margin-left: 230px;
+    min-height: calc(100vh - 50px);
     .main-menu-content-title{
       min-height: 40px;
       padding: 10px;

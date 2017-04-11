@@ -31,8 +31,12 @@ var projectSchema = mongoose.Schema({
 });
 
 var baseSchema = mongoose.Schema({
-  title: String,
-  name: Number
+  web_name: String,
+  web_address: String,
+  web_keyword: String,
+  web_describtion: String,
+  web_copyright: String,
+  web_email: String
 });
 
 mongoose.connect("mongodb://127.0.0.1/Odin");
