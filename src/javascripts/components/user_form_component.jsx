@@ -13,7 +13,7 @@ export default class UserFormComponent extends Component {
     this.onPasswordConfirm = this.onPasswordConfirm.bind(this);
   }
   onValidateAttr(attrName){
-    var attrProps = this.props[attrName];
+    let attrProps = this.props[attrName];
     if(attrProps.required&&!attrProps.value){
       this.props.onInputStatusChange(attrName, "error");
       return false;
@@ -41,8 +41,8 @@ export default class UserFormComponent extends Component {
     }
   }
   onSubmit(){
-    var passed = true;
-    var data = {};
+    let passed = true;
+    let data = {};
     ["email", "password", "nick_name", "work_id","permission"].map((attrName)=>{
       if(this.onValidateAttr(attrName)){
         data[attrName] = this.props[attrName].value;
