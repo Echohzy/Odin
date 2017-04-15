@@ -63,7 +63,7 @@ let ATTRS = {
 
 let mapStateToProps = function(state, ownProps){
   return {
-    email: Object.assign({}, , ATTRS.email, state.userFormReducer.email),
+    email: Object.assign({} , ATTRS.email, state.userFormReducer.email),
     password: Object.assign({}, ATTRS.password, state.userFormReducer.password),
     password_confirmation: Object.assign({}, ATTRS.password_confirmation,state.userFormReducer.password_confirmation),
     nick_name: Object.assign({}, ATTRS.nick_name, state.userFormReducer.nick_name),

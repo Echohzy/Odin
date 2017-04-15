@@ -10,7 +10,7 @@ let ATTRS = {
   web_name:{
     required: true,
     type: "text",
-    placeholder: "请输入网站名称"，
+    placeholder: "请输入网站名称",
     label: "网站名称",
     attrName: "web_name",
     editHint: "请输入网站名称",
@@ -60,7 +60,7 @@ let ATTRS = {
 
 let mapStateToProps = function(state, ownProps){
   return {
-    web_name: Object.assign({}, ATTRS.web_name, state.baseFormReducer.web_name)
+    web_name: Object.assign({}, ATTRS.web_name, state.baseFormReducer.web_name),
     web_keyword: Object.assign({}, ATTRS.web_keyword, state.baseFormReducer.web_keyword),
     web_copyright: Object.assign({}, ATTRS.web_copyright, state.baseFormReducer.web_copyright),
     web_address: Object.assign({}, ATTRS.web_address, state.baseFormReducer.web_address),
@@ -71,12 +71,14 @@ let mapStateToProps = function(state, ownProps){
 
 let mapDispatchToProps = function(reducerName){
   return function(dispatch){
-    onInputValueChange: function(attrName, value){
-      dispatch(changeInputValue(reducerName, attrName, value));
-    },
-    onInputStatusChange: function(attrName, status){
-      dispatch(changeInputStatus(reducerName, attrName, status));
-    }
+    return {
+      onInputValueChange: function(attrName, value){
+        dispatch(changeInputValue(reducerName, attrName, value));
+      },
+      onInputStatusChange: function(attrName, status){
+        dispatch(changeInputStatus(reducerName, attrName, status));
+      }
+    };
   }
 }
 

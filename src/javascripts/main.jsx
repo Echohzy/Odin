@@ -10,10 +10,12 @@ import MainMenuContainer from './containers/main_menu_container.jsx';
 import SignInContainer from "./containers/sign_in_container.jsx";
 import UserFormContainer from './containers/user_form_container.jsx';
 import ColumnFormContainer from './containers/column_form_container.jsx';
+import BaseFormContainer from './containers/base_form_container.jsx';
 import SignInReducer from './reducers/sign_in_reducer.jsx';
 import AccountReducer from './reducers/account_reducer.jsx';
 import UserFormReducer from './reducers/user_form_reducer.jsx';
 import ColumnFormReducer from './reducers/column_form_reducer.jsx';
+import BaseFormReducer from './reducers/base_form_reducer.jsx';
 import EditorComponent from './components/editor_component.jsx';
 
 var initialState = {};
@@ -32,7 +34,8 @@ var appReducer = combineReducers({
   signInReducer: SignInReducer,
   userFormReducer: UserFormReducer,
   columnFormReducer: ColumnFormReducer,
-  accountReducer: AccountReducer
+  accountReducer: AccountReducer,
+  baseFormReducer: BaseFormReducer
 });
 
 var store = createStore(
@@ -49,8 +52,9 @@ ReactDOM.render(
       <Route path="/sign_in" component={SignInContainer} />
       <Route path="/" component={MainMenuContainer}>
         <Route path="users/new" component={UserFormContainer} />
-        <Route path="columns/new" component={ColumnFormContainer}/>
-        <Route path="editor" component={EditorComponent}/>
+        <Route path="columns/new" component={ColumnFormContainer} />
+        <Route path="base/new" component={BaseFormContainer} />
+        <Route path="editor" component={EditorComponent} />
       </Route>
     </Router>
   </Provider>,

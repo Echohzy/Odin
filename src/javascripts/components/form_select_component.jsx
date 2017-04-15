@@ -34,18 +34,25 @@ export default class FormSelectComponent extends Component {
 
     return (
       <div className="OD-form-control">
-        <Select
-          size={this.props.size||"large"}
-          value={this.props.value}
-          onChange={(value)=>this.props.onChange(this.props.attrName, value)}
-          onFocus={()=>this.props.onFocus(this.props.attrName, "edit")}
-          onBlur={this.props.onBlur}>
-          {
-            this.props.Options.map(function(option){
-              return (<Option key={option.value} value={option.value}>{option.text}</Option>);
-            })
-          }
-        </Select>
+        <div className="OD-form-input">
+          <label>
+            {this.props.required ? <span className="star">*</span>:""}
+            {this.props.label + ":"}
+          </label>
+          <Select
+            size={this.props.size||"large"}
+            value={this.props.value}
+            onChange={(value)=>this.props.onChange(this.props.attrName, value)}
+            onFocus={()=>this.props.onFocus(this.props.attrName, "edit")}
+            onBlur={this.props.onBlur}>
+            {
+              this.props.Options.map(function(option){
+                return (<Option key={option.value} value={option.value}>{option.text}</Option>);
+              })
+            }
+          </Select>
+        </div>
+        {inputRemind}
       </div>
     );
   }

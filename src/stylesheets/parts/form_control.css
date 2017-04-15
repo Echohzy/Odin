@@ -1,5 +1,6 @@
 @import '../base.css';
 .OD-form-control{
+  height: 65px;
   .OD-form-button{
     text-align: center;
     display:inline-block;
@@ -13,11 +14,16 @@
   }
   input{
     line-height: 40px;
-    font-size: 16px;
+    font-size: 14px;
     height: 40px;
   }
   span{
-    font-size: 16px;
+    font-size: 14px;
+  }
+  .OD-form-input-message{
+    line-height: 25px;
+    height: 25px;
+    padding-left: 120px;
   }
   .error-hint{
     color: $red;
@@ -27,5 +33,37 @@
   }
   .ant-select{
     display: block;
+  }
+  .OD-form-input{
+    display: flex;
+    label{
+      display: inline-block;
+      font-size: 14px;
+      height: 40px;
+      line-height: 40px;
+      width: 120px;
+      padding-right: 15px;
+      text-align: right;
+      vertical-align: middle;
+      .star{
+        padding-right: 4px;
+        font-size: 24px;
+        color: $red;
+        display: inline-block;
+        height: 38px;
+        line-height: 38px;
+        padding-top: 2px;
+        vertical-align: middle;
+      }
+    }
+    .ant-input-wrapper, .ant-select{
+      flex: 1;
+    }
+    .ant-select-selection__rendered{
+      line-height: 40px;
+    }
+    .ant-select-selection--single{
+      height: 40px;
+    }
   }
 }

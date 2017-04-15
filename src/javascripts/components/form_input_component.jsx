@@ -36,16 +36,21 @@ export default class FormInputComponent extends Component {
     }
     return (
       <div className="OD-form-control">
-        <Input
-          size={"large"}
-          type={this.props.type || "text"}
-          defaultValue={this.props.defaultValue}
-          value={this.props.value}
-          placeholder={this.props.placeholder}
-          addonBefore={this.props.label}
-          onChange={(evt)=>this.props.onChange(this.props.attrName, evt.target.value)}
-          onFocus={()=>this.props.onFocus(this.props.attrName, "editing")}
-          onBlur={this.props.onBlur}/>
+        <div className="OD-form-input">
+          <label>
+            {this.props.required ? <span className="star">*</span>:""}
+            {this.props.label + ":"}
+          </label>
+          <Input
+            size={"large"}
+            type={this.props.type || "text"}
+            defaultValue={this.props.defaultValue}
+            value={this.props.value}
+            placeholder={this.props.placeholder}
+            onChange={(evt)=>this.props.onChange(this.props.attrName, evt.target.value)}
+            onFocus={()=>this.props.onFocus(this.props.attrName, "editing")}
+            onBlur={this.props.onBlur}/>
+        </div>
         {inputRemind}
       </div>
     );
