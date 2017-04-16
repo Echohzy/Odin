@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 
 import {changeInputValue, changeInputStatus} from '../actions/form_input_action.jsx';
 
+import { addBase } from '../actions/base_action.jsx';
+
 import BaseFormComponent from '../components/base_form_component.jsx';
 
 let ATTRS = {
@@ -28,16 +30,16 @@ let ATTRS = {
   web_describtion: {
     type: "text",
     placeholder: "请输入网站描述",
-    label: "关键词",
+    label: "网站描述",
     editHint: "请输入网站描述",
-    attr_name: "web_describtion"
+    attrName: "web_describtion"
   },
   web_keyword: {
     type: "text",
     label: "网站关键词",
     placeholder: "网站关键词",
     editHint: "请输入网站关键词",
-    attr_name: "web_keyword"
+    attrName: "web_keyword"
   },
   web_copyright: {
     required: true,
@@ -46,7 +48,7 @@ let ATTRS = {
     label: "版权信息",
     editHint: "请输入版权信息",
     errorHint: "版权信息不能为空",
-    attr_name: "web_copyright"
+    attrName: "web_copyright"
   },
   web_email: {
     type: "text",
@@ -54,7 +56,7 @@ let ATTRS = {
     type: "text",
     placeholder: "请输入管理员邮箱",
     editHint: "请输入管理员邮箱",
-    attr_name: "web_email"
+    attrName: "web_email"
   }
 };
 
@@ -77,6 +79,9 @@ let mapDispatchToProps = function(reducerName){
       },
       onInputStatusChange: function(attrName, status){
         dispatch(changeInputStatus(reducerName, attrName, status));
+      },
+      onAddBase: function(params){
+        dispatch(addBase(params));
       }
     };
   }

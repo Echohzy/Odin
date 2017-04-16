@@ -16,7 +16,7 @@ module.exports.addProject = function(params){
 };
 
 module.exports.updateProject = function(id, params){
-  return new Promise(function (resolve, exports){
+  return new Promise(function (resolve, reject){
     db.project.findByIdAndUpdate(id,{$set: params}, function(error, data){
       if(error){
         reject("更新项目失败！");

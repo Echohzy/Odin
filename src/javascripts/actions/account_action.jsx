@@ -4,6 +4,8 @@ const SET_ACCOUNT_INFO = "SET_ACCOUNT_INFO";
 
 const RECEIVED_DATA = "RECEIVED_DATA";
 
+const RECEIVED_USERS = "RECEIVED_USERS";
+
 import { setDefaultError } from './form_input_action.jsx';
 
 import wrappedFetch from '../utils/fetch.jsx';
@@ -19,6 +21,13 @@ function receivedData(reducerName, data){
   return {
     type: RECEIVED_DATA,
     reducerName: reducerName,
+    data: data
+  };
+}
+
+function receivedUsers(data){
+  return {
+    type: RECEIVED_USERS,
     data: data
   };
 }
@@ -82,11 +91,28 @@ function addAccount(reducerName, data){
   };
 }
 
+function getUsers(){
+  return (dispatch, getState) => {
+    wrappedFetch({
+      url: "/account",
+      method: "GET",
+      success: function(res){
+        dispatch(receivedUsers(res.data));
+      },
+      error: function(error){
+        console.log(error);
+      }
+    });
+  }
+};
+
 export {
   SET_ACCOUNT_INFO,
   RECEIVED_DATA,
+  RECEIVED_USERS,
   signIn,
   signOut,
   addAccount,
-  receivedData
+  receivedData,
+  getUsers
 };

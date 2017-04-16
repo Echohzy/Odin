@@ -69,7 +69,7 @@ export default class SignIn extends Component {
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}
             onBlur={()=>this.onValidateAttr("password")}/>
-          <div className="OD-form-control">
+          <div className="OD-form-control button-wrap">
             <span className="OD-form-button" onClick={this.onSubmitForm}>登录</span>
           </div>
         </div>

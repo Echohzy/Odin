@@ -94,7 +94,7 @@ export default class UserFormComponent extends Component {
               {value:"0", text:"网站管理员"},
               {value:"1", text:"栏目管理员"},
               {value:"2", text:"编辑"}]} />
-          <div className="OD-form-control">
+            <div className="OD-form-control button-wrap">
             <span className="OD-form-button" onClick={this.onSubmit}>确定</span>
           </div>
         </div>

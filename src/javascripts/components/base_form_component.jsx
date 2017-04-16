@@ -32,7 +32,7 @@ export default class BaseFormComponent extends Component{
   onSubmit(){
     var passed = true;
     var data = {};
-    ["web_name", "web_address", "web_describtion", "web_keyword","web_copyright"].map((attrName)=>{
+    ["web_name", "web_address", "web_describtion", "web_keyword","web_copyright", "web_email"].map((attrName)=>{
       if(this.onValidateAttr(attrName)){
         data[attrName] = this.props[attrName].value;
       }else{
@@ -40,7 +40,7 @@ export default class BaseFormComponent extends Component{
       }
     });
     if(!passed){return;}
-    this.props.onAddAccount(data);
+    this.props.onAddBase(data);
   }
   render(){
     return (
@@ -80,8 +80,8 @@ export default class BaseFormComponent extends Component{
             onFocus={this.props.onInputStatusChange}
             onBlur={()=>this.onValidateAttr("web_email")}/>
         </div>
-        <div className="OD-form-control">
-          <span className="OD-form-control" onClick={()=>this.onSubmit()}>确定</span>
+        <div className="OD-form-control button-wrap">
+          <span className="OD-form-button" onClick={()=>this.onSubmit()}>确定</span>
         </div>
       </div>
     );

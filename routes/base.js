@@ -21,7 +21,7 @@ router.post("/", function (req,res, next){
 });
 
 /*get base*/
-router.get("/:id", function (req, res, next){
+router.get("/(:id)", function (req, res, next){
   baseModule.getBase(req.params.id)
   .then(function(data){
     res.json({

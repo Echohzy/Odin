@@ -22,6 +22,8 @@ export default class MainMenuComponent extends Component {
       this.props.router.push("/sign_in");
     }
   }
+  componentDidMount(){
+  }
   render(){
     return (
       <div className="main-container">
@@ -40,8 +42,8 @@ export default class MainMenuComponent extends Component {
               <Menu.Item><Link to="/setting/link">{"Link"}</Link></Menu.Item>
             </SubMenu>
             <SubMenu key="sub2" title={<span>Projects</span>}>
-              <Menu.Item><Link to="/columns/new">New Column</Link></Menu.Item>
-              <Menu.Item><Link to="/columns">Column Management</Link></Menu.Item>
+              <Menu.Item><Link to="/columns/new">New Project</Link></Menu.Item>
+              <Menu.Item><Link to="/columns">Project Management</Link></Menu.Item>
             </SubMenu>
             <SubMenu key="sub3" title={<span>Articles</span>}>
               <Menu.Item><Link to="/articles/new">New Article</Link></Menu.Item>

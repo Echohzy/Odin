@@ -5,13 +5,15 @@ var  mongoose = require("mongoose");
 
 /*app article*/
 module.exports.addArticle = function(params){
-  var article = db.article(params);
-  article.save(function(error, data){
-    if(error){
-      reject(error);
-    }else{
-      resolve(data);
-    }
+  return new Promise(function(resolve, reject){
+    var article = db.article(params);
+    article.save(function(error, data){
+      if(error){
+        reject(error);
+      }else{
+        resolve(data);
+      }
+    });
   });
 };
 
