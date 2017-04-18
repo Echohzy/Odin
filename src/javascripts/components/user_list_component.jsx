@@ -36,10 +36,32 @@ export default class UserListComponent extends Component {
       render: value => <i className="fa fa-trash" onClick={()=>this.props.onDeleteUser(value)} />
     }];
   }
+  onChange(selectedRowKeys, selectedRows){
+    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+  }
+  onSelect(record, selected, selectedRows){
+    
+  }
+  onSelectAll(selected, selectedRows, changeRows){
+    
+  }
+  getCheckboxProps(record){
+    return {
+      disabled: record.name === 'Disabled User'
+    };
+  }
   render(){
     return (
       <div className="OD-user-list-container">
-          <Table columns={this.getColumns()} dataSource={this.props.users}/>
+          <Table 
+            rowSelection={{
+              onChange: (selectedRowKeys, selectedRows)=>this.onChange(selectedRowKeys, selectedRows),
+              onSelect: (record, selected, selectedRows)=>this.onSelect(record, selected, selectedRows),
+              onSelectAll: (selected, selectedRows, changeRows)=>this.onSelectAll(selected, selectedRows, changeRows),
+              getCheckboxProps: (record)=>this.getCheckboxProps(record)
+            }}
+            columns={this.getColumns()} 
+            dataSource={this.props.users}/>
       </div>
     );
   }
