@@ -14,6 +14,9 @@ const permissions = {
 export default class UserListComponent extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      selectedUser:[]
+    };
     this.getColumns = this.getColumns.bind(this);
   }
   componentDidMount(){
@@ -21,29 +24,26 @@ export default class UserListComponent extends Component {
   }
   getColumns(){
     return [{
+      key: "nick_name",
       title: "Nick Name",
       dataIndex: "nick_name",
     },{
+      key: "email",
       title: "Email",
       dataIndex: "email",
     },{
+      key: "permission",
       title: "Permission",
       dataIndex: "permission",
       render: value => <span>{permissions[value]}</span>
-    },{
-      title: "Operation",
-      dataIndex: "_id",
-      render: value => <i className="fa fa-trash" onClick={()=>this.props.onDeleteUser(value)} />
-    }];
+  },{
+    key: "work_id",
+    title: "WorkId",
+    dataIndex: "work_id"
+  }];
   }
-  onChange(selectedRowKeys, selectedRows){
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-  }
-  onSelect(record, selected, selectedRows){
-    
-  }
-  onSelectAll(selected, selectedRows, changeRows){
-    
+  onSelectChange(selectedRowKeys){
+    this.setState({selectedUser: selectedRowKeys});
   }
   getCheckboxProps(record){
     return {
@@ -55,13 +55,12 @@ export default class UserListComponent extends Component {
       <div className="OD-user-list-container">
           <Table 
             rowSelection={{
-              onChange: (selectedRowKeys, selectedRows)=>this.onChange(selectedRowKeys, selectedRows),
-              onSelect: (record, selected, selectedRows)=>this.onSelect(record, selected, selectedRows),
-              onSelectAll: (selected, selectedRows, changeRows)=>this.onSelectAll(selected, selectedRows, changeRows),
-              getCheckboxProps: (record)=>this.getCheckboxProps(record)
+              onChange: (selectedRowKeys)=>this.onSelectChange(selectedRowKeys)
             }}
             columns={this.getColumns()} 
-            dataSource={this.props.users}/>
+            dataSource={this.props.users.map((item)=>{return Object.assign(item,{key:item._id})})}
+            title={()=>"Users"}
+            footer={()=>"Footer"}/>
       </div>
     );
   }
