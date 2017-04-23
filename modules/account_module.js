@@ -81,11 +81,26 @@ module.exports.deleteAccount = function(id){
 }
 
 /*
+ *  delete accounts
+ */
+module.exports.updateAccounts = function(ids, value){
+  return new Promise(function (resolve, reject){
+    db.user.update({"_id":{$in:ids}},{$set:value},{ multi: true },function(error, data){
+      if(error){
+        reject(error)
+      }else{
+        resolve(data);
+      }
+    })
+  });
+}
+
+/*
  * list account
  */
 module.exports.listAccount = function(params){
   return new Promise(function(resolve, reject){
-    db.user.find(params, function (error, data){
+    db.user.find(Object.assign(params,{"deleted":0}), function (error, data){
       if(error){
         reject(error);
       }else{

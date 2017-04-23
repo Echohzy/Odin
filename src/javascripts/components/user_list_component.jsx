@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import { Table } from "antd";
+import { Table, Modal } from "antd";
 
 const permissions = {
   "0" : "网站管理员",
@@ -15,7 +15,8 @@ export default class UserListComponent extends Component {
   constructor(props){
     super(props);
     this.state = {
-      selectedUser:[]
+      selectedUser:[],
+      visible: false
     };
     this.getColumns = this.getColumns.bind(this);
   }
@@ -50,6 +51,13 @@ export default class UserListComponent extends Component {
       disabled: record.name === 'Disabled User'
     };
   }
+  setModalVisible(value){
+    this.setState({visible: value});
+  }
+  deleteUsers(){
+    this.props.deleteUsers(this.state.selectedUser);
+    this.setModalVisible(false);
+  }
   render(){
     return (
       <div className="OD-user-list-container">
@@ -60,7 +68,10 @@ export default class UserListComponent extends Component {
             columns={this.getColumns()} 
             dataSource={this.props.users.map((item)=>{return Object.assign(item,{key:item._id})})}
             title={()=>"Users"}
-            footer={()=>"Footer"}/>
+            footer={()=><i className="fa fa-trash" onClick={()=>this.setModalVisible(true)}/>}/>
+          <Modal title="删除用户" visible={this.state.visible} onOk={()=>this.deleteUsers(this.state.selectedUser)} onCancel={()=>this.setModalVisible(false)}>
+            <p>确认删除用户？</p>
+          </Modal>
       </div>
     );
   }

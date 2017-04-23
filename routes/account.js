@@ -71,6 +71,22 @@ router.delete("/:id", function(req, res, next){
   })
 });
 
+/*delete accounts*/
+router.delete("/", function(req, res, next){
+  accountModule.updateAccounts(req.body.ids,{"deleted": 1})
+  .then(function(data){
+    res.json({
+      status: "success",
+      data: data
+    });
+  },function(error){
+    res.json({
+      status: "error",
+      message: error
+    });
+  })
+});
+
 /*get account*/
 router.get("/:id", function(req, res, next){
   accountModule.getAccount(req.params.id)
@@ -89,7 +105,7 @@ router.get("/:id", function(req, res, next){
 
 /*get account list*/
 router.get("/", function(req, res, next){
-  accountModule.listAccount(req.query)
+  accountModule.listAccount(Object.assign(req.query,{deleted: 0}))
   .then(function(data){
     res.json({
       status: "success",

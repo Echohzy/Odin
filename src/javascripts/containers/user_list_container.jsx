@@ -2,7 +2,7 @@
 
 import UserListComponent from '../components/user_list_component.jsx';
 
-import { getUsers } from '../actions/account_action.jsx';
+import { getUsers, deleteUsers } from '../actions/account_action.jsx';
 
 import { connect } from 'react-redux';
 
@@ -16,6 +16,9 @@ let mapDispatchToProps = function(dispatch){
   return {
     getUsers: function(){
       dispatch(getUsers());
+    },
+    deleteUsers: function(ids){
+      dispatch(deleteUsers(ids));
     }
   };
 };

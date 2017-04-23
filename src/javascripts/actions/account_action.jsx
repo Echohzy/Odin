@@ -8,6 +8,8 @@ const RECEIVED_USERS = "RECEIVED_USERS";
 
 import { setDefaultError } from './form_input_action.jsx';
 
+import queryString from 'query-string';
+
 import wrappedFetch from '../utils/fetch.jsx';
 
 function setAccountInfo(data){
@@ -106,6 +108,22 @@ function getUsers(){
   }
 };
 
+function deleteUsers(ids){
+  return (dispatch, getState) => {
+    wrappedFetch({
+      url: "/account",
+      method: "DELETE",
+      body: JSON.stringify({ids: ids}),
+      success: function(res){
+        dispatch(getUsers());
+      },
+      error: function(error){
+        console.log(error);
+      }
+    });
+  }
+}
+
 export {
   SET_ACCOUNT_INFO,
   RECEIVED_DATA,
@@ -114,5 +132,6 @@ export {
   signOut,
   addAccount,
   receivedData,
-  getUsers
+  getUsers,
+  deleteUsers
 };

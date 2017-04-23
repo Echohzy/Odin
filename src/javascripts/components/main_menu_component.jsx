@@ -22,8 +22,6 @@ export default class MainMenuComponent extends Component {
       this.props.router.push("/sign_in");
     }
   }
-  componentDidMount(){
-  }
   render(){
     return (
       <div className="main-container">
