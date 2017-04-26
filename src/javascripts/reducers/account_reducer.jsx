@@ -14,5 +14,6 @@ function current_user(state = {}, action){
 }
 
 export default combineReducers({
-  current_user: current_user
+  current_user: current_user,
+  test: {}
 });
