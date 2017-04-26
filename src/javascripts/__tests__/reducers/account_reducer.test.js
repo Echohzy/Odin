@@ -8,7 +8,7 @@ describe("account_reducer", ()=>{
   it("should return the user", ()=>{
     expect(AccountReducer({},{type:SET_ACCOUNT_INFO, data:{name:"test", email:"test@qq.com"}})).toEqual({
       current_user: {
-        name: "test",
+        name: "te",
         email: "test@qq.com"
       }
     })
