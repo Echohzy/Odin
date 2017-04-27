@@ -11,4 +11,11 @@ describe('account_action', ()=>{
   it("received data", ()=>{
     expect(actions.receivedData("test_reducer", data)).toEqual({type: actions.RECEIVED_DATA, reducerName: "test_reducer", data:data});
   });
+  it("test mock", ()=>{
+    let count = 12;
+    const mockFn = jest.fn((value)=>console.log(value)).mockImplementationOnce(scalar =>  count+=scalar).mockImplementationOnce(scalar =>  count+=scalar);
+    const a = new mockFn(1);
+    const b = new mockFn(2);
+    console.log(mockFn.mock.instances);
+  });
 });
