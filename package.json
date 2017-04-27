@@ -5,7 +5,8 @@
   "scripts": {
     "start": "supervisor ./bin/www",
     "test": "jest",
-    "update test": "jest --updateSnapshot"
+    "push": "sudo ./push.sh",
+    "test:watch": "sudo jest --watch"
   },
   "jest": {
     "verbose": false,
