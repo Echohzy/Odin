@@ -9,7 +9,7 @@
     "test:watch": "sudo jest --watch"
   },
   "jest": {
-    "verbose": false,
+    "bail": true,
     "setupFiles": [
       "./test-setup.js"
     ]
