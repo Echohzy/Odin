@@ -14,18 +14,30 @@ module.exports = {
     filename: "bundle.js"
   },
   module: {
-    loaders: [
-        { test: /\.css$/, loader: "style-loader!css-loader!postcss-loader" },
-        { test: /\.js|jsx$/, loaders: ['babel-loader'] },
-        { test: /\.(woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?name=fonts/[name].[md5:hash:hex:7].[ext]'}
+    rules: [
+      { test:   /\.css$/,
+        use:[{
+          loader: "style-loader"
+        },{
+          loader: "css-loader"
+        },{
+          loader: "postcss-loader?parser=sugarss",
+          options: {
+            plugins: function () {
+              return [
+                require('precss')
+              ];
+            }
+          }
+        }]
+      },
+      { test: /\.js|jsx$/, loaders: ['babel-loader'] },
+      { test: /\.(woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?name=fonts/[name].[md5:hash:hex:7].[ext]'}
     ]
   },
   plugins: [
     //new webpack.optimize.OccurenceOrderPlugin(), 
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
-  postcss: function(){
-    return [precss];
-  }
 };

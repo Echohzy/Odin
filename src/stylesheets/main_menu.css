@@ -1,23 +1,9 @@
 @import './base.css';
 
-.main-container{
-  .main-menu-side{
-    position:absolute;
-    min-height: 100%;
-    width:230px;
-    background: $menu_side_blue;
-    .ant-menu-inline{
-      border-color: $menu_side_blue;
-      .ant-menu-item{
-        border-color: $menu_side_blue;
-      }
-      .ant-menu-item > a{
-        color: $white;
-      }
-      .ant-menu-item-selected > a{
-        color: $light-blue;
-      }
-    }
+.OD-main-menu-container{
+  height: 100vh;
+  .OD-main-menu-side{
+    overflow: auto;
     .main-menu-person-card{
       padding: 20px 10px;
       .person-avatar{
@@ -38,44 +24,19 @@
         padding:20px 0;
       }
     }
-    .ant-menu{
-      background-color: $menu_side_blue;
-      .ant-menu-submenu-title{
-        background-color: $dark_menu_side_blue;
-        color: $white;
-      }
-      li{
-        color: $white;
-      }
-      .ant-menu-item-active{
-        background: $dark_menu_side_blue;
-      }
-      .ant-menu-item-selected{
-        color: $light-blue;
-      }
+  }
+  .OD-main-menu-header{
+    background: $white;
+    .trigger{
+      font-size: 18px;
     }
   }
-  .main-menu-container{
-    margin-left: 230px;
-    min-height: calc(100vh - 50px);
-    .main-menu-content-title{
-      min-height: 40px;
-      padding: 10px;
-      .anticon{
-        font-size: 26px;
-        color: $heavy-green;
-        cursor: pointer;
-      }
-      .right{
-        line-height: 28px;
-        float: right;
-        .anticon{
-          font-size: 26px;
-        }
-      }
-    }
-    .main-menu-content{
-      padding: 30px;
-    }
+  .OD-main-menu-content{
+    background: $white;
+    margin: 24px 16px 0;
+    padding: 26px;
+  }
+  .OD-main-menu-footer{
+    text-align: center;
   }
 }
