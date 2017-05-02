@@ -36,7 +36,7 @@ function receivedUsers(data){
 
 function signIn(reducerName, data){
   return (dispatch, getState)=>{
-    wrappedFetch({
+    return wrappedFetch({
       url: "/account/0/sign_in",
       method: "POST",
       body: JSON.stringify(data),
@@ -53,21 +53,6 @@ function signIn(reducerName, data){
       error: (error)=>{
         console.log(error);
       }
-    });
-  };
-}
-
-function SignIn(reducerName, data){
-  return (dispatch, getState)=>{
-    fetch("/account/0/sign_in").then((response)=>{return response.json()}).then(function(res){
-      if(res.status==="success"){
-          dispatch(setAccountInfo(res.data));
-        }else if(res.status==="error"){
-          var keys = Object.keys(res.message);
-          keys.forEach(function(attrName){
-            dispatch(setDefaultError(reducerName, attrName, res.message[attrName]));
-          });
-        }
     });
   };
 }
@@ -144,7 +129,6 @@ export {
   RECEIVED_DATA,
   RECEIVED_USERS,
   signIn,
-  SignIn,
   signOut,
   addAccount,
   receivedData,

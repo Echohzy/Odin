@@ -5,4 +5,7 @@ window.matchMedia = window.matchMedia || function() {
         removeListener: function() {}
     };
 };
-window.fetch = window.fetch || require("whatwg-fetch");
+
+import fetch from 'isomorphic-fetch';
+
+window.fetch = window.fetch || fetch;
