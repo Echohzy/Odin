@@ -5,3 +5,4 @@ window.matchMedia = window.matchMedia || function() {
         removeListener: function() {}
     };
 };
+window.fetch = window.fetch || require("whatwg-fetch");

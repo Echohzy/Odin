@@ -22,6 +22,7 @@ var signIn = require('./routes/sign_in');
 var checkSignInMiddleware = require("./utils/check_sign_in_middleware");
 var app = express();
 require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

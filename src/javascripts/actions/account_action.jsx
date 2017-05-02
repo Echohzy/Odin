@@ -57,6 +57,21 @@ function signIn(reducerName, data){
   };
 }
 
+function SignIn(reducerName, data){
+  return (dispatch, getState)=>{
+    fetch("/account/0/sign_in").then((response)=>{return response.json()}).then(function(res){
+      if(res.status==="success"){
+          dispatch(setAccountInfo(res.data));
+        }else if(res.status==="error"){
+          var keys = Object.keys(res.message);
+          keys.forEach(function(attrName){
+            dispatch(setDefaultError(reducerName, attrName, res.message[attrName]));
+          });
+        }
+    });
+  };
+}
+
 function signOut(){
   return (dispatch, getState)=>{
 
@@ -129,6 +144,7 @@ export {
   RECEIVED_DATA,
   RECEIVED_USERS,
   signIn,
+  SignIn,
   signOut,
   addAccount,
   receivedData,

@@ -5,13 +5,25 @@
   "scripts": {
     "start": "supervisor ./bin/www",
     "test": "jest",
-    "push": "sudo ./push.sh",
     "test:watch": "sudo jest --watch"
   },
   "jest": {
-    "bail": true,
+    "verbose": true,
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ],
+    "testMatch": [
+      "<rootDir>/src/javascripts/__tests__/**/*.js?(x)",
+      "<rootDir>/src/javascripts/__tests__/*.js?(x)"
+    ],
+    "collectCoverageFrom": [
+      "src/javascripts/**/*.{js,jsx}",
+      "src/javascripts/*.{js, jsx}"
+    ],
     "setupFiles": [
-      "./test-setup.js"
+      "<rootDir>/setup.js"
     ]
   },
   "dependencies": {
@@ -53,11 +65,12 @@
     "babel-preset-react": "^6.16.0",
     "enzyme": "^2.8.2",
     "jest": "^19.0.2",
+    "nock": "^9.0.13",
     "postcss-loader": "^1.1.0",
     "precss": "^1.4.0",
-    "webpack": "^2.4.0",
     "react-test-renderer": "^15.5.4",
     "redux-mock-store": "^1.2.3",
+    "webpack": "^2.4.0",
     "webpack-hot-middleware": "^2.13.2"
   }
 }

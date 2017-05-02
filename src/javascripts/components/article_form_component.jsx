@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-import { Button } form 'antd';
+import { Button } from 'antd';
 
 import FormInputComponent from './form_input_component';
 

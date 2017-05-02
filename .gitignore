@@ -38,3 +38,6 @@ jspm_packages
 
 # JEST cache
 jest
+
+# JEST coverage
+coverage
