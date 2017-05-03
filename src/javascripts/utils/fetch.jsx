@@ -1,4 +1,7 @@
 'use strict';
+
+import host from '../../../config/host.js';
+
 export default function wrappedFetch(params){
   let httpOptions = {
     method: params.method,
@@ -14,7 +17,7 @@ export default function wrappedFetch(params){
   if(params.query){
     httpOptions['query'] = params.query;
   }
-  return fetch("http://127.0.0.1:3000" + params.url,httpOptions)
+  return fetch(host + params.url,httpOptions)
   .then(function(response){
     return response.json();
   }).then(function(res){

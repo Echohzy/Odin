@@ -60,7 +60,7 @@ function signIn(reducerName, data){
 function signOut(){
   return (dispatch, getState)=>{
 
-    wrappedFetch({
+    return wrappedFetch({
       url: "/account/0/sign_out",
       method: "DELETE",
       success: (res)=>{
@@ -77,7 +77,7 @@ function signOut(){
 
 function addAccount(reducerName, data){
   return (dispatch, getState) => {
-    wrappedFetch({
+    return wrappedFetch({
       url: "/account",
       method: "POST",
       body: JSON.stringify(data),
@@ -95,7 +95,7 @@ function addAccount(reducerName, data){
 
 function getUsers(){
   return (dispatch, getState) => {
-    wrappedFetch({
+    return wrappedFetch({
       url: "/account",
       method: "GET",
       success: function(res){
@@ -110,7 +110,7 @@ function getUsers(){
 
 function deleteUsers(ids){
   return (dispatch, getState) => {
-    wrappedFetch({
+    return wrappedFetch({
       url: "/account",
       method: "DELETE",
       body: JSON.stringify({ids: ids}),
