@@ -1,15 +1,12 @@
 'use strict';
 
 
-import configureMockStore from 'redux-mock-store';
+import mockStore from '../../__mocks__/store';
 import thunk from 'redux-thunk';
 import * as actions from '../../actions/account_action';
 import * as formInputAction from '../../actions/form_input_action';
 import nock from 'nock';
-import http from 'http';
 import host from '../../../../config/host';
-
-const mockStore = configureMockStore([thunk]);
 
 describe('account_action', ()=>{
   afterEach(() => {
