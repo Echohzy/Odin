@@ -11,11 +11,13 @@ import "../../stylesheets/parts/form_control.css";
 
 import "../../stylesheets/sign_in.css";
 
-export default class SignIn extends Component {
+import formEnhance from "./HOCs/form_enhance.jsx";
+
+
+class SignIn extends Component {
   constructor(props){
     super(props);
     this.onSubmitForm = this.onSubmitForm.bind(this);
-    this.onValidateAttr = this.onValidateAttr.bind(this);
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.current_user.id!==this.props.current_user.id){
@@ -31,27 +33,6 @@ export default class SignIn extends Component {
     data.password = this.props.password.value;
     this.props.onSignIn(data);
   }
-  onValidateAttr(attrName){
-    var attrProps = this.props[attrName];
-    if(attrProps.required&&!attrProps.value){
-      this.props.onInputStatusChange(attrName, "error");
-      return false;
-    }
-    if(attrProps.value && Object.prototype.toString.call(attrProps.validate)=="[object RegExp]"){
-      if(!attrProps.validate.test(attrProps.value)){
-        this.props.onInputStatusChange(attrName, "error");
-        return false;
-      }
-    }
-    if(attrProps.value && Object.prototype.toString.call(attrProps.validate)=="[object Function]"){
-      if(!attrProps.validate(attrProps.value)){
-        this.props.onInputStatusChange(attrName, "error");
-        return false;
-      }
-    }
-    this.props.onInputStatusChange(attrName, "");
-    return true;
-  }
   render(){
     return (
       <div className="OD-sign-in-container">
@@ -63,12 +44,12 @@ export default class SignIn extends Component {
             {...this.props.login_name}
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}
-            onBlur={()=>this.onValidateAttr("login_name")}/>
+            onBlur={()=>this.props.onValidateAttr("login_name")}/>
           <FormInputComponent 
             {...this.props.password}
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}
-            onBlur={()=>this.onValidateAttr("password")}/>
+            onBlur={()=>this.props.onValidateAttr("password")}/>
           <div className="OD-form-control button-wrap">
             <span className="OD-form-button" onClick={this.onSubmitForm}>登录</span>
           </div>
@@ -76,4 +57,6 @@ export default class SignIn extends Component {
       </div>
     );
   }
-} 
+}
+
+export default formEnhance(SignIn);
