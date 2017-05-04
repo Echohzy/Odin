@@ -11,17 +11,19 @@ import SignInContainer from "./containers/sign_in_container.jsx";
 import UserFormContainer from './containers/user_form_container.jsx';
 import BaseFormContainer from './containers/base_form_container.jsx';
 import UserListContainer from './containers/user_list_container.jsx';
+import ArticleFormContainer from './containers/article_form_container.jsx';
 import SignInReducer from './reducers/sign_in_reducer.jsx';
 import AccountReducer from './reducers/account_reducer.jsx';
 import UserFormReducer from './reducers/user_form_reducer.jsx';
 import BaseFormReducer from './reducers/base_form_reducer.jsx';
 import UserListReducer from './reducers/user_list_reducer.jsx';
 import ProjectFormReducer from './reducers/project_form_reducer.jsx';
+import ArticleFormReducer from './reducers/article_form_reducer.jsx';
 
-var initialState = {};
+let initialState = {};
 
 if(document.getElementById("OD-account-info")){
-  var userInfoNode = document.getElementById("OD-account-info");
+  let userInfoNode = document.getElementById("OD-account-info");
   initialState.accountReducer = {
     current_user:{
       id: userInfoNode.getAttribute("data-user-id"),
@@ -30,16 +32,17 @@ if(document.getElementById("OD-account-info")){
     }
   };
 }
-var appReducer = combineReducers({
+let appReducer = combineReducers({
   signInReducer: SignInReducer,
   userFormReducer: UserFormReducer,
   accountReducer: AccountReducer,
   baseFormReducer: BaseFormReducer,
   userListReducer: UserListReducer,
-  projectFormReducer: ProjectFormReducer
+  projectFormReducer: ProjectFormReducer,
+  articleFormReducer: ArticleFormReducer
 });
 
-var store = createStore(
+let store = createStore(
   appReducer,
   initialState,
   compose(applyMiddleware(thunkMiddleware),
