@@ -2,11 +2,11 @@
 
 import React, { Component } from 'react';
 
-import { Button } from 'antd';
-
 import FormInputComponent from './form_input_component';
 
-export default class ArticleFormComponent extends Component {
+import formEnhance from './HOCs/form_enhance.jsx';
+
+class ArticleFormComponent extends Component {
   constructor(props){
     super(props);
   }
@@ -20,9 +20,12 @@ export default class ArticleFormComponent extends Component {
           <FormInputComponent 
             {...this.props.title}
             onChange={this.props.onInputValueChange}
-            onFocus={this.props.onInputStatusChange}/>
+            onFocus={this.props.onInputStatusChange}
+            onBlur={()=>this.props.onValidateAttr("title")}/>
         </div>
       </div>
     );
   }
 }
+
+export default formEnhance(ArticleFormComponent);

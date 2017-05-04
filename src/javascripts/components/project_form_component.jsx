@@ -6,11 +6,16 @@ import FormInputComponent from './form_input_component';
 
 import { Button } from 'antd';
 
-export default class ProjectFormComponent extends Component {
+import formEnhance from './HOCs/form_enhance.jsx';
+
+class ProjectFormComponent extends Component {
   constructor(props){
     super(props);
+    this.onSubmit = this.onSubmit.bind(this);
   }
+  onSubmit(){
 
+  }
   render(){
     return (
       <div className="OD-project-form-container">
@@ -21,12 +26,12 @@ export default class ProjectFormComponent extends Component {
           {...this.props.title}
           onChange={this.props.onInputValueChange}
           onFocus={this.props.onInputStatusChange}
-          onBlur={()=>this.onValidateAttr("title")}/>
+          onBlur={()=>this.props.onValidateAttr("title")}/>
         <FormInputComponent
           {...this.props.description}
           onChange={this.props.onInputValueChange}
           onFocus={this.props.onInputStatusChange}
-          onBlur={()=>this.onValidateAttr("description")}/>
+          onBlur={()=>this.props.onValidateAttr("description")}/>
         <div className="OD-form-control button-wrap">
           <span className="OD-form-button" onClick={this.onSubmit}>确定</span>
         </div>
@@ -34,3 +39,5 @@ export default class ProjectFormComponent extends Component {
     );
   }
 }
+
+export default formEnhance(ProjectFormComponent);
