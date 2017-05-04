@@ -5,46 +5,26 @@ import FormInputComponent from './form_input_component.jsx';
 
 import FormSelectComponent from './form_select_component.jsx';
 
-export default class UserFormComponent extends Component {
+import formEnhance from './HOCs/form_enhance.jsx';
+
+class UserFormComponent extends Component {
   constructor(props){
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onValidateAttr = this.onValidateAttr.bind(this);
     this.onPasswordConfirm = this.onPasswordConfirm.bind(this);
-  }
-  onValidateAttr(attrName){
-    let attrProps = this.props[attrName];
-    if(attrProps.required&&!attrProps.value){
-      this.props.onInputStatusChange(attrName, "error");
-      return false;
-    }
-    if(attrProps.value && Object.prototype.toString.call(attrProps.validate)=="[object RegExp]"){
-      if(!attrProps.validate.test(attrProps.value)){
-        this.props.onInputStatusChange(attrName, "error");
-        return false;
-      }
-    }
-    if(attrProps.value && Object.prototype.toString.call(attrProps.validate)=="[object Function]"){
-      if(!attrProps.validate(attrProps.value)){
-        this.props.onInputStatusChange(attrName, "error");
-        return false;
-      }
-    }
-    this.props.onInputStatusChange(attrName, "");
-    return true;
   }
   onPasswordConfirm(){
     if(this.props.password.value !== this.props.password_confirmation.value){
       this.props.onInputStatusChange("password_confirmation", "error");
     }else{
-      this.onValidateAttr("password_confirmation");
+      this.props.onValidateAttr("password_confirmation");
     }
   }
   onSubmit(){
     let passed = true;
     let data = {};
     ["email", "password", "nick_name", "work_id","permission"].map((attrName)=>{
-      if(this.onValidateAttr(attrName)){
+      if(this.props.onValidateAttr(attrName)){
         data[attrName] = this.props[attrName].value;
       }else{
         passed = false;
@@ -64,12 +44,12 @@ export default class UserFormComponent extends Component {
            {...this.props.email}
            onChange={this.props.onInputValueChange}
            onFocus={this.props.onInputStatusChange}
-           onBlur={()=>this.onValidateAttr("email")} />
+           onBlur={()=>this.props.onValidateAttr("email")} />
           <FormInputComponent 
             {...this.props.password}
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}
-            onBlur={()=>this.onValidateAttr("password")} />
+            onBlur={()=>this.props.onValidateAttr("password")} />
           <FormInputComponent 
             {...this.props.password_confirmation}
             onChange={this.props.onInputValueChange}
@@ -79,17 +59,17 @@ export default class UserFormComponent extends Component {
             {...this.props.nick_name}
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}
-            onBlur={()=>this.onValidateAttr("nick_name")} />
+            onBlur={()=>this.props.onValidateAttr("nick_name")} />
           <FormInputComponent
             {...this.props.work_id}
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}
-            onBlur={()=>this.onValidateAttr("work_id")} />
+            onBlur={()=>this.props.onValidateAttr("work_id")} />
           <FormSelectComponent
             {...this.props.permission}
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}
-            onBlur={()=>this.onValidateAttr("permission")}
+            onBlur={()=>this.props.onValidateAttr("permission")}
             Options={[
               {value:"0", text:"网站管理员"},
               {value:"1", text:"栏目管理员"},
@@ -102,3 +82,5 @@ export default class UserFormComponent extends Component {
     );
   }
 };
+
+export default formEnhance(UserFormComponent);

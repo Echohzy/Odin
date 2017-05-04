@@ -7,8 +7,6 @@ import "../../stylesheets/font-awesome.css";
 
 import "../../stylesheets/main_menu.css";
 
-import FooterComponent from './footer_component.jsx';
-
 import { Icon, Menu, Button, Layout } from "antd";
 
 const { Header, Sider, Content, Footer } = Layout;
