@@ -39,7 +39,7 @@ export default class UserListComponent extends Component {
       render: value => <span>{permissions[value]}</span>
   },{
     key: "work_id",
-    title: "WorkId",
+    title: "Work Id",
     dataIndex: "work_id"
   }];
   }
