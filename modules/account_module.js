@@ -81,7 +81,7 @@ module.exports.deleteAccount = function(id){
 }
 
 /*
- *  delete accounts
+ *  update accounts
  */
 module.exports.updateAccounts = function(ids, value){
   return new Promise(function (resolve, reject){

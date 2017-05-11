@@ -62,3 +62,15 @@ module.exports.listProject = function(params){
     });
   });
 }
+
+module.exports.updateProjects = function(ids, value){
+  return new Promise(function (resolve, reject){
+    db.project.update({"_id": {$in: ids}}, {$set: value}, {multi: true}, function (error, data){
+      if(error){
+        reject(error);
+      }else{
+        resolve(data);
+      }
+    });
+  });
+};

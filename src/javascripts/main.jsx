@@ -12,6 +12,8 @@ import UserFormContainer from './containers/user_form_container.jsx';
 import BaseFormContainer from './containers/base_form_container.jsx';
 import UserListContainer from './containers/user_list_container.jsx';
 import ArticleFormContainer from './containers/article_form_container.jsx';
+import ArticleListContainer from './containers/article_list_container.jsx';
+import ProjectListContainer from './containers/project_list_container.jsx';
 import SignInReducer from './reducers/sign_in_reducer.jsx';
 import AccountReducer from './reducers/account_reducer.jsx';
 import UserFormReducer from './reducers/user_form_reducer.jsx';
@@ -19,6 +21,8 @@ import BaseFormReducer from './reducers/base_form_reducer.jsx';
 import UserListReducer from './reducers/user_list_reducer.jsx';
 import ProjectFormReducer from './reducers/project_form_reducer.jsx';
 import ArticleFormReducer from './reducers/article_form_reducer.jsx';
+import ArticleListReducer from './reducers/article_list_reducer.jsx';
+import ProjectListReducer from './reducers.project_list_reducer.jsx'
 
 let initialState = {};
 
@@ -39,7 +43,9 @@ let appReducer = combineReducers({
   baseFormReducer: BaseFormReducer,
   userListReducer: UserListReducer,
   projectFormReducer: ProjectFormReducer,
-  articleFormReducer: ArticleFormReducer
+  articleFormReducer: ArticleFormReducer,
+  articleListReducer: ArticleListReducer,
+  projectListReducer: ProjectListReducer
 });
 
 let store = createStore(
@@ -57,7 +63,6 @@ ReactDOM.render(
       <Route path="/" component={MainMenuContainer}>
         <Route path="users/new" component={UserFormContainer} />
         <Route path="users" component={UserListContainer}/>
-        <Route path="columns/new" component={ColumnFormContainer} />
         <Route path="setting/base" component={BaseFormContainer} />
       </Route>
     </Router>

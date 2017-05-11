@@ -84,4 +84,19 @@ router.delete("/:id", function (req, res, next){
   });
 });
 
+router.delete("/", function (req, res, next){
+  articleModule.updateArticles(req.body.ids, {deleted: 0})
+  .then(function(data){
+    res.json({
+      status: "success",
+      data: data
+    });
+  }).catch(function(error){
+    res.json({
+      status: error,
+      message: error
+    });
+  });
+});
+
 module.exports = router;

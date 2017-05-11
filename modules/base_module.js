@@ -55,3 +55,15 @@ module.exports.deleteBase = function(id){
     });
   });
 };
+
+module.exports.updateBases = function(ids, value){
+  return new Promise(function (resolve, reject){
+    db.base.update({"_id": {$in: ids}}, {$set; value}, {multi: true}, function (error, data){
+      if(error){
+        reject(error);
+      }else{
+        resolve(data);
+      }
+    });
+  });
+};

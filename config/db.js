@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
 var articleSchema = mongoose.Schema({
   title: String,
   content: String,
-  column_id: String,
+  project_id: String,
   deleted: {type: Number, default: 0},
   created_at: Date,
   updated_at: {type: Date, default: Date.now},
