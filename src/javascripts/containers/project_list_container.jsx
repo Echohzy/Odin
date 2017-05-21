@@ -2,9 +2,9 @@
 
 import { connect } from 'react-redux';
 
-import { getProjectList } from '../actions/project_action';
+import { getProjectList } from '../actions/project_action.jsx';
 
-import ProjectListComponent from "../components/project_list_component";
+import ProjectListComponent from "../components/project_list_component.jsx";
 
 let mapStateToProps = function(state, ownProps){
   return {

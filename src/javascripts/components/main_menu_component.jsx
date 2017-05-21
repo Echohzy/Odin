@@ -21,6 +21,9 @@ export default class MainMenuComponent extends Component {
       collapsed: false
     };
   }
+  componentDidMount(){
+    this.props.getBase();
+  }
   toggleFoldMenu(){
     this.setState({collapsed: !this.state.collapsed});
   }
@@ -72,7 +75,7 @@ export default class MainMenuComponent extends Component {
                 {this.props.children}
             </Content>
             <Footer className="OD-main-menu-footer">
-              Odin ©2017 Created by Echohzy
+              {this.props.base.web_copyright}
             </Footer>
         </Layout>
       </Layout>

@@ -2,7 +2,7 @@
 
 import { combineReducers } from 'redux';
 
-import { RECEIVED_PROJECT_LIST } from '../actions/project_action';
+import { RECEIVED_PROJECT_LIST } from '../actions/project_action.jsx';
 
 function projects(state=[], action){
   switch(action.type){

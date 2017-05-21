@@ -21,8 +21,25 @@ router.post("/", function (req,res, next){
 });
 
 /*get base*/
-router.get("/(:id)", function (req, res, next){
+router.get("/:id", function (req, res, next){
+  console.log(req.params);
   baseModule.getBase(req.params.id)
+  .then(function(data){
+    res.json({
+      status: "success",
+      data: data
+    });
+  }).catch(function(error){
+    res.json({
+      status: 'error',
+      message: error
+    });
+  });
+});
+
+/*get base*/
+router.get("/", function (req, res, next){
+  baseModule.getBase()
   .then(function(data){
     res.json({
       status: "success",

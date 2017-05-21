@@ -56,6 +56,9 @@
         vertical-align: middle;
       }
     }
+    input{
+      flex: 1;
+    }
     .ant-input-wrapper, .ant-select{
       flex: 1;
     }

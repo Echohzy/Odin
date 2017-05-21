@@ -20,7 +20,7 @@ export default class ArticleListComponent extends Component {
   }
   getColumns(){
     return [{
-      key: "title"
+      key: "title",
       title: "Title",
       dataIndex: "title"
     },{

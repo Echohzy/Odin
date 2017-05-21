@@ -9,7 +9,9 @@
   }
   .OD-form-control{
     height: 64px;
-    
+    input{
+      width: 240px;
+    }
   }
 
 }

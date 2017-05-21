@@ -57,7 +57,7 @@ function getArticles(params){
     wrappedFetch({
       url: "/article",
       method: "GET",
-      query: params
+      query: params,
       success: function(res){
 
       },
@@ -73,7 +73,7 @@ function deleteArticles(ids){
     wrappedFetch({
       url: "/article",
       method: "DELETE",
-      body: ids
+      body: ids,
       success: function(res){
 
       },

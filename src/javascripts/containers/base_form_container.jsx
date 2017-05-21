@@ -67,7 +67,9 @@ let mapStateToProps = function(state, ownProps){
     web_copyright: Object.assign({}, ATTRS.web_copyright, state.baseFormReducer.web_copyright),
     web_address: Object.assign({}, ATTRS.web_address, state.baseFormReducer.web_address),
     web_email: Object.assign({}, ATTRS.web_email, state.baseFormReducer.web_email),
-    web_describtion: Object.assign({}, ATTRS.web_describtion, state.baseFormReducer.web_describtion)
+    web_describtion: Object.assign({}, ATTRS.web_describtion, state.baseFormReducer.web_describtion),
+    currentBase: state.baseFormReducer.currentBase,
+    requesting: state.baseFormReducer.requesting
   };
 }
 

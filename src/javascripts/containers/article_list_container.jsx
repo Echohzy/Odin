@@ -2,9 +2,9 @@
 
 import { connect } from 'react-redux';
 
-import { getArticles, deleteArticles } from '../actions/article_action';
+import { getArticles, deleteArticles } from '../actions/article_action.jsx';
 
-import ArticleListComponent from '../components/article_list_component';
+import ArticleListComponent from '../components/article_list_component.jsx';
 
 let mapStateToProps = function (state, ownProps){
   return {

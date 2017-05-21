@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-import FormInputComponent from './form_input_component';
+import FormInputComponent from './form_input_component.jsx';
 
 import formEnhance from './HOCs/form_enhance.jsx';
 

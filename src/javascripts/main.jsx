@@ -22,7 +22,7 @@ import UserListReducer from './reducers/user_list_reducer.jsx';
 import ProjectFormReducer from './reducers/project_form_reducer.jsx';
 import ArticleFormReducer from './reducers/article_form_reducer.jsx';
 import ArticleListReducer from './reducers/article_list_reducer.jsx';
-import ProjectListReducer from './reducers.project_list_reducer.jsx'
+import ProjectListReducer from './reducers/project_list_reducer.jsx'
 
 let initialState = {};
 

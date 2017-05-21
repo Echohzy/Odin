@@ -3,6 +3,7 @@
 import wrappedFetch from '../utils/fetch.jsx';
 
 const RECEIVED_BASE = "RECEIVED_BASE";
+const SET_REQUESTING = "SET_REQUESTING";
 
 function receivedBase(data){
   return {
@@ -11,8 +12,16 @@ function receivedBase(data){
   };
 }
 
+function setRequesting(requesting){
+  return {
+    type: SET_REQUESTING,
+    requesting: requesting
+  };
+}
+
 function fetchBase(id){
   return (dispatch, getState) => {
+    dispatch(setRequesting(true));
     wrappedFetch({
       url: `/base/${id}`,
       methlod: "GET",
@@ -28,6 +37,7 @@ function fetchBase(id){
 
 function addBase(params){
   return (dispatch, getState) => {
+    dispatch(setRequesting(true));
     wrappedFetch({
       url: "/base",
       method: "POST",
@@ -45,7 +55,7 @@ function addBase(params){
 function getBase(){
   return (dispatch, getState)=>{
     wrappedFetch({
-      url: '/base',
+      url: "/base",
       method: "GET",
       success: function(res){
         dispatch(receivedBase(res.data));
@@ -59,8 +69,10 @@ function getBase(){
 
 export {
   RECEIVED_BASE,
+  SET_REQUESTING,
   receivedBase,
   addBase,
   fetchBase,
-  getBase
+  getBase,
+  setRequesting
 };

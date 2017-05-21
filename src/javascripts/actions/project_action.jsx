@@ -1,6 +1,6 @@
 'use strict';
 
-import wrappedFetch from "../utils/fetch";
+import wrappedFetch from '../utils/fetch.jsx';
 
 const RECEIVED_PROJECT_LIST = "RECEIVED_PROJECT_LIST";
 

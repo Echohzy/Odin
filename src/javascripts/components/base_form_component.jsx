@@ -11,6 +11,9 @@ class BaseFormComponent extends Component{
     super(props);
   }
   onSubmit(){
+    if(this.props.requesting){
+      return;
+    }
     var passed = true;
     var data = {};
     ["web_name", "web_address", "web_describtion", "web_keyword","web_copyright", "web_email"].map((attrName)=>{
