@@ -1,7 +1,7 @@
 'use strict';
 import { connect } from 'react-redux';
 
-import { changeInputValue, changeInputStatus } from '../actions/form_input_action.jsx';
+import { changeInputValue, changeInputStatus, clearData } from '../actions/form_input_action.jsx';
 
 import { signIn } from "../actions/account_action.jsx";
 
@@ -48,6 +48,9 @@ let mapDispatchToProps = function(reducerName){
       },
       onSignIn: function(data){
         dispatch(signIn(reducerName, data));
+      },
+      onClearData: function(){
+        dispatch(clearData("signInReducer"));
       }
     };
   };

@@ -1,7 +1,7 @@
 'use strict';
 import { connect } from 'react-redux';
 
-import { changeInputValue, changeInputStatus } from '../actions/form_input_action.jsx';
+import { changeInputValue, changeInputStatus, clearData } from '../actions/form_input_action.jsx';
 
 import ArticleFormContainer from '../components/article_form_component.jsx';
 
@@ -39,6 +39,9 @@ let mapDispatchToProps = function(reducerName){
       },
       onInputStatusChange: function(attrName, status){
         dispatch(changeInputStatus(reducerName, attrName, status));
+      },
+      onClearData: function(){
+        dispatch(clearData("articleFormReducer"));
       }
     };
   };

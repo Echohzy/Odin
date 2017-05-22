@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import ProjectFormComponent from '../components/project_form_component.jsx';
 
-import { changeInputValue, changeInputStatus } from '../actions/form_input_action.jsx';
+import { changeInputValue, changeInputStatus, clearData } from '../actions/form_input_action.jsx';
 
 let ATTRS = {
   title: {
@@ -41,6 +41,9 @@ let mapDispatchToProps = function(reducerName){
       },
       onInputStatusChange: function(attrName, status){
         dispatch(changeInputStatus(reducerName, attrName, status));
+      },
+      onClearData: function(){
+        dispatch(clearData("projectFormReducer"));
       }
     };
   }

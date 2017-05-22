@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { addAccount } from "../actions/account_action.jsx";
 
-import { changeInputValue, changeInputStatus } from '../actions/form_input_action.jsx';
+import { changeInputValue, changeInputStatus, clearData } from '../actions/form_input_action.jsx';
 
 import UserFormComponent from '../components/user_form_component.jsx';
 
@@ -83,6 +83,9 @@ let mapDispatchToProps = function(reducerName){
       },
       onAddAccount: function(data){
         dispatch(addAccount(reducerName, data));
+      },
+      onClearData: function(){
+        dispatch(clearData("userFormReducer"));
       }
     };
   };
