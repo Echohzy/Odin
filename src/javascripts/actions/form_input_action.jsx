@@ -2,6 +2,7 @@
 const CHANGE_INPUT_VALUE = "CHANGE_INPUT_VALUE";
 const CHANGE_INPUT_STATUS = "CHANGE_INPUT_STATUS";
 const SET_DEFAULT_ERROR = "SET_DEFAULT_ERROR";
+const CLEAR_DATA = "CLEAR_DATA";
 
 function changeInputValue(reducerName, attrName, value){
   return {
@@ -30,12 +31,21 @@ function setDefaultError(reducerName, attrName, defaultError){
   };
 }
 
+function clearData(reducerName){
+  return {
+    type: CLEAR_DATA,
+    reducerName: reducerName
+  }
+};
+
 export {
   CHANGE_INPUT_VALUE,
   CHANGE_INPUT_STATUS,
   SET_DEFAULT_ERROR,
+  CLEAR_DATA,
   changeInputValue,
   changeInputStatus,
-  setDefaultError
+  setDefaultError,
+  clearData
 };
 

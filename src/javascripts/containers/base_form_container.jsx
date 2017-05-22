@@ -2,7 +2,7 @@
 
 import {connect} from 'react-redux';
 
-import {changeInputValue, changeInputStatus} from '../actions/form_input_action.jsx';
+import {changeInputValue, changeInputStatus, clearData} from '../actions/form_input_action.jsx';
 
 import { addBase } from '../actions/base_action.jsx';
 
@@ -84,6 +84,9 @@ let mapDispatchToProps = function(reducerName){
       },
       onAddBase: function(params){
         dispatch(addBase(params));
+      },
+      onClearData: function(){
+        dispatch(clearData("baseFormReducer"));
       }
     };
   }

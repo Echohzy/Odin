@@ -34,6 +34,9 @@ export default function(WrappedComponent){
       this.props.onInputStatusChange(attrName, "");
       return true;
     }
+    componentWillUnmount(){
+      this.props.onClearData&&this.props.onClearData();
+    }
     render(){
       return (
         <WrappedComponent {...this.props} onValidateAttr={this.onValidateAttr}/>
