@@ -6,6 +6,8 @@ const RECEIVED_DATA = "RECEIVED_DATA";
 
 const RECEIVED_USERS = "RECEIVED_USERS";
 
+const  RECEIVED_DELETED_USERS = "RECEIVED_DELETED_USERS";
+
 import { setDefaultError } from './form_input_action.jsx';
 
 import queryString from 'query-string';
@@ -30,6 +32,13 @@ function receivedData(reducerName, data){
 function receivedUsers(data){
   return {
     type: RECEIVED_USERS,
+    data: data
+  };
+}
+
+function receivedDeletedUsers(data){
+  return {
+    type: RECEIVED_DELETED_USERS,
     data: data
   };
 }
@@ -124,14 +133,31 @@ function deleteUsers(ids){
   }
 }
 
+function getDeletedUsers(){
+  return (dispatch, getState) => {
+    return wrappedFetch({
+      url: "/account/trash",
+      method: "GET",
+      success: function(res){
+        dispatch(receivedDeletedUsers(res.data));
+      },  
+      error: function(error){
+        console.log(error);
+      }
+    });
+  }
+}
+
 export {
   SET_ACCOUNT_INFO,
   RECEIVED_DATA,
   RECEIVED_USERS,
+  RECEIVED_DELETED_USERS,
   signIn,
   signOut,
   addAccount,
   receivedData,
   getUsers,
-  deleteUsers
+  deleteUsers,
+  getDeletedUsers
 };

@@ -109,3 +109,18 @@ module.exports.listAccount = function(params){
     });
   });
 }
+
+/*
+ *  get deleted accounts
+ */
+module.exports.getDeletedAccounts = function(){
+  return new Promise(function (resolve, reject){
+    db.user.find({"deleted" : 1}, function (error, data){
+      if(error){
+        reject(error);
+      }else{
+        resolve(data);
+      }
+    });
+  });
+}

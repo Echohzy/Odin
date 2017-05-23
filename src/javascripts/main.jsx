@@ -23,6 +23,7 @@ import ProjectFormReducer from './reducers/project_form_reducer.jsx';
 import ArticleFormReducer from './reducers/article_form_reducer.jsx';
 import ArticleListReducer from './reducers/article_list_reducer.jsx';
 import ProjectListReducer from './reducers/project_list_reducer.jsx'
+import UserTrashReducer from './reducers/account_trash_reducer.jsx';
 
 let initialState = {};
 
@@ -45,7 +46,8 @@ let appReducer = combineReducers({
   projectFormReducer: ProjectFormReducer,
   articleFormReducer: ArticleFormReducer,
   articleListReducer: ArticleListReducer,
-  projectListReducer: ProjectListReducer
+  projectListReducer: ProjectListReducer,
+  userTrashReducer: UserTrashReducer
 });
 
 let store = createStore(

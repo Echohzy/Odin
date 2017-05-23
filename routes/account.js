@@ -103,6 +103,22 @@ router.get("/:id", function(req, res, next){
   });
 });
 
+/*get deleted users*/
+router.get("/trash", function(req, res, next){
+  accountModule.getDeletedAccounts()
+  .then(function(data){
+    res.json({
+      status: "success",
+      data: data
+    });
+  }, function(error){
+    res.json({
+      status: "error",
+      message: error
+    });
+  });
+});
+
 /*get account list*/
 router.get("/", function(req, res, next){
   accountModule.listAccount(Object.assign(req.query,{deleted: 0}))
