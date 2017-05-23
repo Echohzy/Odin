@@ -74,3 +74,15 @@ module.exports.updateProjects = function(ids, value){
     });
   });
 };
+
+module.exports.getDeletedProjects = function(){
+  return new Promise(function (resolve, reject){
+    db.project.find({"deleted":1}, function(error, data){
+      if(error){
+        reject(error);
+      }else{
+        resolve(data);
+      }
+    });
+  });
+}

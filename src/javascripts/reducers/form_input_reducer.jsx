@@ -22,7 +22,9 @@ function formInputReducer(reducerName){
               return state;
           }
         }else if(action.type === CLEAR_DATA){
-          return Object.assing({}, state, {value: "", status:null});
+          return Object.assign({}, state, {value: "", status:null});
+        }else{
+          return state || {};
         }
       }else{
         return state || {};

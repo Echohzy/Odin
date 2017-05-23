@@ -1,6 +1,6 @@
 'use strict';
 
-import combineReducers from 'redux';
+import {combineReducers} from 'redux';
 
 import { RECEIVED_DELETED_USERS } from "../actions/account_action.jsx";
 
