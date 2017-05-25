@@ -148,6 +148,22 @@ function getDeletedUsers(){
   }
 }
 
+function updateUser(id, params){
+  return (dispatch, getState) =>{
+    return wrappedFetch({
+      url: "/account/" + id,
+      method: "PUT",
+      body: JSON.stringify(params),
+      success: function(res){
+        return res;
+      },  
+      error: function(error){
+        return error
+      }
+    });
+  }
+}
+
 export {
   SET_ACCOUNT_INFO,
   RECEIVED_DATA,
@@ -159,5 +175,6 @@ export {
   receivedData,
   getUsers,
   deleteUsers,
-  getDeletedUsers
+  getDeletedUsers,
+  updateUser
 };
