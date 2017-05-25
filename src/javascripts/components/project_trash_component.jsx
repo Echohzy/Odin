@@ -4,7 +4,7 @@ import React, { Component } from "react";
 
 import { Modal, Table } from 'antd';
 
-export default ProjectTrashComponent extends Component {
+export default class ProjectTrashComponent extends Component {
   constructor(props){
     super(props);
     this.state = {

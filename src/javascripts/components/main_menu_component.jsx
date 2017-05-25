@@ -62,8 +62,7 @@ export default class MainMenuComponent extends Component {
               <Menu.Item><Link to="/users">Authority Management</Link></Menu.Item>
             </SubMenu>
             <SubMenu key="sub5" title={<span>Trash</span>}>
-              <Menu.Item><Link to="/trash/columns">Columns</Link></Menu.Item>
-              <Menu.Item><Link to="/trash/articles">Articles</Link></Menu.Item>
+              <Menu.Item><Link to="/trash">All</Link></Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>

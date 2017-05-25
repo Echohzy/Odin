@@ -30,7 +30,7 @@ export default class ArticleTrashComponent extends Component {
     return (
       <div className="Odin-article-trash-container">
         <Table 
-          rowSelection={onChange: (selectedKeyRows)=>this.onSelectChange(selectedKeyRows)}
+          rowSelection={{onChange: (selectedKeyRows)=>this.onSelectChange(selectedKeyRows)}}
           columns={this.getColumns()}
           dataSource={this.props.article}/>
         <Modal title="恢复文章" visible={this.state.visible} onOk={()=>this.setModalVisible(false)} onCancel={()=>this.setModalVisible(false)}>
