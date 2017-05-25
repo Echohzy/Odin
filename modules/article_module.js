@@ -80,3 +80,15 @@ module.exports.updateArticles = function(ids, value){
     });
   })
 };
+
+module.exports.getDeletedArticles = function(){
+  return new Promise(function(resolve, reject){
+    db.article.find({"deleted": 1}, function(error, data){
+      if(error){
+        reject(error);
+      }else{
+        resolve(data);
+      }
+    });
+  });
+};

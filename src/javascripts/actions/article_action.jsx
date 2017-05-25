@@ -8,6 +8,8 @@ const RECEIVED_ARTICLE_LIST = "RECEIVED_ARTICLE_LIST";
 
 const DELETE_ARTICLE = "DELETE_ARTICLE";
 
+const RECEIVED_DELETED_ARTICLES = "RECEIVED_DELETED_ARTICLES";
+
 function receivedArticle(data){
   return {
     type: RECEIVED_ARTICLE,
@@ -18,6 +20,13 @@ function receivedArticle(data){
 function receivedArticleList(data){
   return {
     type: RECEIVED_ARTICLE_LIST,
+    data: data
+  };
+}
+
+function receivedDeletedArticles(data){
+  return {
+    type: RECEIVED_DELETED_ARTICLES,
     data: data
   };
 }
@@ -84,13 +93,32 @@ function deleteArticles(ids){
   }
 }
 
+function getDeletedArticles(){
+  return (dispatch, getState) => {
+    wrappedFetch({
+      url: "/article/trash",
+      method: "GET",
+      success: function(res){
+        if(res.status === "success"){
+          dispatch(receivedDeletedArticles(res.data));
+        }
+      },
+      error: function(error){
+
+      }
+    });
+  }
+}
+
 export {
   RECEIVED_ARTICLE,
   RECEIVED_ARTICLE_LIST,
   DELETE_ARTICLE,
+  RECEIVED_DELETED_ARTICLES,
   receivedArticle,
   receivedArticleList,
   fetchArticle,
   getArticles,
-  deleteArticles
+  deleteArticles,
+  getDeletedArticles
 };

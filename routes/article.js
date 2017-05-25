@@ -52,6 +52,21 @@ router.get("/:id", function (req, res, next){
   })
 });
 
+router.get("/trash", function(){
+  articleModule.getDeletedArticles()
+  .then(function(data){
+    res.json({
+      status: "success",
+      data: data
+    });
+  }).catch(function(error){
+    res.json({
+      status: "error",
+      message: error
+    });
+  });
+});
+
 /*list article api*/
 router.get("/", function (req, res, next){
   articleModule.listArticle(req.params.id, req.query)
