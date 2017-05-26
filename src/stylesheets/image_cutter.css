@@ -1,0 +1,80 @@
+@import './base.css';
+.cut-area, #preciew-block{
+  position: relative;
+}
+.cut-area{
+  height: 390px;
+  width: 600px;
+}
+.base-image{
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0.3;
+}
+.clip-image{
+  position: absolute;
+  left: 0;
+  right: 0;
+  clip: rect(0 200px 200px 0);
+}
+#drag{
+   position: absolute;
+  height: 200px;
+  width: 200px;
+  z-index: 999;
+  box-sizing: border-box;
+  border: 1px dashed #eee;
+  cursor: move;
+}
+.drag-dot{
+  position: absolute;
+  height: 6px;
+  width: 6px;
+  background: #eee;
+  border: 1px solid #888;
+}
+#cut-left-up{
+  left: -4px;
+  top: -4px;
+  cursor: nw-resize;
+}
+#cut-up{
+  top: -4px;
+  left: 50%;
+  margin-left: -4px;
+  cursor: ns-resize;
+}
+#cut-right-up{
+  top: -4px;
+  right: -4px;
+  cursor: ne-resize;
+}
+#cut-right{
+  top: 50%;
+  right: -4px;
+  margin-top: -4px;
+  cursor: e-resize;
+}
+#cut-right-down{
+  right: -4px;
+  bottom: -4px;
+  cursor: nw-resize;
+}
+#cut-down{
+  bottom: -4px;
+  left: 50%;
+  margin-left: -4px;
+  cursor: s-resize;
+}
+#cut-left-down{
+  bottom: -4px;
+  left: -4px;
+  cursor: ne-resize; 
+}
+#cut-left{
+  left: -4px;
+  top: 50%;
+  margin-top: -4px;
+  cursor: w-resize;
+}
