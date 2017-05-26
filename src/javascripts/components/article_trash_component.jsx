@@ -13,6 +13,9 @@ export default class ArticleTrashComponent extends Component {
     };
     this.getColumns = this.getColumns.bind(this);
   }
+  componentDidMount(){
+    this.props.getArticles();
+  }
   setModalVisible(value){
     this.setState({visible: value});
   }

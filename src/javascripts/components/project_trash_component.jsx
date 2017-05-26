@@ -13,6 +13,9 @@ export default class ProjectTrashComponent extends Component {
     };
     this.getColumns = this.getColumns.bind(this);
   }
+  componentDidMount(){
+    this.props.getProjects();
+  }
   setModalVisible(value){
     this.setState({visible: value});
   }

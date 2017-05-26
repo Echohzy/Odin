@@ -164,6 +164,21 @@ function updateUser(id, params){
   }
 }
 
+function settingUser(params){
+  return (dispatch, getState) => {
+    return wrappedFetch({
+      url: "/account",
+      method: "PUT",
+      body: JSON.stringify(params),
+      success: function(res){
+        if(res.status === "success"){
+          dispatch(setAccountInfo(res.data));
+        }
+      }
+    });
+  }
+}
+
 export {
   SET_ACCOUNT_INFO,
   RECEIVED_DATA,
@@ -176,5 +191,6 @@ export {
   getUsers,
   deleteUsers,
   getDeletedUsers,
-  updateUser
+  updateUser,
+  settingUser
 };
