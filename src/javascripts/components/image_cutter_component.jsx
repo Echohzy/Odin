@@ -38,6 +38,8 @@ export default class ImageCutterComponent extends React.Component {
      case "drag":
        this.dragMove(e);
        break;
+     case "cut-up":
+       this.upMove(e);
      default:
        return;
    }
@@ -56,6 +58,24 @@ export default class ImageCutterComponent extends React.Component {
   }
   stopDragging(e){
     moving = false;
+  }
+  upMove(e){
+    if(!moving) return;
+    let draggingY = e.clientY;
+    let cutAreaTop = this.getPosition(this.cutArea).Y;
+    if(draggingY<cutAreaTop) draggingY = cutAreaTop;
+    let dragY = this.getPosition(this.drag).Y;
+    let changeHeight = dragY-draggingY;
+    // this.drag.style.top = this.drag.offsetTop - dragY + draggingY + "px";
+    this.drag.style.height = this.drag.offsetHeight + changeHeight + "px";
+    // this.setView({left: this.drag.style.left, top: this.drag.style.top, right: this.drag.style.right, })
+    maxDragY = this.cutArea.offsetHeight-(this.drag.offsetHeight + changeHeight);
+    this.setView({
+      top: this.drag.offsetTop -dragY + draggingY,
+      left: this.drag.style.left.slice(0,-2),
+      right: +this.drag.style.left.slice(0,-2)+this.drag.offsetWidth,
+      bottom: this.drag.offsetTop -dragY + draggingY+this.drag.offsetHeight
+    },e);
   }
   setView(position,e){
     this.drag.style.top = position.top+"px";
@@ -80,7 +100,7 @@ export default class ImageCutterComponent extends React.Component {
             <div id="cut-left-down" className="drag-dot"/>
             <div id="cut-left" className="drag-dot"/>
             <div id="cut-left-up" className="drag-dot" />
-            <div id="cut-up" className="drag-dot" />
+            <div id="cut-up" className="drag-dot" onMouseDown={(e)=>this.startDragging(e)} onMouseMove={(e)=>this.dragging(e)}/>
             <div id="cut-right-up" className="drag-dot"/>
             <div id="cut-right" className="drag-dot"/>
           </div>
