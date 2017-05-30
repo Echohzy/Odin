@@ -44,7 +44,7 @@ let ATTRS = {
     label: "昵称",
     attrName: "nick_name",
     errorHint: "请输入昵称",
-    edit: "请输入昵称"
+    editHint: "请输入昵称"
   },
   work_id: {
     type: "text",

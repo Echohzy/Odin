@@ -14,6 +14,7 @@ import UserListContainer from './containers/user_list_container.jsx';
 import ArticleFormContainer from './containers/article_form_container.jsx';
 import ArticleListContainer from './containers/article_list_container.jsx';
 import ProjectListContainer from './containers/project_list_container.jsx';
+import UserSettingContainer from './containers/user_setting_container.jsx';
 import TrashComponent from './components/trash_component.jsx'
 import SignInReducer from './reducers/sign_in_reducer.jsx';
 import AccountReducer from './reducers/account_reducer.jsx';
@@ -27,6 +28,7 @@ import ProjectListReducer from './reducers/project_list_reducer.jsx'
 import UserTrashReducer from './reducers/account_trash_reducer.jsx';
 import ProjectTrashReducer from './reducers/project_trash_reducer.jsx';
 import ArticleTrashReducer from './reducers/article_trash_reducer.jsx';
+import UserSettingReducer from './reducers/user_setting_reducer.jsx';
 
 let initialState = {};
 
@@ -52,7 +54,8 @@ let appReducer = combineReducers({
   projectListReducer: ProjectListReducer,
   userTrashReducer: UserTrashReducer,
   projectTrashReducer: ProjectTrashReducer,
-  articleTrashReducer: ArticleTrashReducer
+  articleTrashReducer: ArticleTrashReducer,
+  userSettingReducer: UserSettingReducer
 });
 
 let store = createStore(
@@ -72,6 +75,7 @@ ReactDOM.render(
         <Route path="users" component={UserListContainer}/>
         <Route path="setting/base" component={BaseFormContainer} />
         <Route path="trash" component={TrashComponent}/>
+        <Route path="user/setting" component={UserSettingContainer}/>
       </Route>
     </Router>
   </Provider>,

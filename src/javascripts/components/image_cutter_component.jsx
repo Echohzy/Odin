@@ -66,9 +66,7 @@ export default class ImageCutterComponent extends React.Component {
     if(draggingY<cutAreaTop) draggingY = cutAreaTop;
     let dragY = this.getPosition(this.drag).Y;
     let changeHeight = dragY-draggingY;
-    // this.drag.style.top = this.drag.offsetTop - dragY + draggingY + "px";
     this.drag.style.height = this.drag.offsetHeight + changeHeight + "px";
-    // this.setView({left: this.drag.style.left, top: this.drag.style.top, right: this.drag.style.right, })
     maxDragY = this.cutArea.offsetHeight-(this.drag.offsetHeight + changeHeight);
     this.setView({
       top: this.drag.offsetTop -dragY + draggingY,
@@ -88,12 +86,15 @@ export default class ImageCutterComponent extends React.Component {
     moveStartX = e.clientX;
     moveStartY = e.clientY;
   }
+  onSelectFile(value){
+    this.setState({imageUrl: value});
+  }
   render(){
     return (
       <div className="image-cutter-container">
         <div id="cut-area"  className="cut-area"ref={(node)=>{this.cutArea=node}}>
-          <img src={this.props.imageUrl} className="base-image"/>
-          <img src={this.props.imageUrl} className="clip-image" id="clip-image" ref={(node)=>{this.clipImage=node}}/>
+          <img src={decodeURIComponent(this.state.imageUrl)} className="base-image"/>
+          <img src={decodeURIComponent(this.state.imageUrl)} className="clip-image" id="clip-image" ref={(node)=>{this.clipImage=node}}/>
           <div id="drag" ref={(node)=>{this.drag = node;}} onMouseDown={(e)=>this.startDragging(e)} onMouseMove={(e)=>this.dragging(e)}>
             <div id="cut-right-down" className="drag-dot" />
             <div id="cut-down" className="drag-dot" />
@@ -106,7 +107,10 @@ export default class ImageCutterComponent extends React.Component {
           </div>
         </div>
         <div id="preview-block">
-          <img src={this.props.imageUrl} id="preview-img" ref={(node)=>{this.previewImg=node}}/>
+          <img src={decodeURIComponent(this.state.imageUrl)} id="preview-img" ref={(node)=>{this.previewImg=node}}/>
+        </div>
+        <div className="upload-file-block">
+          <input type="file" onChange={(evt)=>{this.onSelectFile(evt.target.value)}}/>
         </div>
       </div>
     );
