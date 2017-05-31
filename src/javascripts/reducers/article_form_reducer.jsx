@@ -8,5 +8,8 @@ let createdInputReducer = formInputReducer("articleFormReducer");
 
 export default combineReducers({
   title: createdInputReducer("title"),
-  content: createdInputReducer("content")
+  url: createdInputReducer("url"),
+  params: createdInputReducer("params"),
+  response: createdInputReducer("response"),
+  method: createdInputReducer("content")
 });

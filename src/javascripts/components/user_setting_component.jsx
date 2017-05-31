@@ -14,6 +14,19 @@ class UserSettingComponent extends Component {
   constructor(props){
     super(props);
   }
+  onSubmit(){
+    let passed = true;
+    let data = {};
+    ["email", "nick_name", "work_id"].map((attrName)=>{
+      if(this.props.onValidateAttr(attrName)){
+        data[attrName] = this.props[attrName].value;
+      }else{
+        passed = false;
+      }
+    });
+    if(!passed) return;
+    this.props.settingUser(data);
+  }
   render(){
     return (
       <div className="SK-user-setting-container">
@@ -42,6 +55,9 @@ class UserSettingComponent extends Component {
             onChange={this.props.onInputValueChange}
             onFocus={this.props.onInputStatusChange}
             onBlur={()=>this.props.onValidateAttr('work_id')}/>
+          <div className="OD-form-control button-wrap">
+            <span className="OD-form-button" onClick={()=>this.onSubmit()}>确定</span>
+          </div>
         </div>
       </div>
     );

@@ -15,19 +15,44 @@ let ATTRS = {
     editHint: "请输入标题",
     errorHint: "标题不能为空！"
   },
-  content: {
+  url: {
     required: true,
     type: "text",
-    label: "内容",
-    attrName: "content",
-    errorHint: "内容不能为空！"
+    placeholder: "请输入url",
+    label: "url",
+    attrName: "url",
+    editHint: "请输入url",
+    errorHint: "不正确的url！",
+    validate: /^\/.*/
+  },
+  params: {
+    attrName: "params",
+    label: "params",
+    editHint: "请设置正确的params",
+  },
+  response: {
+    required: true,
+    attrName: "response",
+    label: "response",
+    editHint: "请设置正确的返回值",
+    errorHint: "返回值不正确！"
+  },
+  method: {
+    required: true,
+    attrName: "method",
+    label: "method",
+    editHint: "请选择method",
+    errorHint: "请选择method"
   }
 };
 
 let mapStateToProps = function(state, ownProps){
   return {
     title: Object.assign({}, ATTRS.title, state.articleFormReducer.title),
-    content: Object.assign({}, ATTRS.content, state.articleFormReducer.content)
+    url: Object.assign({}, ATTRS.url, state.articleFormReducer.url),
+    params: Object.assign({}, ATTRS.params, state.articleFormReducer.params),
+    response: Object.assign({}, ATTRS.response, state.articleFormReducer.response),
+    method: Object.assign({}, ATTRS.method, state.articleFormReducer.method)
   };
 };
 

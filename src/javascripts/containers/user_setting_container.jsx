@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import UserSettingComponent from "../components/user_setting_component.jsx";
 
-import { settingUser } from "../actions/account_action.jsx";
+import { settingUser,  } from "../actions/account_action.jsx";
 
 import { changeInputValue, changeInputStatus, clearData} from "../actions/form_input_action.jsx";
 

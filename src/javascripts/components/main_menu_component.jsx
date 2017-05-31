@@ -11,7 +11,6 @@ import { Icon, Menu, Button, Layout } from "antd";
 
 const { Header, Sider, Content, Footer } = Layout;
 
-
 const SubMenu = Menu.SubMenu;
 
 export default class MainMenuComponent extends Component {
