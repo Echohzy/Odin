@@ -12,8 +12,22 @@ class ArticleFormComponent extends Component {
   constructor(props){
     super(props);
   }
+  componentDidMount(){
+    this.props.onGetProjectList();
+  }
   onSubmit(){
+    let passed = true;
+    let data = {};
 
+    ["title", "method", "project_id", "params", "response"].map((attrName)=>{
+      if(this.props.onValidateAttr(attrName)){
+        data[attrName] = this.props[attrName].value;
+      }else{
+        passed = false;
+      }
+    });
+    if(!passed) return;
+    
   }
   render(){
     return (
@@ -38,6 +52,17 @@ class ArticleFormComponent extends Component {
               {value:"PUT", text:"PUT"},
               {value: "DELETE", text: "DELETE"},
               {value: "PATCH", text: "PATCH"}]} />
+          <FormSelectComponent
+            {...this.props.project_id}
+            onChange={this.props.onInputValueChange}
+            onFocus={this.props.onInputStatusChange}
+            onBlur={()=>this.props.onValidateAttr("project_id")}
+            Options={this.props.projects.map((item)=>{
+              return {
+                value: item._id,
+                text: item.title
+              };
+            })} />
           <FormInputComponent
              {...this.props.url}
              onChange={this.props.onInputValueChange}
