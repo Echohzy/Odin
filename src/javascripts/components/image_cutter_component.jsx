@@ -40,6 +40,32 @@ export default class ImageCutterComponent extends React.Component {
        break;
      case "cut-up":
        this.upMove(e);
+       break; 
+     case "cut-down":
+      this.downMove(e);
+       break;
+     case "cut-left":
+      this.leftMove(e);
+       break;
+     case "cut-right":
+      this.rightMove(e);
+       break;
+     case "cut-left-up":
+      this.upMove(e);
+      this.leftMove(e);
+      break;
+     case "cut-right-up":
+      this.upMove(e);
+      this.rightMove(e);
+      break;
+     case "cut-left-down":
+      this.downMove(e);
+       this.leftMove(e);
+       break;
+     case "cut-right-down":
+       this.rightMove(e);
+       this.downMove(e);
+       break;
      default:
        return;
    }
@@ -60,20 +86,68 @@ export default class ImageCutterComponent extends React.Component {
     moving = false;
   }
   upMove(e){
-    if(!moving) return;
     let draggingY = e.clientY;
     let cutAreaTop = this.getPosition(this.cutArea).Y;
-    if(draggingY<cutAreaTop) draggingY = cutAreaTop;
     let dragY = this.getPosition(this.drag).Y;
-    let changeHeight = dragY-draggingY;
-    this.drag.style.height = this.drag.offsetHeight + changeHeight + "px";
-    maxDragY = this.cutArea.offsetHeight-(this.drag.offsetHeight + changeHeight);
+    if(draggingY<cutAreaTop) draggingY = cutAreaTop;
+    let changeHeight = dragY - draggingY;
+    this.drag.style.height = Math.max(this.drag.offsetHeight+changeHeight,0) + "px";
     this.setView({
-      top: this.drag.offsetTop -dragY + draggingY,
+      top: this.drag.offsetTop - dragY + draggingY,
+      left: this.drag.style.left.slice(0,-2),
+      bottom: draggingY - cutAreaTop + this.drag.offsetHeight,
+      right: +this.drag.style.left.slice(0,-2) + this.drag.offsetWidth
+    },e)
+    maxDragY = this.cutArea.offsetHeight-this.drag.offsetHeight;
+    maxDragX = this.cutArea.offsetWidth-this.drag.offsetWidth;
+  }
+  leftMove(e){
+    let draggingX = e.clientX;
+    let cutAreaLeft = this.getPosition(this.cutArea).X;
+    let dragX = this.getPosition(this.drag).X;
+    if(draggingX<cutAreaLeft) draggingX = cutAreaLeft;
+    let changeWidth = dragX - draggingX;
+    this.drag.style.width = Math.max(this.drag.offsetWidth + changeWidth, 0) + "px";
+    this.setView({
+      top: this.drag.style.top.slice(0,-2),
+      left: this.drag.offsetLeft - dragX + draggingX,
+      bottom: +this.drag.style.top.slice(0,-2) + this.drag.offsetHeight,
+      right: this.drag.offsetLeft - dragX + draggingX + this.drag.offsetWidth
+    },e);
+    maxDragY = this.cutArea.offsetHeight-this.drag.offsetHeight;
+    maxDragX = this.cutArea.offsetWidth-this.drag.offsetWidth;
+  }
+  downMove(e){
+    let draggingY = e.clientY;
+    let cutAreaBottom = this.getPosition(this.cutArea).Y + this.cutArea.offsetHeight;
+    let dragY = this.getPosition(this.drag).Y + this.drag.offsetHeight;
+    if(draggingY>cutAreaBottom) draggingY = cutAreaBottom;
+    let changeHeight = draggingY - dragY;
+    this.drag.style.height = Math.max(this.drag.offsetHeight+changeHeight, 0) + "px";
+    this.setView({
+      top: this.drag.style.top.slice(0,-2),
       left: this.drag.style.left.slice(0,-2),
       right: +this.drag.style.left.slice(0,-2)+this.drag.offsetWidth,
-      bottom: this.drag.offsetTop -dragY + draggingY+this.drag.offsetHeight
+      bottom: dragY + changeHeight
     },e);
+    maxDragY = this.cutArea.offsetHeight-this.drag.offsetHeight;
+    maxDragX = this.cutArea.offsetWidth-this.drag.offsetWidth;
+  }
+  rightMove(e){
+    let draggingX = e.clientX;
+    let cutAreaRight = this.getPosition(this.cutArea).X + this.cutArea.offsetWidth;
+    let dragX = this.getPosition(this.drag).X + this.drag.offsetWidth;
+    if(draggingX>cutAreaRight) draggingX = cutAreaRight;
+    let changeWidth = draggingX - dragX;
+    this.drag.style.width = Math.max(this.drag.offsetWidth+changeWidth, 0) + "px";
+    this.setView({
+      top: this.drag.style.top.slice(0,-2),
+      left: this.drag.style.left.slice(0,-2),
+      right: dragX + changeWidth,
+      bottom: +this.drag.style.top.slice(0,-2)+this.drag.offsetHeight,
+    }, e);
+    maxDragY = this.cutArea.offsetHeight-this.drag.offsetHeight;
+    maxDragX = this.cutArea.offsetWidth-this.drag.offsetWidth;
   }
   setView(position,e){
     this.drag.style.top = position.top+"px";
@@ -86,31 +160,25 @@ export default class ImageCutterComponent extends React.Component {
     moveStartX = e.clientX;
     moveStartY = e.clientY;
   }
-  onSelectFile(value){
-    this.setState({imageUrl: value});
-  }
   render(){
     return (
       <div className="image-cutter-container">
         <div id="cut-area"  className="cut-area"ref={(node)=>{this.cutArea=node}}>
-          <img src={decodeURIComponent(this.state.imageUrl)} className="base-image"/>
-          <img src={decodeURIComponent(this.state.imageUrl)} className="clip-image" id="clip-image" ref={(node)=>{this.clipImage=node}}/>
+          <img src={this.props.imageUrl} className="base-image"/>
+          <img src={this.props.imageUrl} className="clip-image" id="clip-image" ref={(node)=>{this.clipImage=node}}/>
           <div id="drag" ref={(node)=>{this.drag = node;}} onMouseDown={(e)=>this.startDragging(e)} onMouseMove={(e)=>this.dragging(e)}>
             <div id="cut-right-down" className="drag-dot" />
-            <div id="cut-down" className="drag-dot" />
+            <div id="cut-down" className="drag-dot"/>
             <div id="cut-left-down" className="drag-dot"/>
-            <div id="cut-left" className="drag-dot"/>
+            <div id="cut-left" className="drag-dot" />
             <div id="cut-left-up" className="drag-dot" />
-            <div id="cut-up" className="drag-dot" onMouseDown={(e)=>this.startDragging(e)} onMouseMove={(e)=>this.dragging(e)}/>
+            <div id="cut-up" className="drag-dot" />
             <div id="cut-right-up" className="drag-dot"/>
-            <div id="cut-right" className="drag-dot"/>
+            <div id="cut-right" className="drag-dot" />
           </div>
         </div>
         <div id="preview-block">
-          <img src={decodeURIComponent(this.state.imageUrl)} id="preview-img" ref={(node)=>{this.previewImg=node}}/>
-        </div>
-        <div className="upload-file-block">
-          <input type="file" onChange={(evt)=>{this.onSelectFile(evt.target.value)}}/>
+          <img src={this.props.imageUrl} id="preview-img" ref={(node)=>{this.previewImg=node}}/>
         </div>
       </div>
     );
