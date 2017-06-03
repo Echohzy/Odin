@@ -21,8 +21,8 @@ export default function wrappedFetch(params){
   .then(function(response){
     return response.json();
   }).then(function(res){
-    params.success(res);
+    return params.success(res);
   }).catch(function(error){
-    params.error(error);
+    return params.error(error);
   });
 };

@@ -82,7 +82,7 @@ let mapDispatchToProps = function(reducerName){
         dispatch(changeInputStatus(reducerName, attrName, status));
       },
       onAddAccount: function(data){
-        dispatch(addAccount(reducerName, data));
+        return dispatch(addAccount(reducerName, data));
       },
       onClearData: function(){
         dispatch(clearData("userFormReducer"));

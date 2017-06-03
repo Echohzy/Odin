@@ -8,6 +8,8 @@ const RECEIVED_USERS = "RECEIVED_USERS";
 
 const  RECEIVED_DELETED_USERS = "RECEIVED_DELETED_USERS";
 
+const SET_ACCOUNT_AVATAR = "SET_ACCOUNT_AVATAR";
+
 import { setDefaultError } from './form_input_action.jsx';
 
 import queryString from 'query-string';
@@ -17,6 +19,13 @@ import wrappedFetch from '../utils/fetch.jsx';
 function setAccountInfo(data){
   return {
     type: SET_ACCOUNT_INFO,
+    data: data
+  };
+}
+
+function setAccountAvatar(data){
+  return {
+    type: SET_ACCOUNT_AVATAR,
     data: data
   };
 }
@@ -94,9 +103,11 @@ function addAccount(reducerName, data){
         if(res.status==="success"){
           dispatch(receivedData(reducerName, data));
         }
+        return res;
       },
       error: (err)=>{
         console.log(err);
+        return err;
       }
     });
   };
@@ -184,6 +195,7 @@ export {
   RECEIVED_DATA,
   RECEIVED_USERS,
   RECEIVED_DELETED_USERS,
+  SET_ACCOUNT_AVATAR,
   signIn,
   signOut,
   addAccount,
@@ -192,5 +204,6 @@ export {
   deleteUsers,
   getDeletedUsers,
   updateUser,
-  settingUser
+  settingUser,
+  setAccountAvatar
 };

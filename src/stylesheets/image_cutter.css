@@ -1,4 +1,11 @@
 @import './base.css';
+
+.OD-form-avatar-block{
+  height: 265px;
+  .image-cutter-container{
+    flex: 1;
+  }
+}
 .cut-area, #preciew-block{
   position: relative;
 }

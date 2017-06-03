@@ -10,6 +10,8 @@ import FormInputComponent from "./form_input_component.jsx";
 
 import { Button } from 'antd';
 
+import "../../stylesheets/image_cutter.css";
+
 class UserSettingComponent extends Component {
   constructor(props){
     super(props);
@@ -34,7 +36,7 @@ class UserSettingComponent extends Component {
           <h1>账户设置</h1>
         </div>
         <div className="OD-form-content">
-          <div className="OD-form-control">
+          <div className="OD-form-control OD-form-avatar-block">
               <div className="OD-form-input">
                 <label>头像：</label>
                 <ImageCutterComponent />

@@ -7,6 +7,8 @@ import FormSelectComponent from './form_select_component.jsx';
 
 import formEnhance from './HOCs/form_enhance.jsx';
 
+import { message } from 'antd';
+
 class UserFormComponent extends Component {
   constructor(props){
     super(props);
@@ -31,7 +33,13 @@ class UserFormComponent extends Component {
       }
     });
     if(!passed){return;}
-    this.props.onAddAccount(data);
+    this.props.onAddAccount(data).then(function(data){
+      if(data.status==="success"){
+        message.success("创建用户成功！",2);
+      }else{
+        message.error("创建用户失败！",2);
+      }
+    });
   }
   render(){
     return (

@@ -39,6 +39,8 @@ let ATTRS = {
 
 let mapStateToProps = function(state, action){
   return {
+    current_user: state.accountReducer.current_user,
+    avatar: state.accountReducer.current_user.avatar,
     email: Object.assign({},ATTRS.email, {defaultValue: state.accountReducer.current_user.email}, state.userSettingReducer.email),
     nick_name: Object.assign({}, ATTRS.nick_name, {defaultValue: state.accountReducer.current_user.nick_name}, state.userSettingReducer.nick_name),
     work_id: Object.assign({},ATTRS.work_id, {defaultValue: state.accountReducer.current_user.work_id}, state.userSettingReducer.work_id)
