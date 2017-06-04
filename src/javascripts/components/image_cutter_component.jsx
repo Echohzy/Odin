@@ -2,17 +2,21 @@
 
 import React, { Component } from "react";
 
+import wrappedFetch from '../utils/fetch.jsx';
+
 let maxDragY , maxDragX, moveStartX, moveStartY, moving;
 
 export default class ImageCutterComponent extends React.Component {
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {
+      imageUrl:""
+    };
   }
   componentDidMount(){
-    maxDragY = this.cutArea.offsetHeight-this.drag.offsetHeight;
-    maxDragX = this.cutArea.offsetWidth-this.drag.offsetWidth;
-    window.onmouseup = (e)=>this.stopDragging(e);
+    // maxDragY = this.cutArea.offsetHeight-this.drag.offsetHeight;
+    // maxDragX = this.cutArea.offsetWidth-this.drag.offsetWidth;
+    // window.onmouseup = (e)=>this.stopDragging(e);
   }
   getPosition(elem){
     let elemX = elem.offsetLeft;
@@ -160,27 +164,54 @@ export default class ImageCutterComponent extends React.Component {
     moveStartX = e.clientX;
     moveStartY = e.clientY;
   }
+  onChangeImage(){
+    let data = new FormData();
+    data.append('file', this.uploadButton.files[0]);
+    console.log(data);
+    fetch("/upload/photos",{
+      method: "POST",
+      credentials: "include",
+      body: data
+    }).then(function(res){
+      return res.json();
+    }).then(function(response){
+      console.log(response);
+    })
+  }
+  onSelectImage(){
+    this.uploadButton.click();
+  }
   render(){
-    return (
-      <div className="image-cutter-container">
-        <div id="cut-area"  className="cut-area"ref={(node)=>{this.cutArea=node}}>
-          <img src={this.props.imageUrl} className="base-image"/>
-          <img src={this.props.imageUrl} className="clip-image" id="clip-image" ref={(node)=>{this.clipImage=node}}/>
-          <div id="drag" ref={(node)=>{this.drag = node;}} onMouseDown={(e)=>this.startDragging(e)} onMouseMove={(e)=>this.dragging(e)}>
-            <div id="cut-right-down" className="drag-dot" />
-            <div id="cut-down" className="drag-dot"/>
-            <div id="cut-left-down" className="drag-dot"/>
-            <div id="cut-left" className="drag-dot" />
-            <div id="cut-left-up" className="drag-dot" />
-            <div id="cut-up" className="drag-dot" />
-            <div id="cut-right-up" className="drag-dot"/>
-            <div id="cut-right" className="drag-dot" />
+    let cutterBlock;
+    if(this.state.imageUrl){
+      cutterBlock = (
+        <div className="image-cutter-container">
+          <div id="cut-area"  className="cut-area"ref={(node)=>{this.cutArea=node}}>
+            <img src={this.props.imageUrl} className="base-image"/>
+            <img src={this.props.imageUrl} className="clip-image" id="clip-image" ref={(node)=>{this.clipImage=node}}/>
+            <div id="drag" ref={(node)=>{this.drag = node;}} onMouseDown={(e)=>this.startDragging(e)} onMouseMove={(e)=>this.dragging(e)}>
+              <div id="cut-right-down" className="drag-dot" />
+              <div id="cut-down" className="drag-dot"/>
+              <div id="cut-left-down" className="drag-dot"/>
+              <div id="cut-left" className="drag-dot" />
+              <div id="cut-left-up" className="drag-dot" />
+              <div id="cut-up" className="drag-dot" />
+              <div id="cut-right-up" className="drag-dot"/>
+              <div id="cut-right" className="drag-dot" />
+            </div>
+          </div>  
+        </div>
+      );
+    }else{
+      cutterBlock = (
+        <div className="image-cutter-container">
+          <input type="file" ref={(node)=>{this.uploadButton=node}} style={{display: "none"}} accept="image/*" className="upload-image-button" onChange={()=>this.onChangeImage()}/>
+          <div className="upload-block" onClick={()=>this.onSelectImage()}>
+            点击上传图片
           </div>
         </div>
-        <div id="preview-block">
-          <img src={this.props.imageUrl} id="preview-img" ref={(node)=>{this.previewImg=node}}/>
-        </div>
-      </div>
-    );
+      );
+    }
+    return cutterBlock;
   }
 };

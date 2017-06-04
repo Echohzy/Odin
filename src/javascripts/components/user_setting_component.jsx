@@ -8,13 +8,19 @@ import ImageCutterComponent from './image_cutter_component.jsx';
 
 import FormInputComponent from "./form_input_component.jsx";
 
-import { Button } from 'antd';
+import { Button, Modal } from 'antd';
 
 import "../../stylesheets/image_cutter.css";
 
 class UserSettingComponent extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      visible: false
+    }
+  }
+  setVisible(value){
+    this.setState({visible: value});
   }
   onSubmit(){
     let passed = true;
@@ -39,7 +45,10 @@ class UserSettingComponent extends Component {
           <div className="OD-form-control OD-form-avatar-block">
               <div className="OD-form-input">
                 <label>头像：</label>
-                <ImageCutterComponent />
+                <div className="OD-avatar-block">
+                  <img src={this.props.current_user.avatar} />
+                  <div className="OD-avatar-layer" onClick={()=>this.setVisible(true)}>修改头像</div>
+                </div>
               </div>
           </div>
           <FormInputComponent
@@ -61,6 +70,9 @@ class UserSettingComponent extends Component {
             <span className="OD-form-button" onClick={()=>this.onSubmit()}>确定</span>
           </div>
         </div>
+        <Modal visible={this.state.visible} title="修改头像" onCancel={()=>this.setVisible(false)} onOk={()=>this.setVisible(false)}>
+          <ImageCutterComponent />
+        </Modal>
       </div>
     );
   }

@@ -1,11 +1,52 @@
 @import './base.css';
 
 .OD-form-avatar-block{
-  height: 265px;
-  .image-cutter-container{
-    flex: 1;
+  height: 105px;
+  .OD-avatar-block{
+    position: relative;
+    height: 80px;
+    width: 80px;
+    img{
+      height: 80px;
+      width: 80px;
+    }
+    .OD-avatar-layer{
+      display: none;
+      cursor: pointer;
+      height: 80px;
+      width: 80px;
+      color: $white;
+      line-height: 80px;
+      text-align: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: rgba(0,0,0, 0.5);
+    }
+    &:hover{
+      .OD-avatar-layer{
+        display: block;
+      }
+    }
+  }
+
+}
+.image-cutter-container{
+  position: relative;
+  .upload-block{
+    height: 200px;
+    background: $border-gray;
+    color: $white;
+    text-align: center;
+    line-height: 200px;
+  }
+  .upload-image-button{
+    display: block;
+    height: 200px;
+    
   }
 }
+
 .cut-area, #preciew-block{
   position: relative;
 }
