@@ -208,6 +208,7 @@ export default class ImageCutterComponent extends React.Component {
           <input type="file" ref={(node)=>{this.uploadButton=node}} style={{display: "none"}} accept="image/*" className="upload-image-button" onChange={()=>this.onChangeImage()}/>
           <div className="upload-block" onClick={()=>this.onSelectImage()}>
             点击上传图片
+            <img src="../../uploads/13.jpeg" />
           </div>
         </div>
       );
