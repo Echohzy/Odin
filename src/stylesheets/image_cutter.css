@@ -47,24 +47,28 @@
   }
 }
 
-.cut-area, #preciew-block{
+.cut-area{
   position: relative;
 }
 .cut-area{
   height: 390px;
-  width: 600px;
+  width: 488px;
 }
 .base-image{
   position: absolute;
   left: 0;
   right: 0;
   opacity: 0.3;
+  max-height: 390px;
+  max-width: 488px;
 }
 .clip-image{
   position: absolute;
   left: 0;
   right: 0;
   clip: rect(0 200px 200px 0);
+  max-height: 390px;
+  max-width: 488px;
 }
 #drag{
    position: absolute;

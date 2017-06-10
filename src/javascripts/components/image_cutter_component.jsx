@@ -13,17 +13,19 @@ export default class ImageCutterComponent extends React.Component {
       imageUrl:""
     };
   }
-  componentDidMount(){
-    // maxDragY = this.cutArea.offsetHeight-this.drag.offsetHeight;
-    // maxDragX = this.cutArea.offsetWidth-this.drag.offsetWidth;
-    // window.onmouseup = (e)=>this.stopDragging(e);
+  componentDidUpdate(prevState){
+    if(this.state.imageUrl&&this.state.imageUrl!==prevState.imageUrl){
+      maxDragY = this.cutArea.offsetHeight-this.drag.offsetHeight;
+      maxDragX = this.cutArea.offsetWidth-this.drag.offsetWidth;
+      window.onmouseup = (e)=>this.stopDragging(e);
+    }
   }
   getPosition(elem){
     let elemX = elem.offsetLeft;
     let elemY = elem.offsetTop;
     while(elem=elem.offsetParent){
-      elemX += elem.offsetTop;
-      elemY += elem.offsetLeft;
+      elemX += elem.offsetLeft;
+      elemY += elem.offsetTop;
     }
     return {X: elemX, Y: elemY};
   }
@@ -94,7 +96,7 @@ export default class ImageCutterComponent extends React.Component {
     let cutAreaTop = this.getPosition(this.cutArea).Y;
     let dragY = this.getPosition(this.drag).Y;
     if(draggingY<cutAreaTop) draggingY = cutAreaTop;
-    let changeHeight = dragY - draggingY;
+    let changeHeight = dragY-draggingY;
     this.drag.style.height = Math.max(this.drag.offsetHeight+changeHeight,0) + "px";
     this.setView({
       top: this.drag.offsetTop - dragY + draggingY,
@@ -156,10 +158,7 @@ export default class ImageCutterComponent extends React.Component {
   setView(position,e){
     this.drag.style.top = position.top+"px";
     this.drag.style.left = position.left + "px";
-    this.previewImg.style.left = -position.left + "px";
-    this.previewImg.style.top = - position.top+"px";
     let clip = "rect(" + position.top+"px "+position.right+"px "+position.bottom+"px "+position.left +"px)";
-    this.previewImg.style.clip = clip;
     this.clipImage.style.clip = clip;
     moveStartX = e.clientX;
     moveStartY = e.clientY;
@@ -167,15 +166,14 @@ export default class ImageCutterComponent extends React.Component {
   onChangeImage(){
     let data = new FormData();
     data.append('file', this.uploadButton.files[0]);
-    console.log(data);
     fetch("/upload/photos",{
       method: "POST",
       credentials: "include",
       body: data
     }).then(function(res){
       return res.json();
-    }).then(function(response){
-      console.log(response);
+    }).then((response)=>{
+      this.setState({imageUrl: response.url});
     })
   }
   onSelectImage(){
@@ -187,9 +185,9 @@ export default class ImageCutterComponent extends React.Component {
       cutterBlock = (
         <div className="image-cutter-container">
           <div id="cut-area"  className="cut-area"ref={(node)=>{this.cutArea=node}}>
-            <img src={this.props.imageUrl} className="base-image"/>
-            <img src={this.props.imageUrl} className="clip-image" id="clip-image" ref={(node)=>{this.clipImage=node}}/>
-            <div id="drag" ref={(node)=>{this.drag = node;}} onMouseDown={(e)=>this.startDragging(e)} onMouseMove={(e)=>this.dragging(e)}>
+            <img src={this.state.imageUrl} className="base-image"/>
+            <img src={this.state.imageUrl} className="clip-image" id="clip-image" ref={(node)=>{this.clipImage=node}}/>
+            <div id="drag" ref={(node)=>{this.drag = node}} onMouseDown={(e)=>this.startDragging(e)} onMouseMove={(e)=>this.dragging(e)}>
               <div id="cut-right-down" className="drag-dot" />
               <div id="cut-down" className="drag-dot"/>
               <div id="cut-left-down" className="drag-dot"/>
@@ -208,7 +206,7 @@ export default class ImageCutterComponent extends React.Component {
           <input type="file" ref={(node)=>{this.uploadButton=node}} style={{display: "none"}} accept="image/*" className="upload-image-button" onChange={()=>this.onChangeImage()}/>
           <div className="upload-block" onClick={()=>this.onSelectImage()}>
             点击上传图片
-            <img src="../../uploads/13.jpeg" />
+            <img src={this.state.imageUrl} />
           </div>
         </div>
       );
