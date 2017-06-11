@@ -41,6 +41,7 @@ router.post("/", function(req, res, next){
 
 /*update account*/
 router.put("/:id", function(req, res, next){
+  console.log("update account");
   accountModule.updateAccount(req.params.id, req.body)
   .then(function(data){
     res.json({
@@ -133,6 +134,28 @@ router.get("/", function(req, res, next){
       message: error
     });
   });
+});
+
+/*update user info*/
+router.put("/", function(req, res, next){
+  accountModule.updateAccount(req.session&&req.session.account&&req.session.account.id, req.body)
+  .then(function(data){
+    var newData = {
+      id: data._id,
+      avatar: data.avatar,
+      nick_name: data.nick_name
+    }
+    req.session.account = newData;
+    res.json({
+      status: "success",
+      data: newData
+    });
+  }, function(error){
+    res.json({
+      status: "error",
+      error: error
+    });
+  })
 });
 
 /*sign out api*/

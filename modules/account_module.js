@@ -55,7 +55,7 @@ module.exports.addAccount = function(params){
  */
 module.exports.updateAccount = function(id, params){
   return new Promise(function (resolve, reject){
-    db.user.findByIdAndUpdate(id,{$set: params}, function(error, data){
+    db.user.findOneAndUpdate({_id: id},{$set: params}, function(error, data){
       if(error){
         reject("未找到该用户！");
       }else{

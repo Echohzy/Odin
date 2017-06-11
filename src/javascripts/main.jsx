@@ -74,8 +74,8 @@ ReactDOM.render(
         <Route path="users/new" component={UserFormContainer} />
         <Route path="users" component={UserListContainer}/>
         <Route path="setting/base" component={BaseFormContainer} />
-        <Route path="trash" component={TrashComponent}/>
         <Route path="user/setting" component={UserSettingContainer}/>
+        <Route path="trash" component={TrashComponent}/>
       </Route>
     </Router>
   </Provider>,

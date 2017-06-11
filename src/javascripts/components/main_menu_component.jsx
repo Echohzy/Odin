@@ -37,7 +37,9 @@ export default class MainMenuComponent extends Component {
         <Sider className="OD-main-menu-side" trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="main-menu-person-card">
             <div className="person-avatar">
-              <img src={this.props.current_user.avatar} />
+              <Link to="/user/setting">
+                <img src={this.props.current_user.avatar} />
+              </Link>
             </div>
             <div className="person-name">
               <span>{this.props.current_user.nick_name}</span>

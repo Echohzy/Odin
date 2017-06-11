@@ -21,5 +21,5 @@ export default combineReducers({
   avatar: avatar,
   email: createdInputReducer("email"),
   nick_name: createdInputReducer("nick_name"),
-  work_id: createdInputReducer("word_id")
+  work_id: createdInputReducer("work_id")
 });

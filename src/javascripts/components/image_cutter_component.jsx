@@ -134,7 +134,7 @@ export default class ImageCutterComponent extends React.Component {
       top: this.drag.style.top.slice(0,-2),
       left: this.drag.style.left.slice(0,-2),
       right: +this.drag.style.left.slice(0,-2)+this.drag.offsetWidth,
-      bottom: dragY + changeHeight
+      bottom: draggingY-cutAreaBottom+this.cutArea.offsetHeight
     },e);
     maxDragY = this.cutArea.offsetHeight-this.drag.offsetHeight;
     maxDragX = this.cutArea.offsetWidth-this.drag.offsetWidth;
@@ -144,12 +144,12 @@ export default class ImageCutterComponent extends React.Component {
     let cutAreaRight = this.getPosition(this.cutArea).X + this.cutArea.offsetWidth;
     let dragX = this.getPosition(this.drag).X + this.drag.offsetWidth;
     if(draggingX>cutAreaRight) draggingX = cutAreaRight;
-    let changeWidth = draggingX - dragX;
+    let changeWidth = draggingX-dragX;
     this.drag.style.width = Math.max(this.drag.offsetWidth+changeWidth, 0) + "px";
     this.setView({
       top: this.drag.style.top.slice(0,-2),
       left: this.drag.style.left.slice(0,-2),
-      right: dragX + changeWidth,
+      right: draggingX - cutAreaRight+this.cutArea.offsetWidth,
       bottom: +this.drag.style.top.slice(0,-2)+this.drag.offsetHeight,
     }, e);
     maxDragY = this.cutArea.offsetHeight-this.drag.offsetHeight;
