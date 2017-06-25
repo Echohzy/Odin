@@ -14,6 +14,7 @@ import UserListContainer from './containers/user_list_container.jsx';
 import ArticleFormContainer from './containers/article_form_container.jsx';
 import ArticleListContainer from './containers/article_list_container.jsx';
 import ProjectListContainer from './containers/project_list_container.jsx';
+import ProjectFormContainer from './containers/project_form_container.jsx';
 import UserSettingContainer from './containers/user_setting_container.jsx';
 import TrashComponent from './components/trash_component.jsx'
 import SignInReducer from './reducers/sign_in_reducer.jsx';
@@ -75,6 +76,8 @@ ReactDOM.render(
         <Route path="users" component={UserListContainer}/>
         <Route path="setting/base" component={BaseFormContainer} />
         <Route path="user/setting" component={UserSettingContainer}/>
+        <Route path="projects/new" component={ProjectFormContainer} />
+        <Router path="projects" component={ProjectListContainer} />
         <Route path="trash" component={TrashComponent}/>
       </Route>
     </Router>

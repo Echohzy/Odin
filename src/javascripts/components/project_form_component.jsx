@@ -2,11 +2,13 @@
 
 import React, { Component } from 'react';
 
-import FormInputComponent from './form_input_component';
+import FormInputComponent from './form_input_component.jsx';
 
 import { Button } from 'antd';
 
 import formEnhance from './HOCs/form_enhance.jsx';
+
+import { message } from 'antd';
 
 class ProjectFormComponent extends Component {
   constructor(props){
@@ -14,7 +16,19 @@ class ProjectFormComponent extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   onSubmit(){
-    
+    let passed = true;
+    let data = {};
+    ["title", "description"].map((attrName)=>{
+      if(this.props.onValidateAttr(attrName)){
+        data[attrName] = this.props[attrName].value;
+      }else{
+        passed = false;
+      }
+    });
+    if(!passed){ return }
+    this.props.postProject(data).then(function(res){
+      message.success("创建项目成功！",2);
+    });
   }
   render(){
     return (

@@ -5,6 +5,8 @@ import ProjectFormComponent from '../components/project_form_component.jsx';
 
 import { changeInputValue, changeInputStatus, clearData } from '../actions/form_input_action.jsx';
 
+import { addProject } from "../actions/project_action.jsx";
+
 let ATTRS = {
   title: {
     required: true,
@@ -37,13 +39,16 @@ let mapDispatchToProps = function(reducerName){
   return function(dispatch){
     return {
       onInputValueChange: function(attrName, value){
-        dispatch(chnageInputValue(reducerName, attrName, value));
+        dispatch(changeInputValue(reducerName, attrName, value));
       },
       onInputStatusChange: function(attrName, status){
         dispatch(changeInputStatus(reducerName, attrName, status));
       },
       onClearData: function(){
         dispatch(clearData("projectFormReducer"));
+      },
+      postProject: function(data){
+        return dispatch(addProject(data));
       }
     };
   }

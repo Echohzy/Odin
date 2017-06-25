@@ -2,7 +2,7 @@
 
 import { connect } from 'react-redux';
 
-import { getProjectList } from '../actions/project_action.jsx';
+import { getProjectList, deleteProjects } from '../actions/project_action.jsx';
 
 import ProjectListComponent from "../components/project_list_component.jsx";
 
@@ -14,8 +14,11 @@ let mapStateToProps = function(state, ownProps){
 
 let mapDispatchToProps = function(dispatch){
   return {
-    getProjectList: function(params){
-      dispatch(getProjectlist(params));
+    getProjectLists: function(params){
+      dispatch(getProjectList(params));
+    },
+    onDeleteProjects: function(params){
+      dispatch(deleteProjects(params));
     }
   }
 }

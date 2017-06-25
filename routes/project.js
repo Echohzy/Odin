@@ -36,6 +36,21 @@ router.put("/:id", function (req, res, next){
   });
 });
 
+router.get("/list", function (req, res, next){
+  ProjectModule.listProject(req.query)
+  .then(function(data){
+    res.json({
+      status: "success",
+      data: data
+    });
+  }, function(error){
+    res.json({
+      status: "error",
+      message: error
+    });
+  })
+});
+
 /*get Project api*/
 router.get("/:id", function (req, res, next){
   ProjectModule.getProject(req.params.id)
@@ -85,7 +100,7 @@ router.delete("/:id", function (req, res, next){
 });
 
 router.delete("/", function (req, res, next){
-  ProjectModule.updateProjects(res.body.ids, {deleted: 0})
+  ProjectModule.updateProjects(req.body.ids, {deleted: 1})
   .then(function(data){
     res.json({
       status: "success",

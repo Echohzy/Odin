@@ -53,7 +53,7 @@ module.exports.deleteProject = function(id){
 
 module.exports.listProject = function(params){
   return new Promise(function (resolve, reject){
-    db.project.find(params, function (error, data){
+    db.project.find(Object.assign({"deleted": 0},params), function (error, data){
       if(error){
         reject(error);
       }else{
@@ -64,6 +64,7 @@ module.exports.listProject = function(params){
 }
 
 module.exports.updateProjects = function(ids, value){
+  console.log(ids);
   return new Promise(function (resolve, reject){
     db.project.update({"_id": {$in: ids}}, {$set: value}, {multi: true}, function (error, data){
       if(error){

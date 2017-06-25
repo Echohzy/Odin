@@ -43,7 +43,6 @@ export default function(WrappedComponent){
       );
     }
   };
-  console.log(getComponentName(WrappedComponent));
   let componentName = `${getComponentName(WrappedComponent) }WithFormEnhance`;
   EnhancedComponent.displayName = componentName;
 
