@@ -38,9 +38,10 @@ function receivedData(reducerName, data){
   };
 }
 
-function receivedUsers(data){
+function receivedUsers(data, reducerName){
   return {
     type: RECEIVED_USERS,
+    reducerName: reducerName,
     data: data
   };
 }
@@ -113,13 +114,13 @@ function addAccount(reducerName, data){
   };
 }
 
-function getUsers(){
+function getUsers(reducerName){
   return (dispatch, getState) => {
     return wrappedFetch({
       url: "/account",
       method: "GET",
       success: function(res){
-        dispatch(receivedUsers(res.data));
+        dispatch(receivedUsers(res.data, reducerName));
       },
       error: function(error){
         console.log(error);

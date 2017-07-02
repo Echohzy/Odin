@@ -1,0 +1,14 @@
+@import './base.css';
+.OD-project-form-container{
+  .OD-user-card{
+    float: left;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid $bg_gray;
+    margin: 4px;
+    @mixin border-radius 25px 25px 25px 25px;
+  }
+}

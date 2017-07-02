@@ -19,6 +19,9 @@ export default class UserTrashComponent extends Component {
     };
     this.getColumns = this.getColumns.bind(this);
   }
+  componentDidMount(){
+    this.props.getDeletedUsers();
+  }
   setModalVisible(value){
     this.setState({visible: value});
   }

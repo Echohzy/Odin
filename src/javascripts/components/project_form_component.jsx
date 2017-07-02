@@ -8,12 +8,17 @@ import { Button } from 'antd';
 
 import formEnhance from './HOCs/form_enhance.jsx';
 
+import "../../stylesheets/project_form.css";
+
 import { message } from 'antd';
 
 class ProjectFormComponent extends Component {
   constructor(props){
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+  componentDidMount(){
+    this.props.getUserList();
   }
   onSubmit(){
     let passed = true;
@@ -46,6 +51,16 @@ class ProjectFormComponent extends Component {
           onChange={this.props.onInputValueChange}
           onFocus={this.props.onInputStatusChange}
           onBlur={()=>this.props.onValidateAttr("description")}/>
+        <div className="OD-form-control">
+          <div className="OD-form-input">
+            <label>成员</label>
+            <div className="OD-user-list">
+              <div className="OD-user-card">
+                <i className="fa fa-plus" />
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="OD-form-control button-wrap">
           <span className="OD-form-button" onClick={this.onSubmit}>确定</span>
         </div>

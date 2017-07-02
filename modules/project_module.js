@@ -1,6 +1,7 @@
 'use strict';
 var db = require("../config/db.js");
 var mongoose = require("mongoose");
+var accountModule = require("./account_module");
 
 module.exports.addProject = function(params){
   return new Promise(function (resolve, reject){
@@ -33,7 +34,13 @@ module.exports.getProject = function(id){
       if(error){
         reject("未找到该项目！");
       }else{
-        resolve(data);
+        // resolve(data);
+        accountModule.getAccountsByIds(data.members)
+        .then(function(users){
+          resolve(Object.assign(data,{members: users}));
+        }).catch(function(error){
+          reject(error);
+        });
       }
     });
   });

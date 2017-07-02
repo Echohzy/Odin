@@ -7,7 +7,7 @@ import { RECEIVED_DELETED_USERS } from "../actions/account_action.jsx";
 function users (state=[], action){
   switch(action.type){
     case RECEIVED_DELETED_USERS:
-      return actions.data;
+      return action.data;
     default:
       return state;
   }

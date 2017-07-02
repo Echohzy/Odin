@@ -38,7 +38,7 @@ module.exports.addAccount = function(params){
 /*
  * get account
  */
- module.exports.getAccount = function(id){
+module.exports.getAccount = function(id){
   return new Promise(function (resolve, reject){
     db.user.findOneById(id, function(error, data){
       if(error){
@@ -49,7 +49,28 @@ module.exports.addAccount = function(params){
     });
   });
  };
-
+ 
+ /*
+  * get accounts
+  */
+module.exports.getAccountsByIds = function(ids){
+  return new Promise(function (resolve, reject){
+    db.user.find({"_id":{$in:ids}}, function (error, data){
+      if(error){
+        reject("未找到用户！");
+      }else{
+        let users = data.map((item)=>{
+          return {
+            id: item._id,
+            avatar: item.avatar,
+            nick_name: item.nick_name
+          };
+        });
+        resolve(users);
+      }
+    })
+  });
+}  
 /*
  * update account info
  */
@@ -104,7 +125,14 @@ module.exports.listAccount = function(params){
       if(error){
         reject(error);
       }else{
-        resolve(data);
+        let users = data.map((item)=>{
+          return {
+            id: item._id,
+            nick_name: item.nick_name,
+            avatar: item.avatar
+          };
+        });
+        resolve(users);
       }
     });
   });
@@ -115,7 +143,7 @@ module.exports.listAccount = function(params){
  */
 module.exports.getDeletedAccounts = function(){
   return new Promise(function (resolve, reject){
-    db.user.find({"deleted" : 1}, function (error, data){
+    db.user.find({"deleted":1}, function (error, data){
       if(error){
         reject(error);
       }else{

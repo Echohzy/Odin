@@ -5,6 +5,8 @@ import ProjectFormComponent from '../components/project_form_component.jsx';
 
 import { changeInputValue, changeInputStatus, clearData } from '../actions/form_input_action.jsx';
 
+import { getUsers } from '../actions/account_action.jsx';
+ 
 import { addProject } from "../actions/project_action.jsx";
 
 let ATTRS = {
@@ -31,7 +33,8 @@ let ATTRS = {
 let mapStateToProps = function(state, ownProps){
   return {
     title: Object.assign({}, ATTRS.title, state.projectFormReducer.title),
-    description: Object.assign({}, ATTRS.description, state.projectFormReducer.description)
+    description: Object.assign({}, ATTRS.description, state.projectFormReducer.description),
+    users: state.projectFormReducer.users
   };
 };
 
@@ -49,6 +52,9 @@ let mapDispatchToProps = function(reducerName){
       },
       postProject: function(data){
         return dispatch(addProject(data));
+      },
+      getUserList: function(){
+        return dispatch(getUsers(reducerName));
       }
     };
   }

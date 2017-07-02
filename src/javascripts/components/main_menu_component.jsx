@@ -48,7 +48,6 @@ export default class MainMenuComponent extends Component {
           <Menu theme="dark" mode="inline" defaultOpenKeys={['sub1']}>
             <SubMenu key="sub1" title={<span>Web</span>}>
               <Menu.Item><Link to="/setting/base">Base</Link></Menu.Item>
-              <Menu.Item><Link to="/setting/link">{"Link"}</Link></Menu.Item>
             </SubMenu>
             <SubMenu key="sub2" title={<span>Projects</span>}>
               <Menu.Item><Link to="/projects/new">New Project</Link></Menu.Item>

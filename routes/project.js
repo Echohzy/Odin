@@ -51,6 +51,22 @@ router.get("/list", function (req, res, next){
   })
 });
 
+/*get trash project*/
+router.get("/trash", function (req, res, next){
+  ProjectModule.getDeletedProjects()
+  .then(function(data){
+    res.json({
+      status: "success",
+      data: data
+    });
+  }, function(error){
+    res.json({
+      status: "error",
+      message: error
+    });
+  })
+});
+
 /*get Project api*/
 router.get("/:id", function (req, res, next){
   ProjectModule.getProject(req.params.id)
@@ -67,21 +83,6 @@ router.get("/:id", function (req, res, next){
   });
 });
 
-/*get trash project*/
-router.get("/trash", function (req, res, next){
-  ProjectModule.getDeletedProjects()
-  .then(function(data){
-    res.json({
-      status: "success",
-      data: data
-    });
-  }, function(error){
-    res.json({
-      status: "error",
-      message: error
-    });
-  })
-});
 
 /*delete Project api*/
 router.delete("/:id", function (req, res, next){

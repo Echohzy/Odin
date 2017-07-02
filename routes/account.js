@@ -88,6 +88,22 @@ router.delete("/", function(req, res, next){
   })
 });
 
+/*get deleted users*/
+router.get("/trash", function(req, res, next){
+  accountModule.getDeletedAccounts()
+  .then(function(data){
+    res.json({
+      status: "success",
+      data: data
+    });
+  }, function(error){
+    res.json({
+      status: "error",
+      message: error
+    });
+  });
+});
+
 /*get account*/
 router.get("/:id", function(req, res, next){
   accountModule.getAccount(req.params.id)
@@ -104,21 +120,7 @@ router.get("/:id", function(req, res, next){
   });
 });
 
-/*get deleted users*/
-router.get("/trash", function(req, res, next){
-  accountModule.getDeletedAccounts()
-  .then(function(data){
-    res.json({
-      status: "success",
-      data: data
-    });
-  }, function(error){
-    res.json({
-      status: "error",
-      message: error
-    });
-  });
-});
+
 
 /*get account list*/
 router.get("/", function(req, res, next){
