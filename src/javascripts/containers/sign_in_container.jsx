@@ -52,7 +52,7 @@ let mapDispatchToProps = function(reducerName){
         dispatch(signIn(reducerName, data));
       },
       onClearData: function(){
-        dispatch(clearData("signInReducer"));
+        dispatch(clearData(reducerName));
       }
     };
   };
