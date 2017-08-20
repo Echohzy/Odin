@@ -65,6 +65,9 @@ let mapDispatchToProps = function(reducerName){
       },
       updateProjectById: function(id, data){
         return dispatch(updateProject(id, data));
+      },
+      clearData: function(){
+        return dispatch(clearData(reducerName));
       }
     };
   }

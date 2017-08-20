@@ -74,6 +74,9 @@ class ProjectFormComponent extends Component {
   setAddUserVisible(value){
     this.setState({add_user_popup_visible: value});
   }
+  componentWillUnmount(){
+    this.props.clearData();
+  }
   render(){
     const { selected_users } = this.props;
     return (

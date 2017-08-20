@@ -8,6 +8,8 @@ import { RECEIVED_USERS } from '../actions/account_action.jsx';
 
 import { SELECT_PROJECT_USER, RECEIVED_PROJECT } from '../actions/project_action.jsx';
 
+import { CLEAR_DATA } from '../actions/form_input_action.jsx';
+
 let createdInputReducer = formInputReducer("projectFormReducer");
 
 function selected_users(state={}, action){
@@ -26,6 +28,11 @@ function selected_users(state={}, action){
        members[item.id] = item;
      });
      return members;
+    case CLEAR_DATA:
+      if(action.reducerName="projectFormReducer"){
+        return {};
+      }
+      return state;
     default:
       return state;
   }

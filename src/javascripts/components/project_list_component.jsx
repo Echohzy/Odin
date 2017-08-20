@@ -52,6 +52,7 @@ export default class ProjectListComponent extends Component {
     this.setState({selectedProjects: selectedRowKeys});
   }
   render(){
+    
     return (
       <div className="OD-project-list-container">
         <Table rowSelection={{onChange: (selectedRowKeys)=>this.onSelectChange(selectedRowKeys)}}
