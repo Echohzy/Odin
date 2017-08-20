@@ -1,6 +1,8 @@
 @import './base.css';
 .OD-project-form-container{
   .OD-user-card{
+    position: relative;
+    cursor: pointer;
     float: left;
     height: 50px;
     width: 50px;
@@ -9,6 +11,24 @@
     font-size: 20px;
     border: 1px solid $bg_gray;
     margin: 4px;
-    @mixin border-radius 25px 25px 25px 25px;
+    overflow: hidden;
+    @mixin border-radius 25px;
+    .OD-user-card-layer{
+      visibility: hidden;
+      height: 50px;
+      width: 50px;
+      text-align: center;
+      line-height: 50px;
+      color: $white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    &:hover{
+      .OD-user-card-layer{
+        visibility: visible;
+      }
+    }
   }
 }

@@ -29,20 +29,20 @@ module.exports.updateProject = function(id, params){
 };
 
 module.exports.getProject = function(id){
+  var project = {};
   return new Promise(function (resolve, reject){
     db.project.findOneById(id, function(error, data){
       if(error){
         reject("未找到该项目！");
       }else{
-        // resolve(data);
-        accountModule.getAccountsByIds(data.members)
-        .then(function(users){
-          resolve(Object.assign(data,{members: users}));
-        }).catch(function(error){
-          reject(error);
-        });
+        project = data;
+        resolve(data);
       }
     });
+  }).then(function(data){
+    return accountModule.getAccountsByIds(data.members);
+  }).then(function(users){
+    return Object.assign(project,{members: users});
   });
 };
 
@@ -71,7 +71,6 @@ module.exports.listProject = function(params){
 }
 
 module.exports.updateProjects = function(ids, value){
-  console.log(ids);
   return new Promise(function (resolve, reject){
     db.project.update({"_id": {$in: ids}}, {$set: value}, {multi: true}, function (error, data){
       if(error){

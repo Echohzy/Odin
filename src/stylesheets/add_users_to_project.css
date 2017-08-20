@@ -1,0 +1,46 @@
+@import './base.css';
+
+.OD-add-users-list{
+  padding-top: 10px;
+  width: 490px;
+  .user-block{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin: 0 10px 10px;
+    overflow: hidden;
+    cursor: pointer;
+    @mixin border-radius 25px;
+    .user-block-layer{
+      visibility: hidden;
+      background: rgba(0,0,0,0.5);
+      position: absolute;
+      color: $white;
+      height: 50px;
+      width: 50px;
+      text-align: center;
+      line-height: 50px;
+      top: 0;
+      left:0;
+      @mixin border-radius 25px;
+    }
+    
+    &:hover{
+      .user-block-layer{
+        visibility: visible;
+      }
+    }
+  }
+  .user-block.selected{
+    .user-block-layer{
+      box-sizing: border-box;
+      border: 2px solid $heavy-green;
+      visibility: visible;
+      color: $heavy-green;
+    }
+  }
+  &:after{
+    @mixin clearfix;
+  }
+}

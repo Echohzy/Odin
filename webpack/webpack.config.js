@@ -37,7 +37,11 @@ module.exports = {
   },
   plugins: [
     //new webpack.optimize.OccurenceOrderPlugin(), 
+    new webpack.DefinePlugin({
+      PRODUCTION: "true"
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
+    
   ],
 };

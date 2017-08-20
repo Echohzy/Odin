@@ -1,6 +1,8 @@
 'use strict';
 import { connect } from 'react-redux';
 
+console.log(PRODUCTION);
+
 import { changeInputValue, changeInputStatus, clearData } from '../actions/form_input_action.jsx';
 
 import { signIn } from "../actions/account_action.jsx";

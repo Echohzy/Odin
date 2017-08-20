@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 
 import { Table, Modal } from 'antd';
 
+import { Link } from 'react-router';
+
 export default class ProjectListComponent extends Component {
   constructor(props){
     super(props);
@@ -27,6 +29,18 @@ export default class ProjectListComponent extends Component {
       key: "description",
       title: "Description",
       dataIndex: "description"
+    },{
+      key: "Action",
+      key: "action",
+      render: (text, project)=>{
+        return (
+          <span>
+            <span onClick={()=>this.props.onDeleteProjects({ids: [project._id]})}>Delete</span>
+            <span>{"|"}</span>
+            <Link to={{pathname:"/projects/"+project._id+"/edit"}}>Edit</Link>
+          </span>
+        );
+      }
     }];
   }
   onDeleteProjects(){
@@ -44,7 +58,6 @@ export default class ProjectListComponent extends Component {
         columns={this.getColumns()}
         dataSource={this.props.projects.map((project)=>{return Object.assign({},project, {key: project._id})})}
         footer={()=>{return <i className="fa fa-trash" onClick={()=>this.onDeleteProjects()}/>}}/>
-        <Modal title="删除项目？" visible={this.state.visible} onOk={()=>this.setModalVisible(false)} onCancel={()=>this.setModalVisible(false)}/>
       </div>
     );
   }
