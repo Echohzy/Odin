@@ -31,7 +31,7 @@ module.exports.updateProject = function(id, params){
 module.exports.getProject = function(id){
   var project = {};
   return new Promise(function (resolve, reject){
-    db.project.findOneById(id, function(error, data){
+    db.project.findById(id, function(error, data){
       if(error){
         reject("未找到该项目！");
       }else{

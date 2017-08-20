@@ -73,7 +73,7 @@ function getProject(id){
       url: "/project/"+id,
       method: "GET",
       success: function(res){
-        if(res.success === "success"){
+        if(res.status === "success"){
           dispatch(receivedProject(res.data));
         }
         return res;
@@ -120,6 +120,22 @@ function addProject(params){
   }
 }
 
+function updateProject(id, data){
+  return (dispatch, getState)=>{
+    return wrappedFetch({
+      url:"/project/"+id,
+      method:"put",
+      body: JSON.stringify(data),
+      success: function(res){
+        return res;
+      },
+      error: function(error){
+        return error;
+      }
+    });
+  }
+}
+
 function deleteProjects(params){
   return (dispatch, getState)=>{
     return wrappedFetch({
@@ -146,6 +162,7 @@ export {
   getDeletedProjects,
   addProject,
   getProject,
+  updateProject,
   deleteProjects,
   selectProjectUser
 };

@@ -48,9 +48,28 @@ class ProjectFormComponent extends Component {
     });
     if(!passed){ return }
     data.members = Object.keys(this.props.selected_users);
-    this.props.postProject(data).then(function(res){
-      message.success("创建项目成功！",2);
-    });
+    if(this.props.params.id){
+      this.props.updateProjectById(this.props.params.id, data).then(function(res){
+        if(res.status==="success"){
+          message.success("更新项目成功！",2);
+        }else{
+          message.error("更新失败！");
+        }
+      }).catch(function(error){
+        message.error("更新失败！");
+      });
+    }else{
+      this.props.postProject(data).then(function(res){
+        if(res.status==="success"){
+          message.success("创建项目成功！",2);
+        }else{
+          message.error("更新失败！");
+        }
+        message.success("创建项目成功！",2);
+      }).catch(function(error){
+        message.error("创建失败！");
+      });;
+    }
   }
   setAddUserVisible(value){
     this.setState({add_user_popup_visible: value});
@@ -60,7 +79,7 @@ class ProjectFormComponent extends Component {
     return (
       <div className="OD-project-form-container">
         <div className="OD-form-title">
-          <h1>新建项目</h1>
+          <h1>{this.props.params.id?"更新项目":"新建项目"}</h1>
         </div>
         <FormInputComponent 
           {...this.props.title}

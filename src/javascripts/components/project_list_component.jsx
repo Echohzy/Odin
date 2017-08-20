@@ -30,14 +30,14 @@ export default class ProjectListComponent extends Component {
       title: "Description",
       dataIndex: "description"
     },{
-      key: "Action",
+      title: "Action",
       key: "action",
       render: (text, project)=>{
         return (
-          <span>
-            <span onClick={()=>this.props.onDeleteProjects({ids: [project._id]})}>Delete</span>
-            <span>{"|"}</span>
-            <Link to={{pathname:"/projects/"+project._id+"/edit"}}>Edit</Link>
+          <span className="action-container">
+            <span className="action-item" onClick={()=>this.props.onDeleteProjects({ids: [project._id]})}>Delete</span>
+            <span className="devide">{"|"}</span>
+            <Link className="action-item" to={{pathname:"/projects/"+project._id+"/edit"}}>Edit</Link>
           </span>
         );
       }

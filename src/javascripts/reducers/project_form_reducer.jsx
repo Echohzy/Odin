@@ -22,7 +22,7 @@ function selected_users(state={}, action){
       return tmp;
     case RECEIVED_PROJECT:
      var members = {};
-     action.data.member.map((item)=>{
+     action.data.members.map((item)=>{
        members[item.id] = item;
      });
      return members;

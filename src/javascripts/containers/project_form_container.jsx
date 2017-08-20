@@ -7,7 +7,7 @@ import { changeInputValue, changeInputStatus, clearData } from '../actions/form_
 
 import { getUsers } from '../actions/account_action.jsx';
  
-import { addProject, selectProjectUser, getProject } from "../actions/project_action.jsx";
+import { addProject, selectProjectUser, getProject, updateProject } from "../actions/project_action.jsx";
 
 let ATTRS = {
   title: {
@@ -62,6 +62,9 @@ let mapDispatchToProps = function(reducerName){
       },
       fetchProject: function(id){
         return dispatch(getProject(id));
+      },
+      updateProjectById: function(id, data){
+        return dispatch(updateProject(id, data));
       }
     };
   }
