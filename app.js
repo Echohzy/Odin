@@ -22,6 +22,7 @@ var base = require('./routes/base');
 var signIn = require('./routes/sign_in');
 var upload = require('./routes/upload');
 var file = require("./routes/file");
+var mock = require("./routes/mock");
 var checkSignInMiddleware = require("./utils/check_sign_in_middleware");
 var app = express();
 require('es6-promise').polyfill();
@@ -57,6 +58,7 @@ app.use('/base', base);
 app.use('/upload', uploader.single('file'), upload);
 app.use('/sign_in', signIn);
 app.use('/file',file);
+app.use('/mock', mock);
 app.use(checkSignInMiddleware);
 app.use('/', page);
 

@@ -39,12 +39,20 @@ var baseSchema = mongoose.Schema({
   web_email: String
 });
 
+var mockSchema = mongoose.Schema({
+  url: String,
+  project_id: String,
+  mock_setting:{type: Array, default: []},
+  deleted: {type: Number, default: 0}
+});
+
 mongoose.connect("mongodb://127.0.0.1/Odin");
 
 module.exports.user = mongoose.model('user',userSchema);
 module.exports.article = mongoose.model('article', articleSchema);
 module.exports.project = mongoose.model('project', projectSchema);
 module.exports.base = mongoose.model('base', baseSchema);
+module.exports.mock = mongoose.model('mock', mockSchema);
 
 
 
