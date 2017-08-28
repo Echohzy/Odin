@@ -49,9 +49,9 @@ function mockData(result, mock_setting){
   return result;
 }
 
-module.exports.getMockData = function(url){
+module.exports.getMockData = function(url, method){
   return new Promise(function (resolve, reject){
-    db.mock.findOne({url, url}, function (error, data){
+    db.mock.findOne({url, url, method: method}, function (error, data){
         if(error){
           reject(error);
         }else{

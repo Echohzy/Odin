@@ -41,6 +41,7 @@ var baseSchema = mongoose.Schema({
 
 var mockSchema = mongoose.Schema({
   url: String,
+  method:{type: String, default: "get"},
   project_id: String,
   mock_setting:{type: Array, default: []},
   deleted: {type: Number, default: 0}

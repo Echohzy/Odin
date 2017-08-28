@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express');
+var cors = require('cors');
 var router = express.Router();
 var MockModule = require("../modules/mock_module");
 
@@ -22,8 +23,9 @@ router.post("/", function (req, res, next){
 
 
 /*return Mock instance data*/
-router.get("/instance/:url", function (req, res, next){
-  MockModule.getMockData("/"+req.params.url)
+router.all("/instance/:url", cors(), function (req, res, next){
+  console.log(req.method);
+  MockModule.getMockData("/"+req.params.url, req.method.toLowerCase())
   .then(function(data){
     res.json({
       status: 'success',
