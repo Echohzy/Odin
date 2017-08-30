@@ -12,6 +12,8 @@ const SELECT_PROJECT_USER = "SELECT_PROJECT_USER";
 
 const RECEIVED_PROJECT = "RECEIVED_PROJECT";
 
+const RECEIVED_PROJECT_MOCKS = "RECEIVED_PROJECT_MOCKS";
+
 function receivedProjectList(data){
   return {
     type: RECEIVED_PROJECT_LIST,
@@ -45,6 +47,13 @@ function receivedProject(data){
     type: RECEIVED_PROJECT,
     data: data
   };
+}
+
+function receivedProjectMocks(data){
+   return {
+     type: RECEIVED_PROJECT_MOCKS,
+     data: data
+   };
 }
 
 
@@ -83,6 +92,24 @@ function getProject(id){
       }
     });
   }
+}
+
+function getProjectMocks(id){
+  return (dispatch, getState)=>{
+    return wrappedFetch({
+      url: "/mock/list",
+      method: "GET",
+      success: function(res){
+        if(res.status==='success'){
+          dispatch(receivedProjectMocks(res.data));
+        }
+      },
+      error: function(error){
+        return error;
+      }
+    });
+  }
+  
 }
 
 function getDeletedProjects(){

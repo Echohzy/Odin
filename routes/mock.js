@@ -39,6 +39,22 @@ router.all("/instance/:url", cors(), function (req, res, next){
   });
 });
 
+/*get Mocks*/
+router.get("/list", function (req, res, next){
+  MockModule.getMocks(req.query)
+  .then(function(data){
+    res.json({
+      status:'error',
+      data: data
+    });
+  }, function(error){
+    res.json({
+      status: 'error',
+      error: error
+    });
+  });
+});
+
 /*get Mock data*/
 router.get("/:id", function (req, res, next){
   MockModule.getMock(req.params.id)
@@ -54,6 +70,8 @@ router.get("/:id", function (req, res, next){
     });
   });
 });
+
+
 
 /*update Mock*/
 router.put("/:id", function (req, res, next){

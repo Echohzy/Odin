@@ -30,6 +30,18 @@ module.exports.getMock = function(id){
   });
 };
 
+module.exports.getMocks = function(params){
+  return new Promise(function(resolve, reject){
+    db.mock.find(params, function (error, data){
+      if(error){
+        reject(error);
+      }else{
+        resolve(data);
+      }
+    });
+  });
+};
+
 function mockData(result, mock_setting){
   mock_setting.map(function(item){
     if(item.type === 'array'){

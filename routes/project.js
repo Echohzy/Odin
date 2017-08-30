@@ -83,7 +83,6 @@ router.get("/:id", function (req, res, next){
   });
 });
 
-
 /*delete Project api*/
 router.delete("/:id", function (req, res, next){
   ProjectModule.deleteProject(req.params.id)

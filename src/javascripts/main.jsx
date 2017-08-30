@@ -78,6 +78,7 @@ ReactDOM.render(
         <Route path="user/setting" component={UserSettingContainer}/>
         <Route path="projects/new" component={ProjectFormContainer} />
         <Route path="projects/:id/edit" component={ProjectFormContainer} />
+        <Route path="projects/:id" component={}>
         <Router path="projects" component={ProjectListContainer} />
         <Route path="trash" component={TrashComponent}/>
       </Route>
