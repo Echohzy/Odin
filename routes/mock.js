@@ -44,7 +44,7 @@ router.get("/list", function (req, res, next){
   MockModule.getMocks(req.query)
   .then(function(data){
     res.json({
-      status:'error',
+      status:'success',
       data: data
     });
   }, function(error){

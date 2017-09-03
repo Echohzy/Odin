@@ -16,6 +16,7 @@ import ArticleListContainer from './containers/article_list_container.jsx';
 import ProjectListContainer from './containers/project_list_container.jsx';
 import ProjectFormContainer from './containers/project_form_container.jsx';
 import UserSettingContainer from './containers/user_setting_container.jsx';
+import ProjectShowContainer from './containers/project_show_container.jsx';
 import TrashComponent from './components/trash_component.jsx'
 import SignInReducer from './reducers/sign_in_reducer.jsx';
 import AccountReducer from './reducers/account_reducer.jsx';
@@ -30,6 +31,7 @@ import UserTrashReducer from './reducers/account_trash_reducer.jsx';
 import ProjectTrashReducer from './reducers/project_trash_reducer.jsx';
 import ArticleTrashReducer from './reducers/article_trash_reducer.jsx';
 import UserSettingReducer from './reducers/user_setting_reducer.jsx';
+import ProjectShowReducer from './reducers/project_show_reducer.jsx';
 
 let initialState = {};
 
@@ -57,6 +59,7 @@ let appReducer = combineReducers({
   projectTrashReducer: ProjectTrashReducer,
   articleTrashReducer: ArticleTrashReducer,
   userSettingReducer: UserSettingReducer,
+  projectShowReducer: ProjectShowReducer
 });
 
 let store = createStore(
@@ -78,10 +81,12 @@ ReactDOM.render(
         <Route path="user/setting" component={UserSettingContainer}/>
         <Route path="projects/new" component={ProjectFormContainer} />
         <Route path="projects/:id/edit" component={ProjectFormContainer} />
-        <Route path="projects/:id" component={}>
+        <Route path="projects/:id" component={ProjectShowContainer} />
         <Router path="projects" component={ProjectListContainer} />
         <Route path="trash" component={TrashComponent}/>
       </Route>
     </Router>
   </Provider>,
   document.getElementById("Odin-app"));
+  
+  

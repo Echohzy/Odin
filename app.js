@@ -40,11 +40,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'src')));
 
-// app.use(webpackDevMiddleware(compiler,{
-//   noInfo: true, publicPath: webpackConfig.output.publicPath
-// }));
+app.use(webpackDevMiddleware(compiler,{
+  noInfo: true, publicPath: webpackConfig.output.publicPath
+}));
 
-// app.use(require("webpack-hot-middleware")(compiler));
+app.use(require("webpack-hot-middleware")(compiler));
 app.use(session({
   secret: 'keyboard cat',
   resave: false,

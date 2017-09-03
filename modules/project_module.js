@@ -48,7 +48,7 @@ module.exports.getProject = function(id){
 
 module.exports.deleteProject = function(id){
   return new Promise(function (resolve, reject){
-    db.project.findOneAndRemove({_id: id}, function(error, exports){
+    db.project.findOneAndRemove({_id: id}, function(error, data){
       if(error){
         reject("项目删除失败！");
       }else{

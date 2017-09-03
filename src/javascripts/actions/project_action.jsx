@@ -99,6 +99,7 @@ function getProjectMocks(id){
     return wrappedFetch({
       url: "/mock/list",
       method: "GET",
+      data:{_id: id},
       success: function(res){
         if(res.status==='success'){
           dispatch(receivedProjectMocks(res.data));
@@ -185,11 +186,13 @@ export {
   DELETE_PROJECTS,
   SELECT_PROJECT_USER,
   RECEIVED_PROJECT,
+  RECEIVED_PROJECT_MOCKS,
   getProjectList,
   getDeletedProjects,
   addProject,
   getProject,
   updateProject,
   deleteProjects,
-  selectProjectUser
+  selectProjectUser,
+  getProjectMocks
 };
