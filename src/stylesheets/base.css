@@ -1,5 +1,6 @@
 $white: #ffffff;
 $bg_gray: #f3f3f4;
+$code_bg_gray: #f7f7f7;
 $menu_side_blue: #2F4050;
 $dark_menu_side_blue: #2A3B4C;
 $dark: #2b2b2b;
@@ -9,6 +10,7 @@ $light-blue: #2db7f5;
 $red: #f12626;
 $border-gray: #acacac;
 $border-gray-light: #d9d9d9;
+
 
 @define-mixin border-radius $leftTop, $rightTop, $leftBottom, $rightBottom {
    -moz-border-radius: $leftTop $rightTop $leftBottom $rightBottom;

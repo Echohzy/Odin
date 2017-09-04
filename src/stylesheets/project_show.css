@@ -1,0 +1,21 @@
+@import './base.css';
+
+.OD-project-show-container{
+  .OD-mocks-list-container{
+    .mock-block{
+      font-size: 14px;
+      background: $code_bg_gray;
+      padding: 10px;
+      .api-url{
+        margin-bottom: 10px;
+      }
+      .api-attr{
+        display: flex;
+        margin-left: 26px;
+      }
+    }
+    .mock-block + .mock-block{
+      margin-top: 20px;
+    }
+  }
+}

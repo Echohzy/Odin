@@ -14,31 +14,59 @@ export default class MocksListComponent extends Component {
     this.getDoc = this.getDoc.bind(this);
   }
   getDoc(data){
-    console.log(new Date());
-    return (
-      <div className="api-content">
-        <p>{"{"}</p>
+    let contentBlcok = "";
+    if(data.type === "array"){
+      if(Object.prototype.toString.call(data.value) === "[object Array]"){
+        contentBlcok = (
+          <div className="content">
+            <p>{"[{"}</p>
+              {
+                data&&data.value.map((item, index)=>{
+                  return (
+                    <span key={index}>{this.getDoc(item)}</span>
+                  );
+                })
+              }
+            <p>{"}]"}</p>
+          </div>
+        );
+      }else{
+        contentBlcok = (
+          <div className="content">
+            <p>{"["+Types[data.value]+"]"}</p>
+          </div>
+        );
+      }
+      
+    }else if(Object.prototype.toString.call(data.value) === "[object Array]"){
+      contentBlcok=(
+        <div className="content">
+          <p>{"{"}</p>
           {
-            data&&data.map((item, index)=>{
-              return (
-                <div className="api-attr" key={index}>
-                  <div className="name">
-                    {item.name + " : "}
-                  </div>
-                  <div className="content">
-                    {
-                      typeof item.value==="string"?
-                      Types[item.value]:this.getDoc(item.value)
-                    }
-                  </div>
-                </div>
-              );
+            data.value.map((item)=>{
+              return this.getDoc(item)
             })
           }
-        <p>{"}"}</p>
+          <p>{"}"}</p>
+        </div>
+      );
+    }else{
+      contentBlcok = (
+        <div className="content">
+          <p>{Types[data.value]}</p>
+        </div>
+      );
+    }
+    
+    
+    return (
+      <div className="api-attr">
+        <div className="name">{data.name+" : "}</div>
+        {contentBlcok}
       </div>
     );
   }
+  
   render(){
     const { mocks } = this.props;
     return (
@@ -51,7 +79,15 @@ export default class MocksListComponent extends Component {
                   <span>{mock.method&&mock.method.toLocaleUpperCase()}</span>
                   <span>{" "+mock.url}</span>
                 </div>
-                {this.getDoc(mock.mock_setting)}
+                <div className="api-result">
+                  <p>{"return {"}</p>
+                    {
+                      mock.mock_setting.map((item)=>{
+                        return (this.getDoc(item));
+                      })
+                    }
+                  <p>{"}"}</p>
+                </div>
               </div>
             );
           })

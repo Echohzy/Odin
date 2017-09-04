@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 
 import MocksListComponent from './mocks_list_component.jsx';
 
+import '../../stylesheets/project_show.css';
+
 export default class ProjectShowComponent extends Component {
   constructor(props){
     super(props);
